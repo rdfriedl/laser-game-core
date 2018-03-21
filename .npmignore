@@ -1,0 +1,15 @@
+\.circleci/
+\.idea/
+
+config/
+coverage/
+node_modules/
+docs/
+test/
+
+.esdoc.json
+.gitignore
+.prettierignore
+CHANGELOG.md
+commitlint.config.js
+karma.config.js

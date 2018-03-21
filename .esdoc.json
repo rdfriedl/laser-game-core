@@ -1,0 +1,22 @@
+{
+	"source": "./src",
+	"destination": "./docs",
+	"excludes": ["spec\\.js$"],
+	"plugins": [
+		{
+			"name": "esdoc-standard-plugin",
+			"option": {
+				"brand": {
+					"title": "Lazer Game Core",
+					"repository": "https://github.com/rdfriedl/lazer-game-core",
+					"author": "https://rdfriedl.com"
+				},
+				"test": {
+					"source": "./test/",
+					"interfaces": ["describe", "it"],
+					"includes": ["spec\\.js$"]
+				}
+			}
+		}
+	]
+}

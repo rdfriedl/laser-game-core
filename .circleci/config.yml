@@ -1,0 +1,195 @@
+version: 2
+jobs:
+  install:
+    docker:
+      - image: circleci/node:latest
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - node_modules-{{ checksum "package.json" }}
+      - run:
+          name: Install dependancies
+          command: npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: node_modules-{{ checksum "package.json" }}
+
+  build:
+    docker:
+      - image: circleci/node:latest
+    working_directory: ~/repo
+    environment:
+      - NODE_ENV: "production"
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - node_modules-{{ checksum "package.json" }}
+      - run:
+          name: Build
+          command: npm run build
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - dist
+
+  docs:
+    docker:
+      - image: circleci/node:latest
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - node_modules-{{ checksum "package.json" }}
+      - run:
+          name: Build Docs
+          command: npm run docs
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - docs
+
+  test-node:
+    docker:
+      - image: circleci/node:latest
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - node_modules-{{ checksum "package.json" }}
+      - run:
+          name: Install dependancies
+          command: npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: node_modules-{{ checksum "package.json" }}
+      - run: rm -rf dist
+      - attach_workspace:
+          at: ./
+      - run:
+          name: Run Tests
+          command: npm run test:node
+
+  test-browsers:
+    docker:
+      - image: circleci/node:latest-browsers
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - node_modules-{{ checksum "package.json" }}
+      - run:
+          name: Install dependancies
+          command: npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: node_modules-{{ checksum "package.json" }}
+      - run: rm -rf dist
+      - attach_workspace:
+          at: ./
+      - run:
+          name: Run Tests
+          command: npm run test:browser
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - coverage
+
+  upload-coverage:
+    working_directory: ~/repo
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - node_modules-{{ checksum "package.json" }}
+      - attach_workspace:
+          at: ./
+      - run:
+          name: Upload Coverage
+          command: npx codecov
+
+  publish-docs:
+    docker:
+      - image: circleci/node:latest-browsers
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - node_modules-{{ checksum "package.json" }}
+      - attach_workspace:
+          at: ./
+      - run:
+          name: Set Git User
+          command: |
+            git config --global user.email "${GIT_EMAIL}" && \
+            git config --global user.name "${GIT_USERNAME}";
+      - run:
+          name: Publish Docs
+          command: npx gh-pages -d docs -m Update Docs
+
+  release:
+    docker:
+      - image: circleci/node:latest
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - node_modules-{{ checksum "package.json" }}
+      - run:
+          name: Release Package
+          command: npx semantic-release
+
+workflows:
+  version: 2
+  test-and-build:
+    jobs:
+      - install
+      - build:
+          requires:
+            - install
+      - docs:
+          requires:
+            - install
+      - test:
+          requires:
+            - build
+      - test-browsers:
+          requires:
+            - build
+      - upload-coverage:
+          requires:
+            - test
+            - test-browsers
+      - release:
+          requires:
+            - build
+            - docs
+            - test
+            - test-browsers
+          filters:
+            branches:
+              only:
+                - master
+      - publish-docs:
+          requires:
+            - docs
+            - release
+            - test
+            - test-browsers
+          filters:
+            branches:
+              only:
+                - master
+
