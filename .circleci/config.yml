@@ -162,7 +162,7 @@ workflows:
       - docs:
           requires:
             - install
-      - test:
+      - test-node:
           requires:
             - build
       - test-browsers:
@@ -170,13 +170,13 @@ workflows:
             - build
       - upload-coverage:
           requires:
-            - test
+            - test-node
             - test-browsers
       - release:
           requires:
             - build
             - docs
-            - test
+            - test-node
             - test-browsers
           filters:
             branches:
@@ -186,7 +186,7 @@ workflows:
           requires:
             - docs
             - release
-            - test
+            - test-node
             - test-browsers
           filters:
             branches:
