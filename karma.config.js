@@ -3,6 +3,14 @@ const webpackConfig = require("./webpack.config");
 webpackConfig.mode = "development";
 webpackConfig.devtool = "inline-source-map";
 delete webpackConfig.externals;
+webpackConfig.module.rules.push({
+	test: /\.js$/,
+	include: path.resolve(__dirname, "./src/"),
+	exclude: /node_modules|-spec\.js$/,
+	loader: "istanbul-instrumenter-loader",
+	options: { esModules: true },
+	enforce: "post",
+});
 
 module.exports = function(config) {
 	config.set({
@@ -18,7 +26,7 @@ module.exports = function(config) {
 			"karma-sinon-chai",
 			"karma-source-map-support",
 			"karma-webpack",
-			"karma-coverage",
+			"karma-coverage-istanbul-reporter",
 		],
 
 		browsers: ["ChromeHeadless", "FirefoxHeadless", "PhantomJS"],
@@ -30,7 +38,7 @@ module.exports = function(config) {
 			},
 		},
 
-		files: ["node_modules/core-js/client/shim.min.js", "test/index.js"],
+		files: ["node_modules/core-js/client/shim.min.js", { pattern: "test/index.js", watched: false }],
 
 		preprocessors: {
 			"test/index.js": ["webpack"],
@@ -38,9 +46,11 @@ module.exports = function(config) {
 
 		webpack: webpackConfig,
 
-		singleRun: true,
+		webpackMiddleware: {
+			stats: "errors-only",
+		},
 
-		reporters: ["mocha", "coverage"],
+		reporters: ["mocha", "coverage-istanbul"],
 
 		client: {
 			captureConsole: false,
@@ -54,9 +64,23 @@ module.exports = function(config) {
 			showDiff: true,
 		},
 
-		coverageReporter: {
-			dir: path.resolve(__dirname, "coverage/"),
-			reporters: [{ type: "lcov", subdir: "." }],
+		coverageIstanbulReporter: {
+			reports: ["text-summary", "lcov"],
+			dir: path.resolve(__dirname, "coverage"),
+			fixWebpackSourcePaths: true,
+			skipFilesWithNoCoverage: false,
+
+			// thresholds: {
+			// 	emitWarning: false, // set to `true` to not fail the test command when thresholds are not met
+			// 	global: { // thresholds for all files
+			// 		statements: 90,
+			// 		functions: 90
+			// 	},
+			// 	each: { // thresholds per file
+			// 		statements: 80,
+			// 		functions: 80
+			// 	}
+			// }
 		},
 	});
 };
