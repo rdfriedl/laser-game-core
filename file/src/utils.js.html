@@ -16,7 +16,7 @@
   
   <a href="identifiers.html">Reference</a>
   <a href="source.html">Source</a>
-  <a href="test.html" data-ice="testLink">Test</a>
+  
   <div class="search-box">
   <span>
     <img src="./image/search.png">
@@ -50,7 +50,7 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/utils.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import _ from &quot;lodash&quot;;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import _clone from &quot;lodash/clone&quot;;
 import p2 from &quot;p2&quot;;
 
 export const NAME_TEMPLATES = [
@@ -221,7 +221,7 @@ export function getURLSearchSettings(url = location.href) {
 
 	if (!getURLSearchSettings.cache[url]) {
 		let params = parseSearch(url);
-		let settings = _.clone(DEFAULT_SETTINGS);
+		let settings = _clone(DEFAULT_SETTINGS);
 
 		// only trun off the shadows if its set to false
 		if (params.shadows === false) settings.shadows = false;

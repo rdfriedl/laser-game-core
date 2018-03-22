@@ -96,18 +96,6 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
-    "",
-    "test-file/test/Game.spec.js.html#lineNumber4",
-    "Game",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/Game.spec.js.html#lineNumber5",
-    "Game extends Emitter",
-    "test"
-  ],
-  [
     "src/.external-ecmascript.js~array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
     "src/.external-ecmascript.js~Array",
@@ -1060,11 +1048,5 @@ window.esdocSearchIndex = [
     "file/src/utils.js.html",
     "src/utils.js",
     "file"
-  ],
-  [
-    "test/game.spec.js",
-    "test-file/test/Game.spec.js.html",
-    "test/Game.spec.js",
-    "testFile"
   ]
 ]
