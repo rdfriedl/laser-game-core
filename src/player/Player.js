@@ -2,9 +2,9 @@ import { Emitter } from "regexp-events";
 import p2 from "p2";
 import { generate as shortID } from "shortid";
 
-import BulletManager from "./BulletManager";
-import { lerp, clipDecimals } from "./utils";
-import { COLLISION_GROUPS } from "./const";
+import BulletManager from "../bullet/BulletManager";
+import { lerp, clipDecimals } from "../utils";
+import { COLLISION_GROUPS } from "../const";
 
 export default class Player extends Emitter {
 	constructor(manager, info, props) {

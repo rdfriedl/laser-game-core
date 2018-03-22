@@ -1,8 +1,8 @@
 import { Emitter } from "regexp-events";
-import PlayerManager from "./PlayerManager";
-import BulletManager from "./BulletManager";
+import PlayerManager from "../player/PlayerManager";
+import BulletManager from "../bullet/BulletManager";
 import p2 from "p2";
-import Tilemap from "./Tilemap";
+import Tilemap from "../tilemap/Tilemap";
 
 import BASE_CONFIG from "./gameConfig";
 

@@ -2,9 +2,9 @@
 import "../src";
 
 // import all the tests
-import "../src/Bullet.spec";
-import "../src/BulletManager.spec";
-import "../src/Game.spec";
-import "../src/Player.spec";
-import "../src/PlayerManager.spec";
-import "../src/Tilemap.spec";
+import "../src/bullet/Bullet.spec";
+import "../src/bullet/BulletManager.spec";
+import "../src/game/Game.spec";
+import "../src/player/Player.spec";
+import "../src/player/PlayerManager.spec";
+import "../src/tilemap/Tilemap.spec";

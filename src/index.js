@@ -1,8 +1,8 @@
-import Game from "./Game";
-import Player from "./Player";
-import PlayerManager from "./PlayerManager";
-import Tilemap from "./Tilemap";
-import Bullet from "./Bullet";
-import BulletManager from "./BulletManager";
+import Game from "./game/Game";
+import Player from "./player/Player";
+import PlayerManager from "./player/PlayerManager";
+import Tilemap from "./tilemap/Tilemap";
+import Bullet from "./bullet/Bullet";
+import BulletManager from "./bullet/BulletManager";
 
 export { Game, Player, PlayerManager, Tilemap, Bullet, BulletManager };

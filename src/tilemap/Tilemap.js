@@ -2,8 +2,8 @@ import { Emitter } from "regexp-events";
 import p2 from "p2";
 import _isEqual from "lodash/isEqual";
 
-import { lerp } from "./utils";
-import { COLLISION_GROUPS } from "./const";
+import { lerp } from "../utils";
+import { COLLISION_GROUPS } from "../const";
 
 const TILE_SIZE = 50;
 export default class Tilemap extends Emitter {

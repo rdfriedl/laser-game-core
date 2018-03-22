@@ -1,5 +1,6 @@
 import { Emitter } from "regexp-events";
 import Bullet from "./Bullet.js";
+import DefaultBullet from "./types/DefaultBullet";
 
 export default class BulletManager extends Emitter {
 	constructor(game) {
@@ -80,7 +81,7 @@ export default class BulletManager extends Emitter {
 }
 
 BulletManager.BulletTypes = {
-	default: Bullet.DefaultBullet,
+	default: DefaultBullet,
 };
 BulletManager.BULLET_TYPE = {
 	DEFAULT: "default",
