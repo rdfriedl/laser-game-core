@@ -2,8 +2,8 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <base data-ice="baseUrl" href="../../">
-  <title data-ice="title">src/const.js | Lazer Game Core</title>
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/bullet/Bullet.js | Lazer Game Core</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -49,18 +49,112 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">src/const.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">const COLLISION_GROUPS = {
-	PLAYER: Math.pow(2, 0),
-	WALLS: Math.pow(2, 1),
-	BULLET: Math.pow(2, 2),
-};
+<div class="content" data-ice="content"><h1 data-ice="title">src/bullet/Bullet.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import shortID from &quot;shortid&quot;;
+import { Emitter } from &quot;regexp-events&quot;;
+import p2 from &quot;p2&quot;;
+import { lerp } from &quot;../utils&quot;;
+import { COLLISION_GROUPS } from &quot;../const&quot;;
 
-COLLISION_GROUPS.ALL = Object.keys(COLLISION_GROUPS)
-	.map(key =&gt; COLLISION_GROUPS[key])
-	.reduce((a, b) =&gt; a | b);
+export default class Bullet extends Emitter {
+	constructor(manager, info = {}, props = {}) {
+		super();
+		this.manager = manager;
 
-export { COLLISION_GROUPS };
+		this.id = shortID();
+
+		// this is basic info about the bullet
+		// like: who shot it, how long its supposed to last
+		// NOTE: this is set once when the bullet is created and then never changes
+		this.info = Object.assign(
+			{
+				owner: undefined,
+			},
+			info,
+		);
+
+		// important info about the bullet
+		// like: current speed, its path, who its locked onto, and so on
+		// NOTE: everything a prop changes its sent to the clients
+		this.props = Object.assign({}, props);
+
+		// this is anything that is used in the bullets update function
+		// NOTE: this is not send to the client
+		this.data = {};
+
+		// set the bullet up
+		this.init();
+	}
+
+	init() {}
+
+	setProp(key, value) {
+		if (key instanceof Object) {
+			for (let i in key) this.props[i] = key[i];
+
+			this.emit(&quot;props-changed&quot;, this.props);
+		} else {
+			this.props[key] = value;
+			this.emit(&quot;props-changed&quot;, this.props);
+		}
+
+		return this;
+	}
+
+	getProp(key) {
+		return this.props[key];
+	}
+
+	update(d) {}
+
+	destroy() {
+		this.manager.removeBullet(this);
+		return this;
+	}
+	die() {
+		return this.destroy();
+	}
+
+	toJSON() {
+		let json = {
+			id: this.id,
+			info: this.info,
+			props: this.props,
+			type: this.type,
+		};
+
+		this.emit(&quot;to-json&quot;, json);
+		return json;
+	}
+
+	fromJSON(json) {
+		this.id = json.id || this.id;
+		if (json.info) Object.assign(this.info, json.info);
+		if (json.props) Object.assign(this.props, json.props);
+		this.init();
+		return this;
+	}
+
+	// overwrite emit so we can fire events on the manager
+	emit(event, ...args) {
+		let v = Emitter.prototype.emit.call(this, event, ...args);
+		this.manager.emit(&quot;bullet-&quot; + event, this, ...args);
+		this.manager.emit(`bullet-${this.id}-${event}`, this, ...args);
+		return v;
+	}
+
+	get game() {
+		return this.manager.game;
+	}
+
+	get player() {
+		return this.game.players.getPlayer(this.info.owner);
+	}
+
+	get type() {
+		return this.manager.getBulletType(this);
+	}
+}
 </code></pre>
 
 </div>

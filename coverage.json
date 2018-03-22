@@ -3,9 +3,9 @@
   "expectCount": 121,
   "actualCount": 2,
   "files": {
-    "src/Bullet.js": {
-      "expectCount": 25,
-      "actualCount": 2,
+    "src/bullet/Bullet.js": {
+      "expectCount": 19,
+      "actualCount": 0,
       "undocumentLines": [
         7,
         8,
@@ -25,33 +25,46 @@
         87,
         94,
         98,
-        102,
-        107,
-        108,
-        121,
-        135
+        102
       ]
     },
-    "src/BulletManager.js": {
+    "src/bullet/BulletManager.js": {
       "expectCount": 13,
       "actualCount": 0,
       "undocumentLines": [
-        4,
         5,
-        8,
+        6,
         9,
-        12,
-        21,
-        31,
-        36,
-        45,
-        51,
-        56,
-        63,
-        75
+        10,
+        13,
+        22,
+        32,
+        37,
+        46,
+        52,
+        57,
+        64,
+        76
       ]
     },
-    "src/Game.js": {
+    "src/bullet/types/DefaultBullet.js": {
+      "expectCount": 6,
+      "actualCount": 2,
+      "undocumentLines": [
+        6,
+        7,
+        20,
+        34
+      ]
+    },
+    "src/const.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        1
+      ]
+    },
+    "src/game/Game.js": {
       "expectCount": 22,
       "actualCount": 0,
       "undocumentLines": [
@@ -79,7 +92,14 @@
         111
       ]
     },
-    "src/Player.js": {
+    "src/game/gameConfig.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        1
+      ]
+    },
+    "src/player/Player.js": {
       "expectCount": 24,
       "actualCount": 0,
       "undocumentLines": [
@@ -109,7 +129,7 @@
         198
       ]
     },
-    "src/PlayerManager.js": {
+    "src/player/PlayerManager.js": {
       "expectCount": 12,
       "actualCount": 0,
       "undocumentLines": [
@@ -127,7 +147,7 @@
         72
       ]
     },
-    "src/Tilemap.js": {
+    "src/tilemap/Tilemap.js": {
       "expectCount": 14,
       "actualCount": 0,
       "undocumentLines": [
@@ -145,20 +165,6 @@
         55,
         62,
         115
-      ]
-    },
-    "src/const.js": {
-      "expectCount": 1,
-      "actualCount": 0,
-      "undocumentLines": [
-        1
-      ]
-    },
-    "src/gameConfig.js": {
-      "expectCount": 1,
-      "actualCount": 0,
-      "undocumentLines": [
-        1
       ]
     },
     "src/utils.js": {

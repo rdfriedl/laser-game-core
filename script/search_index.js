@@ -1,14 +1,14 @@
 window.esdocSearchIndex = [
   [
-    "lazer-game-core/src/bullet.js~bullet",
-    "class/src/Bullet.js~Bullet.html",
-    "<span>Bullet</span> <span class=\"search-result-import-path\">lazer-game-core/src/Bullet.js</span>",
+    "lazer-game-core/src/bullet/bullet.js~bullet",
+    "class/src/bullet/Bullet.js~Bullet.html",
+    "<span>Bullet</span> <span class=\"search-result-import-path\">lazer-game-core/src/bullet/Bullet.js</span>",
     "class"
   ],
   [
-    "lazer-game-core/src/bulletmanager.js~bulletmanager",
-    "class/src/BulletManager.js~BulletManager.html",
-    "<span>BulletManager</span> <span class=\"search-result-import-path\">lazer-game-core/src/BulletManager.js</span>",
+    "lazer-game-core/src/bullet/bulletmanager.js~bulletmanager",
+    "class/src/bullet/BulletManager.js~BulletManager.html",
+    "<span>BulletManager</span> <span class=\"search-result-import-path\">lazer-game-core/src/bullet/BulletManager.js</span>",
     "class"
   ],
   [
@@ -18,15 +18,15 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
-    "lazer-game-core/src/bullet.js~defaultbullet",
-    "class/src/Bullet.js~DefaultBullet.html",
-    "<span>DefaultBullet</span> <span class=\"search-result-import-path\">lazer-game-core/src/Bullet.js</span>",
+    "lazer-game-core/src/bullet/types/defaultbullet.js~defaultbullet",
+    "class/src/bullet/types/DefaultBullet.js~DefaultBullet.html",
+    "<span>DefaultBullet</span> <span class=\"search-result-import-path\">lazer-game-core/src/bullet/types/DefaultBullet.js</span>",
     "class"
   ],
   [
-    "lazer-game-core/src/game.js~game",
-    "class/src/Game.js~Game.html",
-    "<span>Game</span> <span class=\"search-result-import-path\">lazer-game-core/src/Game.js</span>",
+    "lazer-game-core/src/game/game.js~game",
+    "class/src/game/Game.js~Game.html",
+    "<span>Game</span> <span class=\"search-result-import-path\">lazer-game-core/src/game/Game.js</span>",
     "class"
   ],
   [
@@ -42,21 +42,21 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
-    "lazer-game-core/src/player.js~player",
-    "class/src/Player.js~Player.html",
-    "<span>Player</span> <span class=\"search-result-import-path\">lazer-game-core/src/Player.js</span>",
+    "lazer-game-core/src/player/player.js~player",
+    "class/src/player/Player.js~Player.html",
+    "<span>Player</span> <span class=\"search-result-import-path\">lazer-game-core/src/player/Player.js</span>",
     "class"
   ],
   [
-    "lazer-game-core/src/playermanager.js~playermanager",
-    "class/src/PlayerManager.js~PlayerManager.html",
-    "<span>PlayerManager</span> <span class=\"search-result-import-path\">lazer-game-core/src/PlayerManager.js</span>",
+    "lazer-game-core/src/player/playermanager.js~playermanager",
+    "class/src/player/PlayerManager.js~PlayerManager.html",
+    "<span>PlayerManager</span> <span class=\"search-result-import-path\">lazer-game-core/src/player/PlayerManager.js</span>",
     "class"
   ],
   [
-    "lazer-game-core/src/tilemap.js~tilemap",
-    "class/src/Tilemap.js~Tilemap.html",
-    "<span>Tilemap</span> <span class=\"search-result-import-path\">lazer-game-core/src/Tilemap.js</span>",
+    "lazer-game-core/src/tilemap/tilemap.js~tilemap",
+    "class/src/tilemap/Tilemap.js~Tilemap.html",
+    "<span>Tilemap</span> <span class=\"search-result-import-path\">lazer-game-core/src/tilemap/Tilemap.js</span>",
     "class"
   ],
   [
@@ -378,651 +378,231 @@ window.esdocSearchIndex = [
     "external"
   ],
   [
-    "src/bullet.js",
-    "file/src/Bullet.js.html",
-    "src/Bullet.js",
+    "src/bullet/bullet.js",
+    "file/src/bullet/Bullet.js.html",
+    "src/bullet/Bullet.js",
     "file"
   ],
   [
-    "src/bullet.js~bullet#constructor",
-    "class/src/Bullet.js~Bullet.html#instance-constructor-constructor",
-    "src/Bullet.js~Bullet#constructor",
+    "src/bullet/bullet.js~bullet#constructor",
+    "class/src/bullet/Bullet.js~Bullet.html#instance-constructor-constructor",
+    "src/bullet/Bullet.js~Bullet#constructor",
     "method"
   ],
   [
-    "src/bullet.js~bullet#data",
-    "class/src/Bullet.js~Bullet.html#instance-member-data",
-    "src/Bullet.js~Bullet#data",
+    "src/bullet/bullet.js~bullet#data",
+    "class/src/bullet/Bullet.js~Bullet.html#instance-member-data",
+    "src/bullet/Bullet.js~Bullet#data",
     "member"
   ],
   [
-    "src/bullet.js~bullet#destroy",
-    "class/src/Bullet.js~Bullet.html#instance-method-destroy",
-    "src/Bullet.js~Bullet#destroy",
+    "src/bullet/bullet.js~bullet#destroy",
+    "class/src/bullet/Bullet.js~Bullet.html#instance-method-destroy",
+    "src/bullet/Bullet.js~Bullet#destroy",
     "method"
   ],
   [
-    "src/bullet.js~bullet#die",
-    "class/src/Bullet.js~Bullet.html#instance-method-die",
-    "src/Bullet.js~Bullet#die",
+    "src/bullet/bullet.js~bullet#die",
+    "class/src/bullet/Bullet.js~Bullet.html#instance-method-die",
+    "src/bullet/Bullet.js~Bullet#die",
     "method"
   ],
   [
-    "src/bullet.js~bullet#emit",
-    "class/src/Bullet.js~Bullet.html#instance-method-emit",
-    "src/Bullet.js~Bullet#emit",
+    "src/bullet/bullet.js~bullet#emit",
+    "class/src/bullet/Bullet.js~Bullet.html#instance-method-emit",
+    "src/bullet/Bullet.js~Bullet#emit",
     "method"
   ],
   [
-    "src/bullet.js~bullet#fromjson",
-    "class/src/Bullet.js~Bullet.html#instance-method-fromJSON",
-    "src/Bullet.js~Bullet#fromJSON",
+    "src/bullet/bullet.js~bullet#fromjson",
+    "class/src/bullet/Bullet.js~Bullet.html#instance-method-fromJSON",
+    "src/bullet/Bullet.js~Bullet#fromJSON",
     "method"
   ],
   [
-    "src/bullet.js~bullet#game",
-    "class/src/Bullet.js~Bullet.html#instance-get-game",
-    "src/Bullet.js~Bullet#game",
+    "src/bullet/bullet.js~bullet#game",
+    "class/src/bullet/Bullet.js~Bullet.html#instance-get-game",
+    "src/bullet/Bullet.js~Bullet#game",
     "member"
   ],
   [
-    "src/bullet.js~bullet#getprop",
-    "class/src/Bullet.js~Bullet.html#instance-method-getProp",
-    "src/Bullet.js~Bullet#getProp",
+    "src/bullet/bullet.js~bullet#getprop",
+    "class/src/bullet/Bullet.js~Bullet.html#instance-method-getProp",
+    "src/bullet/Bullet.js~Bullet#getProp",
     "method"
   ],
   [
-    "src/bullet.js~bullet#id",
-    "class/src/Bullet.js~Bullet.html#instance-member-id",
-    "src/Bullet.js~Bullet#id",
+    "src/bullet/bullet.js~bullet#id",
+    "class/src/bullet/Bullet.js~Bullet.html#instance-member-id",
+    "src/bullet/Bullet.js~Bullet#id",
     "member"
   ],
   [
-    "src/bullet.js~bullet#info",
-    "class/src/Bullet.js~Bullet.html#instance-member-info",
-    "src/Bullet.js~Bullet#info",
+    "src/bullet/bullet.js~bullet#info",
+    "class/src/bullet/Bullet.js~Bullet.html#instance-member-info",
+    "src/bullet/Bullet.js~Bullet#info",
     "member"
   ],
   [
-    "src/bullet.js~bullet#init",
-    "class/src/Bullet.js~Bullet.html#instance-method-init",
-    "src/Bullet.js~Bullet#init",
+    "src/bullet/bullet.js~bullet#init",
+    "class/src/bullet/Bullet.js~Bullet.html#instance-method-init",
+    "src/bullet/Bullet.js~Bullet#init",
     "method"
   ],
   [
-    "src/bullet.js~bullet#manager",
-    "class/src/Bullet.js~Bullet.html#instance-member-manager",
-    "src/Bullet.js~Bullet#manager",
+    "src/bullet/bullet.js~bullet#manager",
+    "class/src/bullet/Bullet.js~Bullet.html#instance-member-manager",
+    "src/bullet/Bullet.js~Bullet#manager",
     "member"
   ],
   [
-    "src/bullet.js~bullet#player",
-    "class/src/Bullet.js~Bullet.html#instance-get-player",
-    "src/Bullet.js~Bullet#player",
+    "src/bullet/bullet.js~bullet#player",
+    "class/src/bullet/Bullet.js~Bullet.html#instance-get-player",
+    "src/bullet/Bullet.js~Bullet#player",
     "member"
   ],
   [
-    "src/bullet.js~bullet#props",
-    "class/src/Bullet.js~Bullet.html#instance-member-props",
-    "src/Bullet.js~Bullet#props",
+    "src/bullet/bullet.js~bullet#props",
+    "class/src/bullet/Bullet.js~Bullet.html#instance-member-props",
+    "src/bullet/Bullet.js~Bullet#props",
     "member"
   ],
   [
-    "src/bullet.js~bullet#setprop",
-    "class/src/Bullet.js~Bullet.html#instance-method-setProp",
-    "src/Bullet.js~Bullet#setProp",
+    "src/bullet/bullet.js~bullet#setprop",
+    "class/src/bullet/Bullet.js~Bullet.html#instance-method-setProp",
+    "src/bullet/Bullet.js~Bullet#setProp",
     "method"
   ],
   [
-    "src/bullet.js~bullet#tojson",
-    "class/src/Bullet.js~Bullet.html#instance-method-toJSON",
-    "src/Bullet.js~Bullet#toJSON",
+    "src/bullet/bullet.js~bullet#tojson",
+    "class/src/bullet/Bullet.js~Bullet.html#instance-method-toJSON",
+    "src/bullet/Bullet.js~Bullet#toJSON",
     "method"
   ],
   [
-    "src/bullet.js~bullet#type",
-    "class/src/Bullet.js~Bullet.html#instance-get-type",
-    "src/Bullet.js~Bullet#type",
+    "src/bullet/bullet.js~bullet#type",
+    "class/src/bullet/Bullet.js~Bullet.html#instance-get-type",
+    "src/bullet/Bullet.js~Bullet#type",
     "member"
   ],
   [
-    "src/bullet.js~bullet#update",
-    "class/src/Bullet.js~Bullet.html#instance-method-update",
-    "src/Bullet.js~Bullet#update",
+    "src/bullet/bullet.js~bullet#update",
+    "class/src/bullet/Bullet.js~Bullet.html#instance-method-update",
+    "src/bullet/Bullet.js~Bullet#update",
     "method"
   ],
   [
-    "src/bullet.js~defaultbullet#init",
-    "class/src/Bullet.js~DefaultBullet.html#instance-method-init",
-    "src/Bullet.js~DefaultBullet#init",
-    "method"
-  ],
-  [
-    "src/bullet.js~defaultbullet#update",
-    "class/src/Bullet.js~DefaultBullet.html#instance-method-update",
-    "src/Bullet.js~DefaultBullet#update",
-    "method"
-  ],
-  [
-    "src/bullet.js~defaultbullet.calcpath",
-    "class/src/Bullet.js~DefaultBullet.html#static-method-calcPath",
-    "src/Bullet.js~DefaultBullet.calcPath",
-    "method"
-  ],
-  [
-    "src/bullet.js~defaultbullet.directiononpath",
-    "class/src/Bullet.js~DefaultBullet.html#static-method-directionOnPath",
-    "src/Bullet.js~DefaultBullet.directionOnPath",
-    "method"
-  ],
-  [
-    "src/bullet.js~defaultbullet.pointonpath",
-    "class/src/Bullet.js~DefaultBullet.html#static-method-pointOnPath",
-    "src/Bullet.js~DefaultBullet.pointOnPath",
-    "method"
-  ],
-  [
-    "src/bulletmanager.js",
-    "file/src/BulletManager.js.html",
-    "src/BulletManager.js",
+    "src/bullet/bulletmanager.js",
+    "file/src/bullet/BulletManager.js.html",
+    "src/bullet/BulletManager.js",
     "file"
   ],
   [
-    "src/bulletmanager.js~bulletmanager#bullets",
-    "class/src/BulletManager.js~BulletManager.html#instance-member-bullets",
-    "src/BulletManager.js~BulletManager#bullets",
+    "src/bullet/bulletmanager.js~bulletmanager#bullets",
+    "class/src/bullet/BulletManager.js~BulletManager.html#instance-member-bullets",
+    "src/bullet/BulletManager.js~BulletManager#bullets",
     "member"
   ],
   [
-    "src/bulletmanager.js~bulletmanager#clearbullets",
-    "class/src/BulletManager.js~BulletManager.html#instance-method-clearBullets",
-    "src/BulletManager.js~BulletManager#clearBullets",
+    "src/bullet/bulletmanager.js~bulletmanager#clearbullets",
+    "class/src/bullet/BulletManager.js~BulletManager.html#instance-method-clearBullets",
+    "src/bullet/BulletManager.js~BulletManager#clearBullets",
     "method"
   ],
   [
-    "src/bulletmanager.js~bulletmanager#constructor",
-    "class/src/BulletManager.js~BulletManager.html#instance-constructor-constructor",
-    "src/BulletManager.js~BulletManager#constructor",
+    "src/bullet/bulletmanager.js~bulletmanager#constructor",
+    "class/src/bullet/BulletManager.js~BulletManager.html#instance-constructor-constructor",
+    "src/bullet/BulletManager.js~BulletManager#constructor",
     "method"
   ],
   [
-    "src/bulletmanager.js~bulletmanager#createbullet",
-    "class/src/BulletManager.js~BulletManager.html#instance-method-createBullet",
-    "src/BulletManager.js~BulletManager#createBullet",
+    "src/bullet/bulletmanager.js~bulletmanager#createbullet",
+    "class/src/bullet/BulletManager.js~BulletManager.html#instance-method-createBullet",
+    "src/bullet/BulletManager.js~BulletManager#createBullet",
     "method"
   ],
   [
-    "src/bulletmanager.js~bulletmanager#createfromjson",
-    "class/src/BulletManager.js~BulletManager.html#instance-method-createFromJSON",
-    "src/BulletManager.js~BulletManager#createFromJSON",
+    "src/bullet/bulletmanager.js~bulletmanager#createfromjson",
+    "class/src/bullet/BulletManager.js~BulletManager.html#instance-method-createFromJSON",
+    "src/bullet/BulletManager.js~BulletManager#createFromJSON",
     "method"
   ],
   [
-    "src/bulletmanager.js~bulletmanager#fromjson",
-    "class/src/BulletManager.js~BulletManager.html#instance-method-fromJSON",
-    "src/BulletManager.js~BulletManager#fromJSON",
+    "src/bullet/bulletmanager.js~bulletmanager#fromjson",
+    "class/src/bullet/BulletManager.js~BulletManager.html#instance-method-fromJSON",
+    "src/bullet/BulletManager.js~BulletManager#fromJSON",
     "method"
   ],
   [
-    "src/bulletmanager.js~bulletmanager#game",
-    "class/src/BulletManager.js~BulletManager.html#instance-member-game",
-    "src/BulletManager.js~BulletManager#game",
+    "src/bullet/bulletmanager.js~bulletmanager#game",
+    "class/src/bullet/BulletManager.js~BulletManager.html#instance-member-game",
+    "src/bullet/BulletManager.js~BulletManager#game",
     "member"
   ],
   [
-    "src/bulletmanager.js~bulletmanager#getbullet",
-    "class/src/BulletManager.js~BulletManager.html#instance-method-getBullet",
-    "src/BulletManager.js~BulletManager#getBullet",
+    "src/bullet/bulletmanager.js~bulletmanager#getbullet",
+    "class/src/bullet/BulletManager.js~BulletManager.html#instance-method-getBullet",
+    "src/bullet/BulletManager.js~BulletManager#getBullet",
     "method"
   ],
   [
-    "src/bulletmanager.js~bulletmanager#getbullettype",
-    "class/src/BulletManager.js~BulletManager.html#instance-method-getBulletType",
-    "src/BulletManager.js~BulletManager#getBulletType",
+    "src/bullet/bulletmanager.js~bulletmanager#getbullettype",
+    "class/src/bullet/BulletManager.js~BulletManager.html#instance-method-getBulletType",
+    "src/bullet/BulletManager.js~BulletManager#getBulletType",
     "method"
   ],
   [
-    "src/bulletmanager.js~bulletmanager#removebullet",
-    "class/src/BulletManager.js~BulletManager.html#instance-method-removeBullet",
-    "src/BulletManager.js~BulletManager#removeBullet",
+    "src/bullet/bulletmanager.js~bulletmanager#removebullet",
+    "class/src/bullet/BulletManager.js~BulletManager.html#instance-method-removeBullet",
+    "src/bullet/BulletManager.js~BulletManager#removeBullet",
     "method"
   ],
   [
-    "src/bulletmanager.js~bulletmanager#tojson",
-    "class/src/BulletManager.js~BulletManager.html#instance-method-toJSON",
-    "src/BulletManager.js~BulletManager#toJSON",
+    "src/bullet/bulletmanager.js~bulletmanager#tojson",
+    "class/src/bullet/BulletManager.js~BulletManager.html#instance-method-toJSON",
+    "src/bullet/BulletManager.js~BulletManager#toJSON",
     "method"
   ],
   [
-    "src/bulletmanager.js~bulletmanager#update",
-    "class/src/BulletManager.js~BulletManager.html#instance-method-update",
-    "src/BulletManager.js~BulletManager#update",
+    "src/bullet/bulletmanager.js~bulletmanager#update",
+    "class/src/bullet/BulletManager.js~BulletManager.html#instance-method-update",
+    "src/bullet/BulletManager.js~BulletManager#update",
     "method"
   ],
   [
-    "src/game.js",
-    "file/src/Game.js.html",
-    "src/Game.js",
+    "src/bullet/types/defaultbullet.js",
+    "file/src/bullet/types/DefaultBullet.js.html",
+    "src/bullet/types/DefaultBullet.js",
     "file"
   ],
   [
-    "src/game.js~game#bullets",
-    "class/src/Game.js~Game.html#instance-member-bullets",
-    "src/Game.js~Game#bullets",
-    "member"
-  ],
-  [
-    "src/game.js~game#config",
-    "class/src/Game.js~Game.html#instance-member-config",
-    "src/Game.js~Game#config",
-    "member"
-  ],
-  [
-    "src/game.js~game#constructor",
-    "class/src/Game.js~Game.html#instance-constructor-constructor",
-    "src/Game.js~Game#constructor",
+    "src/bullet/types/defaultbullet.js~defaultbullet#init",
+    "class/src/bullet/types/DefaultBullet.js~DefaultBullet.html#instance-method-init",
+    "src/bullet/types/DefaultBullet.js~DefaultBullet#init",
     "method"
   ],
   [
-    "src/game.js~game#createplayer",
-    "class/src/Game.js~Game.html#instance-method-createPlayer",
-    "src/Game.js~Game#createPlayer",
+    "src/bullet/types/defaultbullet.js~defaultbullet#update",
+    "class/src/bullet/types/DefaultBullet.js~DefaultBullet.html#instance-method-update",
+    "src/bullet/types/DefaultBullet.js~DefaultBullet#update",
     "method"
   ],
   [
-    "src/game.js~game#fromjson",
-    "class/src/Game.js~Game.html#instance-method-fromJSON",
-    "src/Game.js~Game#fromJSON",
+    "src/bullet/types/defaultbullet.js~defaultbullet.calcpath",
+    "class/src/bullet/types/DefaultBullet.js~DefaultBullet.html#static-method-calcPath",
+    "src/bullet/types/DefaultBullet.js~DefaultBullet.calcPath",
     "method"
   ],
   [
-    "src/game.js~game#getdelta",
-    "class/src/Game.js~Game.html#instance-method-getDelta",
-    "src/Game.js~Game#getDelta",
+    "src/bullet/types/defaultbullet.js~defaultbullet.directiononpath",
+    "class/src/bullet/types/DefaultBullet.js~DefaultBullet.html#static-method-directionOnPath",
+    "src/bullet/types/DefaultBullet.js~DefaultBullet.directionOnPath",
     "method"
   ],
   [
-    "src/game.js~game#getinfo",
-    "class/src/Game.js~Game.html#instance-method-getInfo",
-    "src/Game.js~Game#getInfo",
-    "method"
-  ],
-  [
-    "src/game.js~game#getplayer",
-    "class/src/Game.js~Game.html#instance-method-getPlayer",
-    "src/Game.js~Game#getPlayer",
-    "method"
-  ],
-  [
-    "src/game.js~game#id",
-    "class/src/Game.js~Game.html#instance-member-id",
-    "src/Game.js~Game#id",
-    "member"
-  ],
-  [
-    "src/game.js~game#info",
-    "class/src/Game.js~Game.html#instance-member-info",
-    "src/Game.js~Game#info",
-    "member"
-  ],
-  [
-    "src/game.js~game#isclient",
-    "class/src/Game.js~Game.html#instance-get-isClient",
-    "src/Game.js~Game#isClient",
-    "member"
-  ],
-  [
-    "src/game.js~game#ismaster",
-    "class/src/Game.js~Game.html#instance-member-isMaster",
-    "src/Game.js~Game#isMaster",
-    "member"
-  ],
-  [
-    "src/game.js~game#lastdelta",
-    "class/src/Game.js~Game.html#instance-member-lastDelta",
-    "src/Game.js~Game#lastDelta",
-    "member"
-  ],
-  [
-    "src/game.js~game#map",
-    "class/src/Game.js~Game.html#instance-member-map",
-    "src/Game.js~Game#map",
-    "member"
-  ],
-  [
-    "src/game.js~game#players",
-    "class/src/Game.js~Game.html#instance-member-players",
-    "src/Game.js~Game#players",
-    "member"
-  ],
-  [
-    "src/game.js~game#removeplayer",
-    "class/src/Game.js~Game.html#instance-method-removePlayer",
-    "src/Game.js~Game#removePlayer",
-    "method"
-  ],
-  [
-    "src/game.js~game#setinfo",
-    "class/src/Game.js~Game.html#instance-method-setInfo",
-    "src/Game.js~Game#setInfo",
-    "method"
-  ],
-  [
-    "src/game.js~game#spawnplayer",
-    "class/src/Game.js~Game.html#instance-method-spawnPlayer",
-    "src/Game.js~Game#spawnPlayer",
-    "method"
-  ],
-  [
-    "src/game.js~game#tojson",
-    "class/src/Game.js~Game.html#instance-method-toJSON",
-    "src/Game.js~Game#toJSON",
-    "method"
-  ],
-  [
-    "src/game.js~game#update",
-    "class/src/Game.js~Game.html#instance-method-update",
-    "src/Game.js~Game#update",
-    "method"
-  ],
-  [
-    "src/game.js~game#world",
-    "class/src/Game.js~Game.html#instance-member-world",
-    "src/Game.js~Game#world",
-    "member"
-  ],
-  [
-    "src/player.js",
-    "file/src/Player.js.html",
-    "src/Player.js",
-    "file"
-  ],
-  [
-    "src/player.js~player#_updateposition",
-    "class/src/Player.js~Player.html#instance-method-_updatePosition",
-    "src/Player.js~Player#_updatePosition",
-    "method"
-  ],
-  [
-    "src/player.js~player#body",
-    "class/src/Player.js~Player.html#instance-member-body",
-    "src/Player.js~Player#body",
-    "member"
-  ],
-  [
-    "src/player.js~player#constructor",
-    "class/src/Player.js~Player.html#instance-constructor-constructor",
-    "src/Player.js~Player#constructor",
-    "method"
-  ],
-  [
-    "src/player.js~player#controls",
-    "class/src/Player.js~Player.html#instance-member-controls",
-    "src/Player.js~Player#controls",
-    "member"
-  ],
-  [
-    "src/player.js~player#cooldown",
-    "class/src/Player.js~Player.html#instance-member-cooldown",
-    "src/Player.js~Player#cooldown",
-    "member"
-  ],
-  [
-    "src/player.js~player#emit",
-    "class/src/Player.js~Player.html#instance-method-emit",
-    "src/Player.js~Player#emit",
-    "method"
-  ],
-  [
-    "src/player.js~player#fromjson",
-    "class/src/Player.js~Player.html#instance-method-fromJSON",
-    "src/Player.js~Player#fromJSON",
-    "method"
-  ],
-  [
-    "src/player.js~player#game",
-    "class/src/Player.js~Player.html#instance-get-game",
-    "src/Player.js~Player#game",
-    "member"
-  ],
-  [
-    "src/player.js~player#getcontrol",
-    "class/src/Player.js~Player.html#instance-method-getControl",
-    "src/Player.js~Player#getControl",
-    "method"
-  ],
-  [
-    "src/player.js~player#getinfo",
-    "class/src/Player.js~Player.html#instance-method-getInfo",
-    "src/Player.js~Player#getInfo",
-    "method"
-  ],
-  [
-    "src/player.js~player#getprop",
-    "class/src/Player.js~Player.html#instance-method-getProp",
-    "src/Player.js~Player#getProp",
-    "method"
-  ],
-  [
-    "src/player.js~player#id",
-    "class/src/Player.js~Player.html#instance-member-id",
-    "src/Player.js~Player#id",
-    "member"
-  ],
-  [
-    "src/player.js~player#info",
-    "class/src/Player.js~Player.html#instance-member-info",
-    "src/Player.js~Player#info",
-    "member"
-  ],
-  [
-    "src/player.js~player#manager",
-    "class/src/Player.js~Player.html#instance-member-manager",
-    "src/Player.js~Player#manager",
-    "member"
-  ],
-  [
-    "src/player.js~player#position",
-    "class/src/Player.js~Player.html#instance-member-position",
-    "src/Player.js~Player#position",
-    "member"
-  ],
-  [
-    "src/player.js~player#props",
-    "class/src/Player.js~Player.html#instance-member-props",
-    "src/Player.js~Player#props",
-    "member"
-  ],
-  [
-    "src/player.js~player#setcontrol",
-    "class/src/Player.js~Player.html#instance-method-setControl",
-    "src/Player.js~Player#setControl",
-    "method"
-  ],
-  [
-    "src/player.js~player#setinfo",
-    "class/src/Player.js~Player.html#instance-method-setInfo",
-    "src/Player.js~Player#setInfo",
-    "method"
-  ],
-  [
-    "src/player.js~player#setposition",
-    "class/src/Player.js~Player.html#instance-method-setPosition",
-    "src/Player.js~Player#setPosition",
-    "method"
-  ],
-  [
-    "src/player.js~player#setprop",
-    "class/src/Player.js~Player.html#instance-method-setProp",
-    "src/Player.js~Player#setProp",
-    "method"
-  ],
-  [
-    "src/player.js~player#tmp",
-    "class/src/Player.js~Player.html#instance-member-tmp",
-    "src/Player.js~Player#tmp",
-    "member"
-  ],
-  [
-    "src/player.js~player#tojson",
-    "class/src/Player.js~Player.html#instance-method-toJSON",
-    "src/Player.js~Player#toJSON",
-    "method"
-  ],
-  [
-    "src/player.js~player#update",
-    "class/src/Player.js~Player.html#instance-method-update",
-    "src/Player.js~Player#update",
-    "method"
-  ],
-  [
-    "src/playermanager.js",
-    "file/src/PlayerManager.js.html",
-    "src/PlayerManager.js",
-    "file"
-  ],
-  [
-    "src/playermanager.js~playermanager#clearplayers",
-    "class/src/PlayerManager.js~PlayerManager.html#instance-method-clearPlayers",
-    "src/PlayerManager.js~PlayerManager#clearPlayers",
-    "method"
-  ],
-  [
-    "src/playermanager.js~playermanager#constructor",
-    "class/src/PlayerManager.js~PlayerManager.html#instance-constructor-constructor",
-    "src/PlayerManager.js~PlayerManager#constructor",
-    "method"
-  ],
-  [
-    "src/playermanager.js~playermanager#createfromjson",
-    "class/src/PlayerManager.js~PlayerManager.html#instance-method-createFromJSON",
-    "src/PlayerManager.js~PlayerManager#createFromJSON",
-    "method"
-  ],
-  [
-    "src/playermanager.js~playermanager#createplayer",
-    "class/src/PlayerManager.js~PlayerManager.html#instance-method-createPlayer",
-    "src/PlayerManager.js~PlayerManager#createPlayer",
-    "method"
-  ],
-  [
-    "src/playermanager.js~playermanager#fromjson",
-    "class/src/PlayerManager.js~PlayerManager.html#instance-method-fromJSON",
-    "src/PlayerManager.js~PlayerManager#fromJSON",
-    "method"
-  ],
-  [
-    "src/playermanager.js~playermanager#game",
-    "class/src/PlayerManager.js~PlayerManager.html#instance-member-game",
-    "src/PlayerManager.js~PlayerManager#game",
-    "member"
-  ],
-  [
-    "src/playermanager.js~playermanager#getplayer",
-    "class/src/PlayerManager.js~PlayerManager.html#instance-method-getPlayer",
-    "src/PlayerManager.js~PlayerManager#getPlayer",
-    "method"
-  ],
-  [
-    "src/playermanager.js~playermanager#players",
-    "class/src/PlayerManager.js~PlayerManager.html#instance-member-players",
-    "src/PlayerManager.js~PlayerManager#players",
-    "member"
-  ],
-  [
-    "src/playermanager.js~playermanager#removeplayer",
-    "class/src/PlayerManager.js~PlayerManager.html#instance-method-removePlayer",
-    "src/PlayerManager.js~PlayerManager#removePlayer",
-    "method"
-  ],
-  [
-    "src/playermanager.js~playermanager#tojson",
-    "class/src/PlayerManager.js~PlayerManager.html#instance-method-toJSON",
-    "src/PlayerManager.js~PlayerManager#toJSON",
-    "method"
-  ],
-  [
-    "src/playermanager.js~playermanager#update",
-    "class/src/PlayerManager.js~PlayerManager.html#instance-method-update",
-    "src/PlayerManager.js~PlayerManager#update",
-    "method"
-  ],
-  [
-    "src/tilemap.js",
-    "file/src/Tilemap.js.html",
-    "src/Tilemap.js",
-    "file"
-  ],
-  [
-    "src/tilemap.js~tilemap#bodies",
-    "class/src/Tilemap.js~Tilemap.html#instance-member-bodies",
-    "src/Tilemap.js~Tilemap#bodies",
-    "member"
-  ],
-  [
-    "src/tilemap.js~tilemap#clearbodies",
-    "class/src/Tilemap.js~Tilemap.html#instance-method-clearBodies",
-    "src/Tilemap.js~Tilemap#clearBodies",
-    "method"
-  ],
-  [
-    "src/tilemap.js~tilemap#constructor",
-    "class/src/Tilemap.js~Tilemap.html#instance-constructor-constructor",
-    "src/Tilemap.js~Tilemap#constructor",
-    "method"
-  ],
-  [
-    "src/tilemap.js~tilemap#fromjson",
-    "class/src/Tilemap.js~Tilemap.html#instance-method-fromJSON",
-    "src/Tilemap.js~Tilemap#fromJSON",
-    "method"
-  ],
-  [
-    "src/tilemap.js~tilemap#game",
-    "class/src/Tilemap.js~Tilemap.html#instance-member-game",
-    "src/Tilemap.js~Tilemap#game",
-    "member"
-  ],
-  [
-    "src/tilemap.js~tilemap#getspawnpoint",
-    "class/src/Tilemap.js~Tilemap.html#instance-method-getSpawnPoint",
-    "src/Tilemap.js~Tilemap#getSpawnPoint",
-    "method"
-  ],
-  [
-    "src/tilemap.js~tilemap#loadedjson",
-    "class/src/Tilemap.js~Tilemap.html#instance-member-loadedJSON",
-    "src/Tilemap.js~Tilemap#loadedJSON",
-    "member"
-  ],
-  [
-    "src/tilemap.js~tilemap#size",
-    "class/src/Tilemap.js~Tilemap.html#instance-member-size",
-    "src/Tilemap.js~Tilemap#size",
-    "member"
-  ],
-  [
-    "src/tilemap.js~tilemap#spawnareas",
-    "class/src/Tilemap.js~Tilemap.html#instance-member-spawnAreas",
-    "src/Tilemap.js~Tilemap#spawnAreas",
-    "member"
-  ],
-  [
-    "src/tilemap.js~tilemap#tojson",
-    "class/src/Tilemap.js~Tilemap.html#instance-method-toJSON",
-    "src/Tilemap.js~Tilemap#toJSON",
-    "method"
-  ],
-  [
-    "src/tilemap.js~tilemap.buildcollisions",
-    "class/src/Tilemap.js~Tilemap.html#static-method-buildCollisions",
-    "src/Tilemap.js~Tilemap.buildCollisions",
-    "method"
-  ],
-  [
-    "src/tilemap.js~tilemap.parsetiledjson",
-    "class/src/Tilemap.js~Tilemap.html#static-method-parseTiledJSON",
-    "src/Tilemap.js~Tilemap.parseTiledJSON",
+    "src/bullet/types/defaultbullet.js~defaultbullet.pointonpath",
+    "class/src/bullet/types/DefaultBullet.js~DefaultBullet.html#static-method-pointOnPath",
+    "src/bullet/types/DefaultBullet.js~DefaultBullet.pointOnPath",
     "method"
   ],
   [
@@ -1032,9 +612,141 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/gameconfig.js",
-    "file/src/gameConfig.js.html",
-    "src/gameConfig.js",
+    "src/game/game.js",
+    "file/src/game/Game.js.html",
+    "src/game/Game.js",
+    "file"
+  ],
+  [
+    "src/game/game.js~game#bullets",
+    "class/src/game/Game.js~Game.html#instance-member-bullets",
+    "src/game/Game.js~Game#bullets",
+    "member"
+  ],
+  [
+    "src/game/game.js~game#config",
+    "class/src/game/Game.js~Game.html#instance-member-config",
+    "src/game/Game.js~Game#config",
+    "member"
+  ],
+  [
+    "src/game/game.js~game#constructor",
+    "class/src/game/Game.js~Game.html#instance-constructor-constructor",
+    "src/game/Game.js~Game#constructor",
+    "method"
+  ],
+  [
+    "src/game/game.js~game#createplayer",
+    "class/src/game/Game.js~Game.html#instance-method-createPlayer",
+    "src/game/Game.js~Game#createPlayer",
+    "method"
+  ],
+  [
+    "src/game/game.js~game#fromjson",
+    "class/src/game/Game.js~Game.html#instance-method-fromJSON",
+    "src/game/Game.js~Game#fromJSON",
+    "method"
+  ],
+  [
+    "src/game/game.js~game#getdelta",
+    "class/src/game/Game.js~Game.html#instance-method-getDelta",
+    "src/game/Game.js~Game#getDelta",
+    "method"
+  ],
+  [
+    "src/game/game.js~game#getinfo",
+    "class/src/game/Game.js~Game.html#instance-method-getInfo",
+    "src/game/Game.js~Game#getInfo",
+    "method"
+  ],
+  [
+    "src/game/game.js~game#getplayer",
+    "class/src/game/Game.js~Game.html#instance-method-getPlayer",
+    "src/game/Game.js~Game#getPlayer",
+    "method"
+  ],
+  [
+    "src/game/game.js~game#id",
+    "class/src/game/Game.js~Game.html#instance-member-id",
+    "src/game/Game.js~Game#id",
+    "member"
+  ],
+  [
+    "src/game/game.js~game#info",
+    "class/src/game/Game.js~Game.html#instance-member-info",
+    "src/game/Game.js~Game#info",
+    "member"
+  ],
+  [
+    "src/game/game.js~game#isclient",
+    "class/src/game/Game.js~Game.html#instance-get-isClient",
+    "src/game/Game.js~Game#isClient",
+    "member"
+  ],
+  [
+    "src/game/game.js~game#ismaster",
+    "class/src/game/Game.js~Game.html#instance-member-isMaster",
+    "src/game/Game.js~Game#isMaster",
+    "member"
+  ],
+  [
+    "src/game/game.js~game#lastdelta",
+    "class/src/game/Game.js~Game.html#instance-member-lastDelta",
+    "src/game/Game.js~Game#lastDelta",
+    "member"
+  ],
+  [
+    "src/game/game.js~game#map",
+    "class/src/game/Game.js~Game.html#instance-member-map",
+    "src/game/Game.js~Game#map",
+    "member"
+  ],
+  [
+    "src/game/game.js~game#players",
+    "class/src/game/Game.js~Game.html#instance-member-players",
+    "src/game/Game.js~Game#players",
+    "member"
+  ],
+  [
+    "src/game/game.js~game#removeplayer",
+    "class/src/game/Game.js~Game.html#instance-method-removePlayer",
+    "src/game/Game.js~Game#removePlayer",
+    "method"
+  ],
+  [
+    "src/game/game.js~game#setinfo",
+    "class/src/game/Game.js~Game.html#instance-method-setInfo",
+    "src/game/Game.js~Game#setInfo",
+    "method"
+  ],
+  [
+    "src/game/game.js~game#spawnplayer",
+    "class/src/game/Game.js~Game.html#instance-method-spawnPlayer",
+    "src/game/Game.js~Game#spawnPlayer",
+    "method"
+  ],
+  [
+    "src/game/game.js~game#tojson",
+    "class/src/game/Game.js~Game.html#instance-method-toJSON",
+    "src/game/Game.js~Game#toJSON",
+    "method"
+  ],
+  [
+    "src/game/game.js~game#update",
+    "class/src/game/Game.js~Game.html#instance-method-update",
+    "src/game/Game.js~Game#update",
+    "method"
+  ],
+  [
+    "src/game/game.js~game#world",
+    "class/src/game/Game.js~Game.html#instance-member-world",
+    "src/game/Game.js~Game#world",
+    "member"
+  ],
+  [
+    "src/game/gameconfig.js",
+    "file/src/game/gameConfig.js.html",
+    "src/game/gameConfig.js",
     "file"
   ],
   [
@@ -1042,6 +754,300 @@ window.esdocSearchIndex = [
     "file/src/index.js.html",
     "src/index.js",
     "file"
+  ],
+  [
+    "src/player/player.js",
+    "file/src/player/Player.js.html",
+    "src/player/Player.js",
+    "file"
+  ],
+  [
+    "src/player/player.js~player#_updateposition",
+    "class/src/player/Player.js~Player.html#instance-method-_updatePosition",
+    "src/player/Player.js~Player#_updatePosition",
+    "method"
+  ],
+  [
+    "src/player/player.js~player#body",
+    "class/src/player/Player.js~Player.html#instance-member-body",
+    "src/player/Player.js~Player#body",
+    "member"
+  ],
+  [
+    "src/player/player.js~player#constructor",
+    "class/src/player/Player.js~Player.html#instance-constructor-constructor",
+    "src/player/Player.js~Player#constructor",
+    "method"
+  ],
+  [
+    "src/player/player.js~player#controls",
+    "class/src/player/Player.js~Player.html#instance-member-controls",
+    "src/player/Player.js~Player#controls",
+    "member"
+  ],
+  [
+    "src/player/player.js~player#cooldown",
+    "class/src/player/Player.js~Player.html#instance-member-cooldown",
+    "src/player/Player.js~Player#cooldown",
+    "member"
+  ],
+  [
+    "src/player/player.js~player#emit",
+    "class/src/player/Player.js~Player.html#instance-method-emit",
+    "src/player/Player.js~Player#emit",
+    "method"
+  ],
+  [
+    "src/player/player.js~player#fromjson",
+    "class/src/player/Player.js~Player.html#instance-method-fromJSON",
+    "src/player/Player.js~Player#fromJSON",
+    "method"
+  ],
+  [
+    "src/player/player.js~player#game",
+    "class/src/player/Player.js~Player.html#instance-get-game",
+    "src/player/Player.js~Player#game",
+    "member"
+  ],
+  [
+    "src/player/player.js~player#getcontrol",
+    "class/src/player/Player.js~Player.html#instance-method-getControl",
+    "src/player/Player.js~Player#getControl",
+    "method"
+  ],
+  [
+    "src/player/player.js~player#getinfo",
+    "class/src/player/Player.js~Player.html#instance-method-getInfo",
+    "src/player/Player.js~Player#getInfo",
+    "method"
+  ],
+  [
+    "src/player/player.js~player#getprop",
+    "class/src/player/Player.js~Player.html#instance-method-getProp",
+    "src/player/Player.js~Player#getProp",
+    "method"
+  ],
+  [
+    "src/player/player.js~player#id",
+    "class/src/player/Player.js~Player.html#instance-member-id",
+    "src/player/Player.js~Player#id",
+    "member"
+  ],
+  [
+    "src/player/player.js~player#info",
+    "class/src/player/Player.js~Player.html#instance-member-info",
+    "src/player/Player.js~Player#info",
+    "member"
+  ],
+  [
+    "src/player/player.js~player#manager",
+    "class/src/player/Player.js~Player.html#instance-member-manager",
+    "src/player/Player.js~Player#manager",
+    "member"
+  ],
+  [
+    "src/player/player.js~player#position",
+    "class/src/player/Player.js~Player.html#instance-member-position",
+    "src/player/Player.js~Player#position",
+    "member"
+  ],
+  [
+    "src/player/player.js~player#props",
+    "class/src/player/Player.js~Player.html#instance-member-props",
+    "src/player/Player.js~Player#props",
+    "member"
+  ],
+  [
+    "src/player/player.js~player#setcontrol",
+    "class/src/player/Player.js~Player.html#instance-method-setControl",
+    "src/player/Player.js~Player#setControl",
+    "method"
+  ],
+  [
+    "src/player/player.js~player#setinfo",
+    "class/src/player/Player.js~Player.html#instance-method-setInfo",
+    "src/player/Player.js~Player#setInfo",
+    "method"
+  ],
+  [
+    "src/player/player.js~player#setposition",
+    "class/src/player/Player.js~Player.html#instance-method-setPosition",
+    "src/player/Player.js~Player#setPosition",
+    "method"
+  ],
+  [
+    "src/player/player.js~player#setprop",
+    "class/src/player/Player.js~Player.html#instance-method-setProp",
+    "src/player/Player.js~Player#setProp",
+    "method"
+  ],
+  [
+    "src/player/player.js~player#tmp",
+    "class/src/player/Player.js~Player.html#instance-member-tmp",
+    "src/player/Player.js~Player#tmp",
+    "member"
+  ],
+  [
+    "src/player/player.js~player#tojson",
+    "class/src/player/Player.js~Player.html#instance-method-toJSON",
+    "src/player/Player.js~Player#toJSON",
+    "method"
+  ],
+  [
+    "src/player/player.js~player#update",
+    "class/src/player/Player.js~Player.html#instance-method-update",
+    "src/player/Player.js~Player#update",
+    "method"
+  ],
+  [
+    "src/player/playermanager.js",
+    "file/src/player/PlayerManager.js.html",
+    "src/player/PlayerManager.js",
+    "file"
+  ],
+  [
+    "src/player/playermanager.js~playermanager#clearplayers",
+    "class/src/player/PlayerManager.js~PlayerManager.html#instance-method-clearPlayers",
+    "src/player/PlayerManager.js~PlayerManager#clearPlayers",
+    "method"
+  ],
+  [
+    "src/player/playermanager.js~playermanager#constructor",
+    "class/src/player/PlayerManager.js~PlayerManager.html#instance-constructor-constructor",
+    "src/player/PlayerManager.js~PlayerManager#constructor",
+    "method"
+  ],
+  [
+    "src/player/playermanager.js~playermanager#createfromjson",
+    "class/src/player/PlayerManager.js~PlayerManager.html#instance-method-createFromJSON",
+    "src/player/PlayerManager.js~PlayerManager#createFromJSON",
+    "method"
+  ],
+  [
+    "src/player/playermanager.js~playermanager#createplayer",
+    "class/src/player/PlayerManager.js~PlayerManager.html#instance-method-createPlayer",
+    "src/player/PlayerManager.js~PlayerManager#createPlayer",
+    "method"
+  ],
+  [
+    "src/player/playermanager.js~playermanager#fromjson",
+    "class/src/player/PlayerManager.js~PlayerManager.html#instance-method-fromJSON",
+    "src/player/PlayerManager.js~PlayerManager#fromJSON",
+    "method"
+  ],
+  [
+    "src/player/playermanager.js~playermanager#game",
+    "class/src/player/PlayerManager.js~PlayerManager.html#instance-member-game",
+    "src/player/PlayerManager.js~PlayerManager#game",
+    "member"
+  ],
+  [
+    "src/player/playermanager.js~playermanager#getplayer",
+    "class/src/player/PlayerManager.js~PlayerManager.html#instance-method-getPlayer",
+    "src/player/PlayerManager.js~PlayerManager#getPlayer",
+    "method"
+  ],
+  [
+    "src/player/playermanager.js~playermanager#players",
+    "class/src/player/PlayerManager.js~PlayerManager.html#instance-member-players",
+    "src/player/PlayerManager.js~PlayerManager#players",
+    "member"
+  ],
+  [
+    "src/player/playermanager.js~playermanager#removeplayer",
+    "class/src/player/PlayerManager.js~PlayerManager.html#instance-method-removePlayer",
+    "src/player/PlayerManager.js~PlayerManager#removePlayer",
+    "method"
+  ],
+  [
+    "src/player/playermanager.js~playermanager#tojson",
+    "class/src/player/PlayerManager.js~PlayerManager.html#instance-method-toJSON",
+    "src/player/PlayerManager.js~PlayerManager#toJSON",
+    "method"
+  ],
+  [
+    "src/player/playermanager.js~playermanager#update",
+    "class/src/player/PlayerManager.js~PlayerManager.html#instance-method-update",
+    "src/player/PlayerManager.js~PlayerManager#update",
+    "method"
+  ],
+  [
+    "src/tilemap/tilemap.js",
+    "file/src/tilemap/Tilemap.js.html",
+    "src/tilemap/Tilemap.js",
+    "file"
+  ],
+  [
+    "src/tilemap/tilemap.js~tilemap#bodies",
+    "class/src/tilemap/Tilemap.js~Tilemap.html#instance-member-bodies",
+    "src/tilemap/Tilemap.js~Tilemap#bodies",
+    "member"
+  ],
+  [
+    "src/tilemap/tilemap.js~tilemap#clearbodies",
+    "class/src/tilemap/Tilemap.js~Tilemap.html#instance-method-clearBodies",
+    "src/tilemap/Tilemap.js~Tilemap#clearBodies",
+    "method"
+  ],
+  [
+    "src/tilemap/tilemap.js~tilemap#constructor",
+    "class/src/tilemap/Tilemap.js~Tilemap.html#instance-constructor-constructor",
+    "src/tilemap/Tilemap.js~Tilemap#constructor",
+    "method"
+  ],
+  [
+    "src/tilemap/tilemap.js~tilemap#fromjson",
+    "class/src/tilemap/Tilemap.js~Tilemap.html#instance-method-fromJSON",
+    "src/tilemap/Tilemap.js~Tilemap#fromJSON",
+    "method"
+  ],
+  [
+    "src/tilemap/tilemap.js~tilemap#game",
+    "class/src/tilemap/Tilemap.js~Tilemap.html#instance-member-game",
+    "src/tilemap/Tilemap.js~Tilemap#game",
+    "member"
+  ],
+  [
+    "src/tilemap/tilemap.js~tilemap#getspawnpoint",
+    "class/src/tilemap/Tilemap.js~Tilemap.html#instance-method-getSpawnPoint",
+    "src/tilemap/Tilemap.js~Tilemap#getSpawnPoint",
+    "method"
+  ],
+  [
+    "src/tilemap/tilemap.js~tilemap#loadedjson",
+    "class/src/tilemap/Tilemap.js~Tilemap.html#instance-member-loadedJSON",
+    "src/tilemap/Tilemap.js~Tilemap#loadedJSON",
+    "member"
+  ],
+  [
+    "src/tilemap/tilemap.js~tilemap#size",
+    "class/src/tilemap/Tilemap.js~Tilemap.html#instance-member-size",
+    "src/tilemap/Tilemap.js~Tilemap#size",
+    "member"
+  ],
+  [
+    "src/tilemap/tilemap.js~tilemap#spawnareas",
+    "class/src/tilemap/Tilemap.js~Tilemap.html#instance-member-spawnAreas",
+    "src/tilemap/Tilemap.js~Tilemap#spawnAreas",
+    "member"
+  ],
+  [
+    "src/tilemap/tilemap.js~tilemap#tojson",
+    "class/src/tilemap/Tilemap.js~Tilemap.html#instance-method-toJSON",
+    "src/tilemap/Tilemap.js~Tilemap#toJSON",
+    "method"
+  ],
+  [
+    "src/tilemap/tilemap.js~tilemap.buildcollisions",
+    "class/src/tilemap/Tilemap.js~Tilemap.html#static-method-buildCollisions",
+    "src/tilemap/Tilemap.js~Tilemap.buildCollisions",
+    "method"
+  ],
+  [
+    "src/tilemap/tilemap.js~tilemap.parsetiledjson",
+    "class/src/tilemap/Tilemap.js~Tilemap.html#static-method-parseTiledJSON",
+    "src/tilemap/Tilemap.js~Tilemap.parseTiledJSON",
+    "method"
   ],
   [
     "src/utils.js",
