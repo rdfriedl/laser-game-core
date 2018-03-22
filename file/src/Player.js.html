@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">src/Player.js | Lazer Game Core</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="The core logic for lazer-game"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="Lazer Game Core"><meta property="twitter:description" content="The core logic for lazer-game"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/rdfriedl/lazer-game-core"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Bullet.js~Bullet.html">Bullet</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Bullet.js~DefaultBullet.html">DefaultBullet</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/BulletManager.js~BulletManager.html">BulletManager</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Game.js~Game.html">Game</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Player.js~Player.html">Player</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/PlayerManager.js~PlayerManager.html">PlayerManager</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Tilemap.js~Tilemap.html">Tilemap</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-buildCollisions">buildCollisions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-clipDecimals">clipDecimals</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createName">createName</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getURLSearchSettings">getURLSearchSettings</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-lerp">lerp</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-parseSearch">parseSearch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-COLLISION_GROUPS">COLLISION_GROUPS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-NAMES">NAMES</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-NAME_TEMPLATES">NAME_TEMPLATES</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/Player.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { Emitter } from &quot;regexp-events&quot;;
+import p2 from &quot;p2&quot;;
+import { generate as shortID } from &quot;shortid&quot;;
+
+import BulletManager from &quot;./BulletManager&quot;;
+import { lerp, clipDecimals } from &quot;./utils&quot;;
+import { COLLISION_GROUPS } from &quot;./const&quot;;
+
+export default class Player extends Emitter {
+	constructor(manager, info, props) {
+		super();
+
+		this.manager = manager;
+		this.id = shortID();
+
+		// this is basic info about the player
+		// NOTE: this is set once when the bullet is created and then never changes
+		this.info = {
+			name: undefined,
+			color: 0x000000,
+		};
+		this.props = {
+			health: 100,
+			spawned: false,
+		};
+		this.position = {
+			x: 0,
+			y: 0,
+			vx: 0,
+			vy: 0,
+			direction: 0,
+		};
+		this.controls = {
+			moveX: 0,
+			moveY: 0,
+			shoot: false,
+			direction: 0,
+		};
+
+		this.body = new p2.Body({
+			mass: 10,
+			damping: 0,
+			fixedRotation: true,
+		});
+		this.body.addShape(
+			new p2.Circle({
+				radius: 10,
+			}),
+		);
+
+		this.body.shapes.forEach(shape =&gt; {
+			shape.collisionGroup = COLLISION_GROUPS.PLAYER;
+			shape.collisionMask = COLLISION_GROUPS.WALLS | COLLISION_GROUPS.BULLET | COLLISION_GROUPS.PLAYER;
+		});
+
+		// tmp gun var
+		this.cooldown = 0.15;
+		this.tmp = 0;
+
+		if (info) this.setInfo(info);
+
+		if (props) this.setProp(props);
+	}
+
+	setProp(key, value) {
+		if (key instanceof Object) {
+			for (let i in key) this.props[i] = key[i];
+
+			this.emit(&quot;props-changed&quot;, this.props);
+		} else {
+			this.props[key] = value;
+			this.emit(&quot;props-changed&quot;, this.props);
+		}
+
+		return this;
+	}
+	setInfo(key, value) {
+		if (key instanceof Object) {
+			for (let i in key) this.info[i] = key[i];
+
+			this.emit(&quot;info-changed&quot;, this.info);
+		} else {
+			this.info[key] = value;
+			this.emit(&quot;info-changed&quot;, this.info);
+		}
+
+		return this;
+	}
+	setControl(key, value) {
+		if (key instanceof Object) {
+			for (let i in key) this.controls[i] = key[i];
+
+			this.emit(&quot;controls-changed&quot;, this.controls);
+		} else {
+			this.controls[key] = value;
+			this.emit(&quot;controls-changed&quot;, this.controls);
+		}
+
+		return this;
+	}
+	getProp(key, value) {
+		return this.props[key];
+	}
+	getInfo(key, value) {
+		return this.info[key];
+	}
+	getControl(key, value) {
+		return this.controls[key];
+	}
+
+	setPosition(x = this.body.position[0], y = this.body.position[1], vx = 0, vy = 0, direction) {
+		this.body.position[0] = x;
+		this.body.position[1] = y;
+		this.body.velocity[0] = vx;
+		this.body.velocity[1] = vy;
+
+		// TODO: set the rotation on the p2 body instead
+		this.position.direction = direction;
+
+		// update position
+		this._updatePosition();
+	}
+
+	update(d) {
+		let { speed, excelerate, decelerate } = this.game.config.player.movement;
+
+		// apply controls
+		if (this.controls.moveX !== 0)
+			this.body.velocity[0] = lerp(this.body.velocity[0], speed * Math.sign(this.controls.moveX), excelerate);
+		else this.body.velocity[0] *= decelerate;
+
+		if (this.controls.moveY !== 0)
+			this.body.velocity[1] = lerp(this.body.velocity[1], speed * Math.sign(this.controls.moveY), excelerate);
+		else this.body.velocity[1] *= decelerate;
+
+		this.tmp += d;
+		if (this.controls.shoot &amp;&amp; this.game.isMaster) {
+			if (this.tmp &gt; this.cooldown) {
+				this.tmp = 0;
+				this.game.bullets.createBullet(
+					BulletManager.BULLET_TYPE.DEFAULT,
+					{ owner: this.id },
+					{
+						start: { x: this.position.x, y: this.position.y },
+						direction: this.controls.direction + (Math.random() - 0.5) * (Math.PI / 32),
+					},
+				);
+			}
+		}
+
+		// update position
+		this._updatePosition();
+
+		this.emit(&quot;update&quot;, d);
+	}
+
+	_updatePosition() {
+		this.position.x = clipDecimals(this.body.position[0]);
+		this.position.y = clipDecimals(this.body.position[1]);
+		this.position.vx = clipDecimals(this.body.velocity[0]);
+		this.position.vy = clipDecimals(this.body.velocity[1]);
+	}
+
+	toJSON() {
+		let json = {
+			id: this.id,
+			info: this.info,
+			props: this.props,
+			position: this.position,
+			controls: this.controls,
+		};
+
+		this.emit(&quot;to-json&quot;, json);
+
+		return json;
+	}
+
+	fromJSON(json) {
+		this.id = json.id;
+		this.setInfo(json.info);
+		this.setProp(json.props);
+		this.setControl(json.controls);
+		Object.assign(this.position, json.position);
+
+		this.emit(&quot;from-json&quot;, json);
+
+		return this;
+	}
+
+	// overwrite emit so we can fire events on the manager
+	emit(event, ...args) {
+		let v = Emitter.prototype.emit.call(this, event, ...args);
+		this.manager.emit(&quot;player-&quot; + event, this, ...args);
+		this.manager.emit(`player-${this.id}-${event}`, this, ...args);
+		return v;
+	}
+
+	get game() {
+		return this.manager.game;
+	}
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.0.4)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

@@ -1,0 +1,3496 @@
+[
+  {
+    "__docId__": 1,
+    "kind": "external",
+    "name": "Infinity",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Infinity",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 2,
+    "kind": "external",
+    "name": "NaN",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~NaN",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 3,
+    "kind": "external",
+    "name": "undefined",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~undefined",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 4,
+    "kind": "external",
+    "name": "null",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~null",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 5,
+    "kind": "external",
+    "name": "Object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Object",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 6,
+    "kind": "external",
+    "name": "object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~object",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 7,
+    "kind": "external",
+    "name": "Function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Function",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 8,
+    "kind": "external",
+    "name": "function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~function",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 9,
+    "kind": "external",
+    "name": "Boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Boolean",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 10,
+    "kind": "external",
+    "name": "boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~boolean",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 11,
+    "kind": "external",
+    "name": "Symbol",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Symbol",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 12,
+    "kind": "external",
+    "name": "Error",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Error",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 13,
+    "kind": "external",
+    "name": "EvalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~EvalError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 14,
+    "kind": "external",
+    "name": "InternalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~InternalError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 15,
+    "kind": "external",
+    "name": "RangeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~RangeError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 16,
+    "kind": "external",
+    "name": "ReferenceError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~ReferenceError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 17,
+    "kind": "external",
+    "name": "SyntaxError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~SyntaxError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 18,
+    "kind": "external",
+    "name": "TypeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~TypeError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 19,
+    "kind": "external",
+    "name": "URIError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~URIError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 20,
+    "kind": "external",
+    "name": "Number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Number",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 21,
+    "kind": "external",
+    "name": "number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~number",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 22,
+    "kind": "external",
+    "name": "Date",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Date",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 23,
+    "kind": "external",
+    "name": "String",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~String",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 24,
+    "kind": "external",
+    "name": "string",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~string",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 25,
+    "kind": "external",
+    "name": "RegExp",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~RegExp",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 26,
+    "kind": "external",
+    "name": "Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 27,
+    "kind": "external",
+    "name": "Int8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Int8Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 28,
+    "kind": "external",
+    "name": "Uint8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint8Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 29,
+    "kind": "external",
+    "name": "Uint8ClampedArray",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint8ClampedArray",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 30,
+    "kind": "external",
+    "name": "Int16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Int16Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 31,
+    "kind": "external",
+    "name": "Uint16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint16Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 32,
+    "kind": "external",
+    "name": "Int32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Int32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 33,
+    "kind": "external",
+    "name": "Uint32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 34,
+    "kind": "external",
+    "name": "Float32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Float32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 35,
+    "kind": "external",
+    "name": "Float64Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Float64Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 36,
+    "kind": "external",
+    "name": "Map",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Map",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 37,
+    "kind": "external",
+    "name": "Set",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Set",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 38,
+    "kind": "external",
+    "name": "WeakMap",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~WeakMap",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 39,
+    "kind": "external",
+    "name": "WeakSet",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~WeakSet",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 40,
+    "kind": "external",
+    "name": "ArrayBuffer",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~ArrayBuffer",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 41,
+    "kind": "external",
+    "name": "DataView",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~DataView",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 42,
+    "kind": "external",
+    "name": "JSON",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~JSON",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 43,
+    "kind": "external",
+    "name": "Promise",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Promise",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 44,
+    "kind": "external",
+    "name": "Generator",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Generator",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 45,
+    "kind": "external",
+    "name": "GeneratorFunction",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~GeneratorFunction",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 46,
+    "kind": "external",
+    "name": "Reflect",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Reflect",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 47,
+    "kind": "external",
+    "name": "Proxy",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Proxy",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 48,
+    "kind": "file",
+    "name": "src/Bullet.js",
+    "content": "import shortID from \"shortid\";\nimport { Emitter } from \"regexp-events\";\nimport p2 from \"p2\";\nimport { lerp } from \"./utils\";\nimport { COLLISION_GROUPS } from \"./const\";\n\nexport default class Bullet extends Emitter {\n\tconstructor(manager, info = {}, props = {}) {\n\t\tsuper();\n\t\tthis.manager = manager;\n\n\t\tthis.id = shortID();\n\n\t\t// this is basic info about the bullet\n\t\t// like: who shot it, how long its supposed to last\n\t\t// NOTE: this is set once when the bullet is created and then never changes\n\t\tthis.info = Object.assign(\n\t\t\t{\n\t\t\t\towner: undefined,\n\t\t\t},\n\t\t\tinfo,\n\t\t);\n\n\t\t// important info about the bullet\n\t\t// like: current speed, its path, who its locked onto, and so on\n\t\t// NOTE: everything a prop changes its sent to the clients\n\t\tthis.props = Object.assign({}, props);\n\n\t\t// this is anything that is used in the bullets update function\n\t\t// NOTE: this is not send to the client\n\t\tthis.data = {};\n\n\t\t// set the bullet up\n\t\tthis.init();\n\t}\n\n\tinit() {}\n\n\tsetProp(key, value) {\n\t\tif (key instanceof Object) {\n\t\t\tfor (let i in key) this.props[i] = key[i];\n\n\t\t\tthis.emit(\"props-changed\", this.props);\n\t\t} else {\n\t\t\tthis.props[key] = value;\n\t\t\tthis.emit(\"props-changed\", this.props);\n\t\t}\n\n\t\treturn this;\n\t}\n\n\tgetProp(key) {\n\t\treturn this.props[key];\n\t}\n\n\tupdate(d) {}\n\n\tdestroy() {\n\t\tthis.manager.removeBullet(this);\n\t\treturn this;\n\t}\n\tdie() {\n\t\treturn this.destroy();\n\t}\n\n\ttoJSON() {\n\t\tlet json = {\n\t\t\tid: this.id,\n\t\t\tinfo: this.info,\n\t\t\tprops: this.props,\n\t\t\ttype: this.type,\n\t\t};\n\n\t\tthis.emit(\"to-json\", json);\n\t\treturn json;\n\t}\n\n\tfromJSON(json) {\n\t\tthis.id = json.id || this.id;\n\t\tif (json.info) Object.assign(this.info, json.info);\n\t\tif (json.props) Object.assign(this.props, json.props);\n\t\tthis.init();\n\t\treturn this;\n\t}\n\n\t// overwrite emit so we can fire events on the manager\n\temit(event, ...args) {\n\t\tlet v = Emitter.prototype.emit.call(this, event, ...args);\n\t\tthis.manager.emit(\"bullet-\" + event, this, ...args);\n\t\tthis.manager.emit(`bullet-${this.id}-${event}`, this, ...args);\n\t\treturn v;\n\t}\n\n\tget game() {\n\t\treturn this.manager.game;\n\t}\n\n\tget player() {\n\t\treturn this.game.players.getPlayer(this.info.owner);\n\t}\n\n\tget type() {\n\t\treturn this.manager.getBulletType(this);\n\t}\n}\n\nexport class DefaultBullet extends Bullet {\n\tinit() {\n\t\tsuper.init();\n\n\t\t// init dataas\n\t\tthis.data.speed = 500;\n\t\tthis.data.pathPosition = 0;\n\t\tthis.data.position = { x: 0, y: 0 };\n\t\tthis.data.path = DefaultBullet.calcPath(this.game.world, {\n\t\t\tstart: [this.props.start.x, this.props.start.y],\n\t\t\tdirection: this.props.direction,\n\t\t});\n\t\tthis.data.pathLength = this.data.path.length ? this.data.path[this.data.path.length - 1][2] : 0;\n\t}\n\tupdate(d) {\n\t\t// move along the path\n\t\tthis.data.pathPosition += this.data.speed * d;\n\n\t\t// set position\n\t\tthis.data.position = DefaultBullet.pointOnPath(this.data.path, this.data.pathPosition);\n\n\t\t// set the direction\n\t\tthis.data.direction = DefaultBullet.directionOnPath(this.data.path, this.data.pathPosition);\n\n\t\t// die if the bullet is at the end of the path\n\t\tif (this.data.pathPosition > this.data.pathLength && this.game.isMaster) this.die();\n\t}\n\n\tstatic calcPath(world, opts = {}) {\n\t\tif (!world) return [];\n\t\topts = Object.assign(\n\t\t\t{},\n\t\t\t{\n\t\t\t\tmaxDistance: 1000,\n\t\t\t\tmaxBounces: 5,\n\t\t\t\tstart: [0, 0],\n\t\t\t\tdirection: 0,\n\t\t\t},\n\t\t\topts,\n\t\t);\n\n\t\tlet path = [],\n\t\t\tcurrentLength = 0;\n\t\tlet ray = (this.calcPath.ray =\n\t\t\tthis.calcPath.ray ||\n\t\t\tnew p2.Ray({\n\t\t\t\tmode: p2.Ray.CLOSEST,\n\t\t\t\tcollisionGroup: COLLISION_GROUPS.BULLET,\n\t\t\t\tcollisionMask: COLLISION_GROUPS.WALLS,\n\t\t\t}));\n\t\tlet result = (this.calcPath.result = this.calcPath.result || new p2.RaycastResult());\n\t\tlet hitPoint = (this.calcPath.hitPoint = this.calcPath.hitPoint || p2.vec2.create());\n\n\t\t// set the rays direction\n\t\tray.from[0] = opts.start[0];\n\t\tray.from[1] = opts.start[1];\n\t\tray.direction[0] = Math.cos(opts.direction);\n\t\tray.direction[1] = Math.sin(opts.direction);\n\n\t\tray.to[0] = ray.from[0] + ray.direction[0] * (opts.maxDistance - currentLength);\n\t\tray.to[1] = ray.from[1] + ray.direction[1] * (opts.maxDistance - currentLength);\n\n\t\tray.update();\n\n\t\t// cast\n\t\tpath = [[opts.start[0], opts.start[1], 0]];\n\t\tlet hits = 0;\n\t\twhile (currentLength < opts.maxDistance && hits < opts.maxBounces) {\n\t\t\tif (world.raycast(result, ray)) {\n\t\t\t\thits++;\n\t\t\t\tresult.getHitPoint(hitPoint, ray);\n\t\t\t\t// add the path segment\n\t\t\t\tpath.push([hitPoint[0], hitPoint[1], (currentLength += result.getHitDistance(ray))]);\n\n\t\t\t\t// move start to the hit point\n\t\t\t\tp2.vec2.copy(ray.from, hitPoint);\n\n\t\t\t\t// reflect the direction\n\t\t\t\tp2.vec2.reflect(ray.direction, ray.direction, result.normal);\n\n\t\t\t\t// move the ray out a bit\n\t\t\t\tray.from[0] += ray.direction[0] * 0.001;\n\t\t\t\tray.from[1] += ray.direction[1] * 0.001;\n\t\t\t\tray.to[0] = ray.from[0] + ray.direction[0] * (opts.maxDistance - currentLength);\n\t\t\t\tray.to[1] = ray.from[1] + ray.direction[1] * (opts.maxDistance - currentLength);\n\t\t\t\tray.update();\n\t\t\t\tresult.reset();\n\t\t\t} else {\n\t\t\t\tlet distanceLeft = opts.maxDistance - currentLength;\n\t\t\t\tpath.push([ray.to[0], ray.to[1], (currentLength += distanceLeft)]);\n\t\t\t}\n\t\t}\n\n\t\treturn path;\n\t}\n\n\t/**\n\t * @param path\n\t * @param {Number} position - a number between 0 and 1\n\t */\n\tstatic pointOnPath(path, position = 0) {\n\t\tlet pos = {};\n\t\tlet prev,\n\t\t\tnext = path.find(point => point[2] > position);\n\t\tfor (let i = path.length - 1; i >= 0; i--) {\n\t\t\tif (path[i][2] <= position) {\n\t\t\t\tprev = path[i];\n\t\t\t\tbreak;\n\t\t\t}\n\t\t}\n\t\tif (next) {\n\t\t\tlet delta = (position - prev[2]) / (next[2] - prev[2]);\n\t\t\tpos.x = lerp(prev[0], next[0], delta);\n\t\t\tpos.y = lerp(prev[1], next[1], delta);\n\t\t} else {\n\t\t\tpos.x = prev[0];\n\t\t\tpos.y = prev[1];\n\t\t}\n\n\t\treturn pos;\n\t}\n\n\t/**\n\t * returns the bullets directions on a point on the path\n\t * @param path\n\t * @param position\n\t * @return {number} - the rotation is in radians\n\t */\n\tstatic directionOnPath(path, position = 0) {\n\t\tlet prev,\n\t\t\tnext = path.find(point => point[2] > position);\n\t\tfor (let i = path.length - 1; i >= 0; i--) {\n\t\t\tif (path[i][2] <= position) {\n\t\t\t\tprev = path[i];\n\t\t\t\tbreak;\n\t\t\t}\n\t\t}\n\n\t\tif (next) return Math.atan2(next[0] - prev[0], next[1] - prev[1]);\n\n\t\treturn 0;\n\t}\n}\n",
+    "static": true,
+    "longname": "/home/circleci/repo/src/Bullet.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 49,
+    "kind": "class",
+    "name": "Bullet",
+    "memberof": "src/Bullet.js",
+    "static": true,
+    "longname": "src/Bullet.js~Bullet",
+    "access": "public",
+    "export": true,
+    "importPath": "lazer-game-core/src/Bullet.js",
+    "importStyle": "Bullet",
+    "description": null,
+    "lineNumber": 7,
+    "undocument": true,
+    "interface": false,
+    "extends": [
+      "regexp-events~Emitter"
+    ]
+  },
+  {
+    "__docId__": 50,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/Bullet.js~Bullet",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Bullet.js~Bullet#constructor",
+    "access": "public",
+    "description": null,
+    "lineNumber": 8,
+    "undocument": true
+  },
+  {
+    "__docId__": 51,
+    "kind": "member",
+    "name": "manager",
+    "memberof": "src/Bullet.js~Bullet",
+    "static": false,
+    "longname": "src/Bullet.js~Bullet#manager",
+    "access": "public",
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 52,
+    "kind": "member",
+    "name": "id",
+    "memberof": "src/Bullet.js~Bullet",
+    "static": false,
+    "longname": "src/Bullet.js~Bullet#id",
+    "access": "public",
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 53,
+    "kind": "member",
+    "name": "info",
+    "memberof": "src/Bullet.js~Bullet",
+    "static": false,
+    "longname": "src/Bullet.js~Bullet#info",
+    "access": "public",
+    "description": null,
+    "lineNumber": 17,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 54,
+    "kind": "member",
+    "name": "props",
+    "memberof": "src/Bullet.js~Bullet",
+    "static": false,
+    "longname": "src/Bullet.js~Bullet#props",
+    "access": "public",
+    "description": null,
+    "lineNumber": 27,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 55,
+    "kind": "member",
+    "name": "data",
+    "memberof": "src/Bullet.js~Bullet",
+    "static": false,
+    "longname": "src/Bullet.js~Bullet#data",
+    "access": "public",
+    "description": null,
+    "lineNumber": 31,
+    "undocument": true,
+    "type": {
+      "types": [
+        "{}"
+      ]
+    }
+  },
+  {
+    "__docId__": 56,
+    "kind": "method",
+    "name": "init",
+    "memberof": "src/Bullet.js~Bullet",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Bullet.js~Bullet#init",
+    "access": "public",
+    "description": null,
+    "lineNumber": 37,
+    "undocument": true,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 57,
+    "kind": "method",
+    "name": "setProp",
+    "memberof": "src/Bullet.js~Bullet",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Bullet.js~Bullet#setProp",
+    "access": "public",
+    "description": null,
+    "lineNumber": 39,
+    "undocument": true,
+    "params": [
+      {
+        "name": "key",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "value",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 58,
+    "kind": "method",
+    "name": "getProp",
+    "memberof": "src/Bullet.js~Bullet",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Bullet.js~Bullet#getProp",
+    "access": "public",
+    "description": null,
+    "lineNumber": 52,
+    "undocument": true,
+    "params": [
+      {
+        "name": "key",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 59,
+    "kind": "method",
+    "name": "update",
+    "memberof": "src/Bullet.js~Bullet",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Bullet.js~Bullet#update",
+    "access": "public",
+    "description": null,
+    "lineNumber": 56,
+    "undocument": true,
+    "params": [
+      {
+        "name": "d",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 60,
+    "kind": "method",
+    "name": "destroy",
+    "memberof": "src/Bullet.js~Bullet",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Bullet.js~Bullet#destroy",
+    "access": "public",
+    "description": null,
+    "lineNumber": 58,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 61,
+    "kind": "method",
+    "name": "die",
+    "memberof": "src/Bullet.js~Bullet",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Bullet.js~Bullet#die",
+    "access": "public",
+    "description": null,
+    "lineNumber": 62,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 62,
+    "kind": "method",
+    "name": "toJSON",
+    "memberof": "src/Bullet.js~Bullet",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Bullet.js~Bullet#toJSON",
+    "access": "public",
+    "description": null,
+    "lineNumber": 66,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 63,
+    "kind": "method",
+    "name": "fromJSON",
+    "memberof": "src/Bullet.js~Bullet",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Bullet.js~Bullet#fromJSON",
+    "access": "public",
+    "description": null,
+    "lineNumber": 78,
+    "undocument": true,
+    "params": [
+      {
+        "name": "json",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 65,
+    "kind": "method",
+    "name": "emit",
+    "memberof": "src/Bullet.js~Bullet",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Bullet.js~Bullet#emit",
+    "access": "public",
+    "description": null,
+    "lineNumber": 87,
+    "undocument": true,
+    "params": [
+      {
+        "name": "event",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "args",
+        "types": [
+          "...*"
+        ],
+        "spread": true
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 66,
+    "kind": "get",
+    "name": "game",
+    "memberof": "src/Bullet.js~Bullet",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Bullet.js~Bullet#game",
+    "access": "public",
+    "description": null,
+    "lineNumber": 94,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 67,
+    "kind": "get",
+    "name": "player",
+    "memberof": "src/Bullet.js~Bullet",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Bullet.js~Bullet#player",
+    "access": "public",
+    "description": null,
+    "lineNumber": 98,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 68,
+    "kind": "get",
+    "name": "type",
+    "memberof": "src/Bullet.js~Bullet",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Bullet.js~Bullet#type",
+    "access": "public",
+    "description": null,
+    "lineNumber": 102,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 69,
+    "kind": "class",
+    "name": "DefaultBullet",
+    "memberof": "src/Bullet.js",
+    "static": true,
+    "longname": "src/Bullet.js~DefaultBullet",
+    "access": "public",
+    "export": true,
+    "importPath": "lazer-game-core/src/Bullet.js",
+    "importStyle": "{DefaultBullet}",
+    "description": null,
+    "lineNumber": 107,
+    "undocument": true,
+    "interface": false,
+    "extends": [
+      "Bullet"
+    ]
+  },
+  {
+    "__docId__": 70,
+    "kind": "method",
+    "name": "init",
+    "memberof": "src/Bullet.js~DefaultBullet",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Bullet.js~DefaultBullet#init",
+    "access": "public",
+    "description": null,
+    "lineNumber": 108,
+    "undocument": true,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 71,
+    "kind": "method",
+    "name": "update",
+    "memberof": "src/Bullet.js~DefaultBullet",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Bullet.js~DefaultBullet#update",
+    "access": "public",
+    "description": null,
+    "lineNumber": 121,
+    "undocument": true,
+    "params": [
+      {
+        "name": "d",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 72,
+    "kind": "method",
+    "name": "calcPath",
+    "memberof": "src/Bullet.js~DefaultBullet",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/Bullet.js~DefaultBullet.calcPath",
+    "access": "public",
+    "description": null,
+    "lineNumber": 135,
+    "undocument": true,
+    "params": [
+      {
+        "name": "world",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "opts",
+        "optional": true,
+        "types": [
+          "{}"
+        ],
+        "defaultRaw": {},
+        "defaultValue": "{}"
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 73,
+    "kind": "method",
+    "name": "pointOnPath",
+    "memberof": "src/Bullet.js~DefaultBullet",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/Bullet.js~DefaultBullet.pointOnPath",
+    "access": "public",
+    "description": "",
+    "lineNumber": 207,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "path",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "position",
+        "description": "a number between 0 and 1"
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 74,
+    "kind": "method",
+    "name": "directionOnPath",
+    "memberof": "src/Bullet.js~DefaultBullet",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/Bullet.js~DefaultBullet.directionOnPath",
+    "access": "public",
+    "description": "returns the bullets directions on a point on the path",
+    "lineNumber": 235,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "path",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "position",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "number"
+      ],
+      "spread": false,
+      "description": "the rotation is in radians"
+    }
+  },
+  {
+    "__docId__": 75,
+    "kind": "file",
+    "name": "src/BulletManager.js",
+    "content": "import { Emitter } from \"regexp-events\";\nimport Bullet from \"./Bullet.js\";\n\nexport default class BulletManager extends Emitter {\n\tconstructor(game) {\n\t\tsuper();\n\n\t\tthis.game = game;\n\t\tthis.bullets = [];\n\t}\n\n\tcreateBullet(type, info, props) {\n\t\tlet BulletType = BulletManager.BulletTypes[type];\n\t\tif (!BulletType) return;\n\t\tlet bullet = new BulletType(this, info, props);\n\t\tthis.bullets.push(bullet);\n\t\tthis.emit(\"bullet-created\", bullet);\n\t\treturn bullet;\n\t}\n\n\tcreateFromJSON(json) {\n\t\tlet BulletType = BulletManager.BulletTypes[json.type];\n\t\tif (!BulletType) return;\n\t\tlet bullet = new BulletType(this, json.info, json.props);\n\t\tbullet.fromJSON(json);\n\t\tthis.bullets.push(bullet);\n\t\tthis.emit(\"bullet-created\", bullet);\n\t\treturn bullet;\n\t}\n\n\tgetBullet(id) {\n\t\tif (id instanceof Bullet) return this.bullets.includes(id) ? id : undefined;\n\t\telse return this.bullets.find(bullet => bullet.id == id);\n\t}\n\n\tremoveBullet(id) {\n\t\tlet bullet = this.getBullet(id);\n\t\tif (this.bullets.includes(bullet)) {\n\t\t\tthis.bullets.splice(this.bullets.indexOf(bullet), 1);\n\t\t\tthis.emit(\"bullet-removed\", bullet);\n\t\t}\n\t\treturn this;\n\t}\n\n\tclearBullets() {\n\t\tthis.bullets.forEach(bullet => this.removeBullet(bullet));\n\t\tthis.bullets = [];\n\t\treturn this;\n\t}\n\n\tupdate(d) {\n\t\t// update the bullets\n\t\tthis.bullets.forEach(bullet => bullet.update(d));\n\t}\n\n\ttoJSON() {\n\t\tlet json = this.bullets.map(bullet => bullet.toJSON());\n\n\t\tthis.emit(\"to-json\", json);\n\t\treturn json;\n\t}\n\n\tfromJSON(json) {\n\t\tthis.clearBullets();\n\n\t\tjson.forEach(data => {\n\t\t\tlet bullet = this.createBullet(data.type);\n\t\t\tbullet.fromJSON(data.data);\n\t\t});\n\n\t\tthis.emit(\"from-json\", json);\n\t\treturn this;\n\t}\n\n\tgetBulletType(bullet) {\n\t\tfor (let id in BulletManager.BulletTypes) {\n\t\t\tif (bullet instanceof BulletManager.BulletTypes[id]) return id;\n\t\t}\n\t}\n}\n\nBulletManager.BulletTypes = {\n\tdefault: Bullet.DefaultBullet,\n};\nBulletManager.BULLET_TYPE = {\n\tDEFAULT: \"default\",\n};\n",
+    "static": true,
+    "longname": "/home/circleci/repo/src/BulletManager.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 76,
+    "kind": "class",
+    "name": "BulletManager",
+    "memberof": "src/BulletManager.js",
+    "static": true,
+    "longname": "src/BulletManager.js~BulletManager",
+    "access": "public",
+    "export": true,
+    "importPath": "lazer-game-core/src/BulletManager.js",
+    "importStyle": "BulletManager",
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "interface": false,
+    "extends": [
+      "regexp-events~Emitter"
+    ]
+  },
+  {
+    "__docId__": 77,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/BulletManager.js~BulletManager",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/BulletManager.js~BulletManager#constructor",
+    "access": "public",
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true
+  },
+  {
+    "__docId__": 78,
+    "kind": "member",
+    "name": "game",
+    "memberof": "src/BulletManager.js~BulletManager",
+    "static": false,
+    "longname": "src/BulletManager.js~BulletManager#game",
+    "access": "public",
+    "description": null,
+    "lineNumber": 8,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 79,
+    "kind": "member",
+    "name": "bullets",
+    "memberof": "src/BulletManager.js~BulletManager",
+    "static": false,
+    "longname": "src/BulletManager.js~BulletManager#bullets",
+    "access": "public",
+    "description": null,
+    "lineNumber": 9,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*[]"
+      ]
+    }
+  },
+  {
+    "__docId__": 80,
+    "kind": "method",
+    "name": "createBullet",
+    "memberof": "src/BulletManager.js~BulletManager",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/BulletManager.js~BulletManager#createBullet",
+    "access": "public",
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true,
+    "params": [
+      {
+        "name": "type",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "info",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "props",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 81,
+    "kind": "method",
+    "name": "createFromJSON",
+    "memberof": "src/BulletManager.js~BulletManager",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/BulletManager.js~BulletManager#createFromJSON",
+    "access": "public",
+    "description": null,
+    "lineNumber": 21,
+    "undocument": true,
+    "params": [
+      {
+        "name": "json",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 82,
+    "kind": "method",
+    "name": "getBullet",
+    "memberof": "src/BulletManager.js~BulletManager",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/BulletManager.js~BulletManager#getBullet",
+    "access": "public",
+    "description": null,
+    "lineNumber": 31,
+    "undocument": true,
+    "params": [
+      {
+        "name": "id",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 83,
+    "kind": "method",
+    "name": "removeBullet",
+    "memberof": "src/BulletManager.js~BulletManager",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/BulletManager.js~BulletManager#removeBullet",
+    "access": "public",
+    "description": null,
+    "lineNumber": 36,
+    "undocument": true,
+    "params": [
+      {
+        "name": "id",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 84,
+    "kind": "method",
+    "name": "clearBullets",
+    "memberof": "src/BulletManager.js~BulletManager",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/BulletManager.js~BulletManager#clearBullets",
+    "access": "public",
+    "description": null,
+    "lineNumber": 45,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 86,
+    "kind": "method",
+    "name": "update",
+    "memberof": "src/BulletManager.js~BulletManager",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/BulletManager.js~BulletManager#update",
+    "access": "public",
+    "description": null,
+    "lineNumber": 51,
+    "undocument": true,
+    "params": [
+      {
+        "name": "d",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 87,
+    "kind": "method",
+    "name": "toJSON",
+    "memberof": "src/BulletManager.js~BulletManager",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/BulletManager.js~BulletManager#toJSON",
+    "access": "public",
+    "description": null,
+    "lineNumber": 56,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 88,
+    "kind": "method",
+    "name": "fromJSON",
+    "memberof": "src/BulletManager.js~BulletManager",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/BulletManager.js~BulletManager#fromJSON",
+    "access": "public",
+    "description": null,
+    "lineNumber": 63,
+    "undocument": true,
+    "params": [
+      {
+        "name": "json",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 89,
+    "kind": "method",
+    "name": "getBulletType",
+    "memberof": "src/BulletManager.js~BulletManager",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/BulletManager.js~BulletManager#getBulletType",
+    "access": "public",
+    "description": null,
+    "lineNumber": 75,
+    "undocument": true,
+    "params": [
+      {
+        "name": "bullet",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 90,
+    "kind": "file",
+    "name": "src/Game.js",
+    "content": "import { Emitter } from \"regexp-events\";\nimport PlayerManager from \"./PlayerManager\";\nimport BulletManager from \"./BulletManager\";\nimport p2 from \"p2\";\nimport Tilemap from \"./Tilemap\";\n\nimport BASE_CONFIG from \"./gameConfig\";\n\nexport default class Game extends Emitter {\n\tconstructor(id) {\n\t\tsuper();\n\n\t\tthis.id = id;\n\t\tthis.info = {};\n\t\tthis.isMaster = false;\n\t\tthis.config = JSON.parse(JSON.stringify(BASE_CONFIG));\n\n\t\tthis.players = new PlayerManager(this);\n\t\tthis.map = new Tilemap(this);\n\t\tthis.bullets = new BulletManager(this);\n\n\t\t// create the physics world\n\t\tthis.world = new p2.World({\n\t\t\tgravity: [0, 0],\n\t\t});\n\t}\n\n\tgetPlayer(...args) {\n\t\treturn this.players.getPlayer(...args);\n\t}\n\tcreatePlayer(...args) {\n\t\treturn this.players.createPlayer(...args);\n\t}\n\tremovePlayer(...args) {\n\t\treturn this.players.removePlayer(...args);\n\t}\n\n\tspawnPlayer(id) {\n\t\tlet player = this.players.getPlayer(id);\n\t\tlet point = this.map.getSpawnPoint();\n\n\t\tplayer.setPosition(point.x, point.y);\n\t\tplayer.setProp(\"spawned\", true);\n\t\treturn this;\n\t}\n\n\tsetInfo(key, value) {\n\t\tif (key instanceof Object) {\n\t\t\tfor (let i in key) this.info[i] = key[i];\n\n\t\t\tthis.emit(\"info-changed\", key);\n\t\t} else {\n\t\t\tthis.info[key] = value;\n\t\t\tthis.emit(\"info-changed\", key, value);\n\t\t}\n\n\t\treturn this;\n\t}\n\tgetInfo(key, value) {\n\t\treturn this.info[key];\n\t}\n\n\tgetDelta() {\n\t\tlet newTime = new Date();\n\t\tlet delta = (newTime - this.lastDelta) / 1000;\n\t\tthis.lastDelta = newTime;\n\t\treturn delta;\n\t}\n\tupdate() {\n\t\tlet d = this.getDelta();\n\n\t\t// update the physics world\n\t\tthis.world.step(1 / 60, d, 1);\n\n\t\t// update the players\n\t\tthis.players.update(d);\n\n\t\t// update the bullets\n\t\tthis.bullets.update(d);\n\n\t\tthis.emit(\"update\", d);\n\t}\n\n\ttoJSON() {\n\t\tlet json = {\n\t\t\tid: this.id,\n\t\t\tinfo: this.info,\n\t\t\tconfig: this.config,\n\t\t\tmap: this.map.toJSON(),\n\t\t\tplayers: this.players.toJSON(),\n\t\t};\n\n\t\t// fire the event\n\t\tthis.emit(\"to-json\", json);\n\n\t\treturn json;\n\t}\n\n\tfromJSON(json) {\n\t\tthis.id = json.id;\n\t\tthis.setInfo(json.info);\n\t\tthis.players.fromJSON(json.players);\n\t\tthis.map.fromJSON(json.map);\n\n\t\t// fire the event\n\t\tthis.emit(\"from-json\", json);\n\n\t\treturn this;\n\t}\n\n\tget isClient() {\n\t\treturn !this.isMaster;\n\t}\n}\n\nGame.DEFAULT_FPS = 1 / 60;\n",
+    "static": true,
+    "longname": "/home/circleci/repo/src/Game.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 91,
+    "kind": "class",
+    "name": "Game",
+    "memberof": "src/Game.js",
+    "static": true,
+    "longname": "src/Game.js~Game",
+    "access": "public",
+    "export": true,
+    "importPath": "lazer-game-core/src/Game.js",
+    "importStyle": "Game",
+    "description": null,
+    "lineNumber": 9,
+    "undocument": true,
+    "interface": false,
+    "extends": [
+      "regexp-events~Emitter"
+    ]
+  },
+  {
+    "__docId__": 92,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/Game.js~Game",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Game.js~Game#constructor",
+    "access": "public",
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true
+  },
+  {
+    "__docId__": 93,
+    "kind": "member",
+    "name": "id",
+    "memberof": "src/Game.js~Game",
+    "static": false,
+    "longname": "src/Game.js~Game#id",
+    "access": "public",
+    "description": null,
+    "lineNumber": 13,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 94,
+    "kind": "member",
+    "name": "info",
+    "memberof": "src/Game.js~Game",
+    "static": false,
+    "longname": "src/Game.js~Game#info",
+    "access": "public",
+    "description": null,
+    "lineNumber": 14,
+    "undocument": true,
+    "type": {
+      "types": [
+        "{}"
+      ]
+    }
+  },
+  {
+    "__docId__": 95,
+    "kind": "member",
+    "name": "isMaster",
+    "memberof": "src/Game.js~Game",
+    "static": false,
+    "longname": "src/Game.js~Game#isMaster",
+    "access": "public",
+    "description": null,
+    "lineNumber": 15,
+    "undocument": true,
+    "type": {
+      "types": [
+        "boolean"
+      ]
+    }
+  },
+  {
+    "__docId__": 96,
+    "kind": "member",
+    "name": "config",
+    "memberof": "src/Game.js~Game",
+    "static": false,
+    "longname": "src/Game.js~Game#config",
+    "access": "public",
+    "description": null,
+    "lineNumber": 16,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 97,
+    "kind": "member",
+    "name": "players",
+    "memberof": "src/Game.js~Game",
+    "static": false,
+    "longname": "src/Game.js~Game#players",
+    "access": "public",
+    "description": null,
+    "lineNumber": 18,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 98,
+    "kind": "member",
+    "name": "map",
+    "memberof": "src/Game.js~Game",
+    "static": false,
+    "longname": "src/Game.js~Game#map",
+    "access": "public",
+    "description": null,
+    "lineNumber": 19,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 99,
+    "kind": "member",
+    "name": "bullets",
+    "memberof": "src/Game.js~Game",
+    "static": false,
+    "longname": "src/Game.js~Game#bullets",
+    "access": "public",
+    "description": null,
+    "lineNumber": 20,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 100,
+    "kind": "member",
+    "name": "world",
+    "memberof": "src/Game.js~Game",
+    "static": false,
+    "longname": "src/Game.js~Game#world",
+    "access": "public",
+    "description": null,
+    "lineNumber": 23,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 101,
+    "kind": "method",
+    "name": "getPlayer",
+    "memberof": "src/Game.js~Game",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Game.js~Game#getPlayer",
+    "access": "public",
+    "description": null,
+    "lineNumber": 28,
+    "undocument": true,
+    "params": [
+      {
+        "name": "args",
+        "types": [
+          "...*"
+        ],
+        "spread": true
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 102,
+    "kind": "method",
+    "name": "createPlayer",
+    "memberof": "src/Game.js~Game",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Game.js~Game#createPlayer",
+    "access": "public",
+    "description": null,
+    "lineNumber": 31,
+    "undocument": true,
+    "params": [
+      {
+        "name": "args",
+        "types": [
+          "...*"
+        ],
+        "spread": true
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 103,
+    "kind": "method",
+    "name": "removePlayer",
+    "memberof": "src/Game.js~Game",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Game.js~Game#removePlayer",
+    "access": "public",
+    "description": null,
+    "lineNumber": 34,
+    "undocument": true,
+    "params": [
+      {
+        "name": "args",
+        "types": [
+          "...*"
+        ],
+        "spread": true
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 104,
+    "kind": "method",
+    "name": "spawnPlayer",
+    "memberof": "src/Game.js~Game",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Game.js~Game#spawnPlayer",
+    "access": "public",
+    "description": null,
+    "lineNumber": 38,
+    "undocument": true,
+    "params": [
+      {
+        "name": "id",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 105,
+    "kind": "method",
+    "name": "setInfo",
+    "memberof": "src/Game.js~Game",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Game.js~Game#setInfo",
+    "access": "public",
+    "description": null,
+    "lineNumber": 47,
+    "undocument": true,
+    "params": [
+      {
+        "name": "key",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "value",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 106,
+    "kind": "method",
+    "name": "getInfo",
+    "memberof": "src/Game.js~Game",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Game.js~Game#getInfo",
+    "access": "public",
+    "description": null,
+    "lineNumber": 59,
+    "undocument": true,
+    "params": [
+      {
+        "name": "key",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "value",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 107,
+    "kind": "method",
+    "name": "getDelta",
+    "memberof": "src/Game.js~Game",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Game.js~Game#getDelta",
+    "access": "public",
+    "description": null,
+    "lineNumber": 63,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 108,
+    "kind": "member",
+    "name": "lastDelta",
+    "memberof": "src/Game.js~Game",
+    "static": false,
+    "longname": "src/Game.js~Game#lastDelta",
+    "access": "public",
+    "description": null,
+    "lineNumber": 66,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 109,
+    "kind": "method",
+    "name": "update",
+    "memberof": "src/Game.js~Game",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Game.js~Game#update",
+    "access": "public",
+    "description": null,
+    "lineNumber": 69,
+    "undocument": true,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 110,
+    "kind": "method",
+    "name": "toJSON",
+    "memberof": "src/Game.js~Game",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Game.js~Game#toJSON",
+    "access": "public",
+    "description": null,
+    "lineNumber": 84,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 111,
+    "kind": "method",
+    "name": "fromJSON",
+    "memberof": "src/Game.js~Game",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Game.js~Game#fromJSON",
+    "access": "public",
+    "description": null,
+    "lineNumber": 99,
+    "undocument": true,
+    "params": [
+      {
+        "name": "json",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 113,
+    "kind": "get",
+    "name": "isClient",
+    "memberof": "src/Game.js~Game",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Game.js~Game#isClient",
+    "access": "public",
+    "description": null,
+    "lineNumber": 111,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 114,
+    "kind": "file",
+    "name": "src/Player.js",
+    "content": "import { Emitter } from \"regexp-events\";\nimport p2 from \"p2\";\nimport { generate as shortID } from \"shortid\";\n\nimport BulletManager from \"./BulletManager\";\nimport { lerp, clipDecimals } from \"./utils\";\nimport { COLLISION_GROUPS } from \"./const\";\n\nexport default class Player extends Emitter {\n\tconstructor(manager, info, props) {\n\t\tsuper();\n\n\t\tthis.manager = manager;\n\t\tthis.id = shortID();\n\n\t\t// this is basic info about the player\n\t\t// NOTE: this is set once when the bullet is created and then never changes\n\t\tthis.info = {\n\t\t\tname: undefined,\n\t\t\tcolor: 0x000000,\n\t\t};\n\t\tthis.props = {\n\t\t\thealth: 100,\n\t\t\tspawned: false,\n\t\t};\n\t\tthis.position = {\n\t\t\tx: 0,\n\t\t\ty: 0,\n\t\t\tvx: 0,\n\t\t\tvy: 0,\n\t\t\tdirection: 0,\n\t\t};\n\t\tthis.controls = {\n\t\t\tmoveX: 0,\n\t\t\tmoveY: 0,\n\t\t\tshoot: false,\n\t\t\tdirection: 0,\n\t\t};\n\n\t\tthis.body = new p2.Body({\n\t\t\tmass: 10,\n\t\t\tdamping: 0,\n\t\t\tfixedRotation: true,\n\t\t});\n\t\tthis.body.addShape(\n\t\t\tnew p2.Circle({\n\t\t\t\tradius: 10,\n\t\t\t}),\n\t\t);\n\n\t\tthis.body.shapes.forEach(shape => {\n\t\t\tshape.collisionGroup = COLLISION_GROUPS.PLAYER;\n\t\t\tshape.collisionMask = COLLISION_GROUPS.WALLS | COLLISION_GROUPS.BULLET | COLLISION_GROUPS.PLAYER;\n\t\t});\n\n\t\t// tmp gun var\n\t\tthis.cooldown = 0.15;\n\t\tthis.tmp = 0;\n\n\t\tif (info) this.setInfo(info);\n\n\t\tif (props) this.setProp(props);\n\t}\n\n\tsetProp(key, value) {\n\t\tif (key instanceof Object) {\n\t\t\tfor (let i in key) this.props[i] = key[i];\n\n\t\t\tthis.emit(\"props-changed\", this.props);\n\t\t} else {\n\t\t\tthis.props[key] = value;\n\t\t\tthis.emit(\"props-changed\", this.props);\n\t\t}\n\n\t\treturn this;\n\t}\n\tsetInfo(key, value) {\n\t\tif (key instanceof Object) {\n\t\t\tfor (let i in key) this.info[i] = key[i];\n\n\t\t\tthis.emit(\"info-changed\", this.info);\n\t\t} else {\n\t\t\tthis.info[key] = value;\n\t\t\tthis.emit(\"info-changed\", this.info);\n\t\t}\n\n\t\treturn this;\n\t}\n\tsetControl(key, value) {\n\t\tif (key instanceof Object) {\n\t\t\tfor (let i in key) this.controls[i] = key[i];\n\n\t\t\tthis.emit(\"controls-changed\", this.controls);\n\t\t} else {\n\t\t\tthis.controls[key] = value;\n\t\t\tthis.emit(\"controls-changed\", this.controls);\n\t\t}\n\n\t\treturn this;\n\t}\n\tgetProp(key, value) {\n\t\treturn this.props[key];\n\t}\n\tgetInfo(key, value) {\n\t\treturn this.info[key];\n\t}\n\tgetControl(key, value) {\n\t\treturn this.controls[key];\n\t}\n\n\tsetPosition(x = this.body.position[0], y = this.body.position[1], vx = 0, vy = 0, direction) {\n\t\tthis.body.position[0] = x;\n\t\tthis.body.position[1] = y;\n\t\tthis.body.velocity[0] = vx;\n\t\tthis.body.velocity[1] = vy;\n\n\t\t// TODO: set the rotation on the p2 body instead\n\t\tthis.position.direction = direction;\n\n\t\t// update position\n\t\tthis._updatePosition();\n\t}\n\n\tupdate(d) {\n\t\tlet { speed, excelerate, decelerate } = this.game.config.player.movement;\n\n\t\t// apply controls\n\t\tif (this.controls.moveX !== 0)\n\t\t\tthis.body.velocity[0] = lerp(this.body.velocity[0], speed * Math.sign(this.controls.moveX), excelerate);\n\t\telse this.body.velocity[0] *= decelerate;\n\n\t\tif (this.controls.moveY !== 0)\n\t\t\tthis.body.velocity[1] = lerp(this.body.velocity[1], speed * Math.sign(this.controls.moveY), excelerate);\n\t\telse this.body.velocity[1] *= decelerate;\n\n\t\tthis.tmp += d;\n\t\tif (this.controls.shoot && this.game.isMaster) {\n\t\t\tif (this.tmp > this.cooldown) {\n\t\t\t\tthis.tmp = 0;\n\t\t\t\tthis.game.bullets.createBullet(\n\t\t\t\t\tBulletManager.BULLET_TYPE.DEFAULT,\n\t\t\t\t\t{ owner: this.id },\n\t\t\t\t\t{\n\t\t\t\t\t\tstart: { x: this.position.x, y: this.position.y },\n\t\t\t\t\t\tdirection: this.controls.direction + (Math.random() - 0.5) * (Math.PI / 32),\n\t\t\t\t\t},\n\t\t\t\t);\n\t\t\t}\n\t\t}\n\n\t\t// update position\n\t\tthis._updatePosition();\n\n\t\tthis.emit(\"update\", d);\n\t}\n\n\t_updatePosition() {\n\t\tthis.position.x = clipDecimals(this.body.position[0]);\n\t\tthis.position.y = clipDecimals(this.body.position[1]);\n\t\tthis.position.vx = clipDecimals(this.body.velocity[0]);\n\t\tthis.position.vy = clipDecimals(this.body.velocity[1]);\n\t}\n\n\ttoJSON() {\n\t\tlet json = {\n\t\t\tid: this.id,\n\t\t\tinfo: this.info,\n\t\t\tprops: this.props,\n\t\t\tposition: this.position,\n\t\t\tcontrols: this.controls,\n\t\t};\n\n\t\tthis.emit(\"to-json\", json);\n\n\t\treturn json;\n\t}\n\n\tfromJSON(json) {\n\t\tthis.id = json.id;\n\t\tthis.setInfo(json.info);\n\t\tthis.setProp(json.props);\n\t\tthis.setControl(json.controls);\n\t\tObject.assign(this.position, json.position);\n\n\t\tthis.emit(\"from-json\", json);\n\n\t\treturn this;\n\t}\n\n\t// overwrite emit so we can fire events on the manager\n\temit(event, ...args) {\n\t\tlet v = Emitter.prototype.emit.call(this, event, ...args);\n\t\tthis.manager.emit(\"player-\" + event, this, ...args);\n\t\tthis.manager.emit(`player-${this.id}-${event}`, this, ...args);\n\t\treturn v;\n\t}\n\n\tget game() {\n\t\treturn this.manager.game;\n\t}\n}\n",
+    "static": true,
+    "longname": "/home/circleci/repo/src/Player.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 115,
+    "kind": "class",
+    "name": "Player",
+    "memberof": "src/Player.js",
+    "static": true,
+    "longname": "src/Player.js~Player",
+    "access": "public",
+    "export": true,
+    "importPath": "lazer-game-core/src/Player.js",
+    "importStyle": "Player",
+    "description": null,
+    "lineNumber": 9,
+    "undocument": true,
+    "interface": false,
+    "extends": [
+      "regexp-events~Emitter"
+    ]
+  },
+  {
+    "__docId__": 116,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/Player.js~Player",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Player.js~Player#constructor",
+    "access": "public",
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true
+  },
+  {
+    "__docId__": 117,
+    "kind": "member",
+    "name": "manager",
+    "memberof": "src/Player.js~Player",
+    "static": false,
+    "longname": "src/Player.js~Player#manager",
+    "access": "public",
+    "description": null,
+    "lineNumber": 13,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 118,
+    "kind": "member",
+    "name": "id",
+    "memberof": "src/Player.js~Player",
+    "static": false,
+    "longname": "src/Player.js~Player#id",
+    "access": "public",
+    "description": null,
+    "lineNumber": 14,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 119,
+    "kind": "member",
+    "name": "info",
+    "memberof": "src/Player.js~Player",
+    "static": false,
+    "longname": "src/Player.js~Player#info",
+    "access": "public",
+    "description": null,
+    "lineNumber": 18,
+    "undocument": true,
+    "type": {
+      "types": [
+        "{\"name\": *, \"color\": *}"
+      ]
+    }
+  },
+  {
+    "__docId__": 120,
+    "kind": "member",
+    "name": "props",
+    "memberof": "src/Player.js~Player",
+    "static": false,
+    "longname": "src/Player.js~Player#props",
+    "access": "public",
+    "description": null,
+    "lineNumber": 22,
+    "undocument": true,
+    "type": {
+      "types": [
+        "{\"health\": number, \"spawned\": *}"
+      ]
+    }
+  },
+  {
+    "__docId__": 121,
+    "kind": "member",
+    "name": "position",
+    "memberof": "src/Player.js~Player",
+    "static": false,
+    "longname": "src/Player.js~Player#position",
+    "access": "public",
+    "description": null,
+    "lineNumber": 26,
+    "undocument": true,
+    "type": {
+      "types": [
+        "{\"x\": *, \"y\": *, \"vx\": *, \"vy\": *, \"direction\": *}"
+      ]
+    }
+  },
+  {
+    "__docId__": 122,
+    "kind": "member",
+    "name": "controls",
+    "memberof": "src/Player.js~Player",
+    "static": false,
+    "longname": "src/Player.js~Player#controls",
+    "access": "public",
+    "description": null,
+    "lineNumber": 33,
+    "undocument": true,
+    "type": {
+      "types": [
+        "{\"moveX\": *, \"moveY\": *, \"shoot\": *, \"direction\": *}"
+      ]
+    }
+  },
+  {
+    "__docId__": 123,
+    "kind": "member",
+    "name": "body",
+    "memberof": "src/Player.js~Player",
+    "static": false,
+    "longname": "src/Player.js~Player#body",
+    "access": "public",
+    "description": null,
+    "lineNumber": 40,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 124,
+    "kind": "member",
+    "name": "cooldown",
+    "memberof": "src/Player.js~Player",
+    "static": false,
+    "longname": "src/Player.js~Player#cooldown",
+    "access": "public",
+    "description": null,
+    "lineNumber": 57,
+    "undocument": true,
+    "type": {
+      "types": [
+        "number"
+      ]
+    }
+  },
+  {
+    "__docId__": 125,
+    "kind": "member",
+    "name": "tmp",
+    "memberof": "src/Player.js~Player",
+    "static": false,
+    "longname": "src/Player.js~Player#tmp",
+    "access": "public",
+    "description": null,
+    "lineNumber": 58,
+    "undocument": true,
+    "type": {
+      "types": [
+        "number"
+      ]
+    }
+  },
+  {
+    "__docId__": 126,
+    "kind": "method",
+    "name": "setProp",
+    "memberof": "src/Player.js~Player",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Player.js~Player#setProp",
+    "access": "public",
+    "description": null,
+    "lineNumber": 65,
+    "undocument": true,
+    "params": [
+      {
+        "name": "key",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "value",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 127,
+    "kind": "method",
+    "name": "setInfo",
+    "memberof": "src/Player.js~Player",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Player.js~Player#setInfo",
+    "access": "public",
+    "description": null,
+    "lineNumber": 77,
+    "undocument": true,
+    "params": [
+      {
+        "name": "key",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "value",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 128,
+    "kind": "method",
+    "name": "setControl",
+    "memberof": "src/Player.js~Player",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Player.js~Player#setControl",
+    "access": "public",
+    "description": null,
+    "lineNumber": 89,
+    "undocument": true,
+    "params": [
+      {
+        "name": "key",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "value",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 129,
+    "kind": "method",
+    "name": "getProp",
+    "memberof": "src/Player.js~Player",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Player.js~Player#getProp",
+    "access": "public",
+    "description": null,
+    "lineNumber": 101,
+    "undocument": true,
+    "params": [
+      {
+        "name": "key",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "value",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 130,
+    "kind": "method",
+    "name": "getInfo",
+    "memberof": "src/Player.js~Player",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Player.js~Player#getInfo",
+    "access": "public",
+    "description": null,
+    "lineNumber": 104,
+    "undocument": true,
+    "params": [
+      {
+        "name": "key",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "value",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 131,
+    "kind": "method",
+    "name": "getControl",
+    "memberof": "src/Player.js~Player",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Player.js~Player#getControl",
+    "access": "public",
+    "description": null,
+    "lineNumber": 107,
+    "undocument": true,
+    "params": [
+      {
+        "name": "key",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "value",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 132,
+    "kind": "method",
+    "name": "setPosition",
+    "memberof": "src/Player.js~Player",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Player.js~Player#setPosition",
+    "access": "public",
+    "description": null,
+    "lineNumber": 111,
+    "undocument": true,
+    "params": [
+      {
+        "name": "x",
+        "optional": true,
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "y",
+        "optional": true,
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "vx",
+        "optional": true,
+        "types": [
+          "number"
+        ],
+        "defaultRaw": 0,
+        "defaultValue": "0"
+      },
+      {
+        "name": "vy",
+        "optional": true,
+        "types": [
+          "number"
+        ],
+        "defaultRaw": 0,
+        "defaultValue": "0"
+      },
+      {
+        "name": "direction",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 133,
+    "kind": "method",
+    "name": "update",
+    "memberof": "src/Player.js~Player",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Player.js~Player#update",
+    "access": "public",
+    "description": null,
+    "lineNumber": 124,
+    "undocument": true,
+    "params": [
+      {
+        "name": "d",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 136,
+    "kind": "method",
+    "name": "_updatePosition",
+    "memberof": "src/Player.js~Player",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Player.js~Player#_updatePosition",
+    "access": "private",
+    "description": null,
+    "lineNumber": 157,
+    "undocument": true,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 137,
+    "kind": "method",
+    "name": "toJSON",
+    "memberof": "src/Player.js~Player",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Player.js~Player#toJSON",
+    "access": "public",
+    "description": null,
+    "lineNumber": 164,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 138,
+    "kind": "method",
+    "name": "fromJSON",
+    "memberof": "src/Player.js~Player",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Player.js~Player#fromJSON",
+    "access": "public",
+    "description": null,
+    "lineNumber": 178,
+    "undocument": true,
+    "params": [
+      {
+        "name": "json",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 140,
+    "kind": "method",
+    "name": "emit",
+    "memberof": "src/Player.js~Player",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Player.js~Player#emit",
+    "access": "public",
+    "description": null,
+    "lineNumber": 191,
+    "undocument": true,
+    "params": [
+      {
+        "name": "event",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "args",
+        "types": [
+          "...*"
+        ],
+        "spread": true
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 141,
+    "kind": "get",
+    "name": "game",
+    "memberof": "src/Player.js~Player",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Player.js~Player#game",
+    "access": "public",
+    "description": null,
+    "lineNumber": 198,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 142,
+    "kind": "file",
+    "name": "src/PlayerManager.js",
+    "content": "import { Emitter } from \"regexp-events\";\nimport Player from \"./Player\";\n\nexport default class PlayerManager extends Emitter {\n\tconstructor(game) {\n\t\tsuper();\n\n\t\tthis.game = game;\n\t\tthis.players = [];\n\t}\n\n\tgetPlayer(id) {\n\t\tif (id instanceof Player) return this.players.includes(id) ? id : undefined;\n\t\telse return this.players.find(player => player.id === id);\n\t}\n\n\tcreatePlayer(info, props) {\n\t\tlet player = new Player(this, info, props);\n\n\t\t// add the player to the list of players\n\t\tthis.players.push(player);\n\t\t// add the player to the world\n\t\tthis.game.world.addBody(player.body);\n\n\t\tthis.emit(\"player-created\", player);\n\t\treturn player;\n\t}\n\n\tcreateFromJSON(json) {\n\t\tlet player = new Player(this, json.info, json.props);\n\t\tplayer.fromJSON(json);\n\n\t\t// add the player to the list of players\n\t\tthis.players.push(player);\n\t\t// add the player to the world\n\t\tthis.game.world.addBody(player.body);\n\n\t\tthis.emit(\"player-created\", player);\n\t\treturn player;\n\t}\n\n\tremovePlayer(id) {\n\t\tlet player = this.getPlayer(id);\n\t\tif (this.players.includes(player)) {\n\t\t\t// remove player from the list\n\t\t\tthis.players.splice(this.players.indexOf(player), 1);\n\t\t\t// remove the player from the world\n\t\t\tthis.game.world.removeBody(player.body);\n\n\t\t\tthis.emit(\"player-removed\", player);\n\t\t}\n\t\treturn this;\n\t}\n\n\tclearPlayers() {\n\t\tlet players = Array.from(this.players);\n\t\tthis.players.forEach(this.removePlayer.bind(this));\n\t\tthis.emit(\"players-cleared\", players);\n\t\treturn this;\n\t}\n\n\tupdate(d) {\n\t\tthis.players.forEach(player => player.update(d));\n\t}\n\n\ttoJSON() {\n\t\tlet json = this.players.map(player => player.toJSON());\n\t\tthis.emit(\"to-json\", json);\n\t\treturn json;\n\t}\n\n\tfromJSON(json) {\n\t\tthis.clearPlayers();\n\t\tjson.forEach(data => {\n\t\t\tlet player = this.createPlayer();\n\t\t\tplayer.fromJSON(data);\n\t\t});\n\t\tthis.emit(\"from-json\", json);\n\t\treturn this;\n\t}\n}\n",
+    "static": true,
+    "longname": "/home/circleci/repo/src/PlayerManager.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 143,
+    "kind": "class",
+    "name": "PlayerManager",
+    "memberof": "src/PlayerManager.js",
+    "static": true,
+    "longname": "src/PlayerManager.js~PlayerManager",
+    "access": "public",
+    "export": true,
+    "importPath": "lazer-game-core/src/PlayerManager.js",
+    "importStyle": "PlayerManager",
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "interface": false,
+    "extends": [
+      "regexp-events~Emitter"
+    ]
+  },
+  {
+    "__docId__": 144,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/PlayerManager.js~PlayerManager",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/PlayerManager.js~PlayerManager#constructor",
+    "access": "public",
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true
+  },
+  {
+    "__docId__": 145,
+    "kind": "member",
+    "name": "game",
+    "memberof": "src/PlayerManager.js~PlayerManager",
+    "static": false,
+    "longname": "src/PlayerManager.js~PlayerManager#game",
+    "access": "public",
+    "description": null,
+    "lineNumber": 8,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 146,
+    "kind": "member",
+    "name": "players",
+    "memberof": "src/PlayerManager.js~PlayerManager",
+    "static": false,
+    "longname": "src/PlayerManager.js~PlayerManager#players",
+    "access": "public",
+    "description": null,
+    "lineNumber": 9,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*[]"
+      ]
+    }
+  },
+  {
+    "__docId__": 147,
+    "kind": "method",
+    "name": "getPlayer",
+    "memberof": "src/PlayerManager.js~PlayerManager",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/PlayerManager.js~PlayerManager#getPlayer",
+    "access": "public",
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true,
+    "params": [
+      {
+        "name": "id",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 148,
+    "kind": "method",
+    "name": "createPlayer",
+    "memberof": "src/PlayerManager.js~PlayerManager",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/PlayerManager.js~PlayerManager#createPlayer",
+    "access": "public",
+    "description": null,
+    "lineNumber": 17,
+    "undocument": true,
+    "params": [
+      {
+        "name": "info",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "props",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 149,
+    "kind": "method",
+    "name": "createFromJSON",
+    "memberof": "src/PlayerManager.js~PlayerManager",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/PlayerManager.js~PlayerManager#createFromJSON",
+    "access": "public",
+    "description": null,
+    "lineNumber": 29,
+    "undocument": true,
+    "params": [
+      {
+        "name": "json",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 150,
+    "kind": "method",
+    "name": "removePlayer",
+    "memberof": "src/PlayerManager.js~PlayerManager",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/PlayerManager.js~PlayerManager#removePlayer",
+    "access": "public",
+    "description": null,
+    "lineNumber": 42,
+    "undocument": true,
+    "params": [
+      {
+        "name": "id",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 151,
+    "kind": "method",
+    "name": "clearPlayers",
+    "memberof": "src/PlayerManager.js~PlayerManager",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/PlayerManager.js~PlayerManager#clearPlayers",
+    "access": "public",
+    "description": null,
+    "lineNumber": 55,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 152,
+    "kind": "method",
+    "name": "update",
+    "memberof": "src/PlayerManager.js~PlayerManager",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/PlayerManager.js~PlayerManager#update",
+    "access": "public",
+    "description": null,
+    "lineNumber": 62,
+    "undocument": true,
+    "params": [
+      {
+        "name": "d",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 153,
+    "kind": "method",
+    "name": "toJSON",
+    "memberof": "src/PlayerManager.js~PlayerManager",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/PlayerManager.js~PlayerManager#toJSON",
+    "access": "public",
+    "description": null,
+    "lineNumber": 66,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 154,
+    "kind": "method",
+    "name": "fromJSON",
+    "memberof": "src/PlayerManager.js~PlayerManager",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/PlayerManager.js~PlayerManager#fromJSON",
+    "access": "public",
+    "description": null,
+    "lineNumber": 72,
+    "undocument": true,
+    "params": [
+      {
+        "name": "json",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 155,
+    "kind": "file",
+    "name": "src/Tilemap.js",
+    "content": "import { Emitter } from \"regexp-events\";\nimport p2 from \"p2\";\nimport _ from \"lodash\";\n\nimport { lerp } from \"./utils\";\nimport { COLLISION_GROUPS } from \"./const\";\n\nconst TILE_SIZE = 50;\nexport default class Tilemap extends Emitter {\n\tconstructor(game) {\n\t\tsuper();\n\n\t\tthis.game = game;\n\t\tthis.size = { width: 0, height: 0 };\n\t\tthis.bodies = [];\n\t\tthis.spawnAreas = [];\n\t\tthis.loadedJSON = {};\n\t}\n\n\tclearBodies() {\n\t\tthis.bodies.forEach(body => this.game.world.removeBody(body));\n\t\tthis.bodies = [];\n\t\tthis.emit(\"collisions-cleared\");\n\t\treturn this;\n\t}\n\n\ttoJSON() {\n\t\treturn this.loadedJSON;\n\t}\n\n\tfromJSON(json) {\n\t\tthis.clearBodies();\n\n\t\tthis.loadedJSON = json;\n\n\t\tthis.size.width = json.size.width;\n\t\tthis.size.height = json.size.height;\n\n\t\t// build the collisions for the map\n\t\tthis.bodies = Tilemap.buildCollisions(json.collisions);\n\n\t\t// set all the collisions groups\n\t\tthis.bodies.forEach(body => {\n\t\t\tbody.shapes.forEach(shape => {\n\t\t\t\tshape.collisionGroup = COLLISION_GROUPS.WALLS;\n\t\t\t\tshape.collisionMask = COLLISION_GROUPS.ALL;\n\t\t\t});\n\t\t});\n\n\t\tthis.bodies.forEach(body => this.game.world.addBody(body));\n\t\tthis.emit(\"from-json\", json);\n\t\treturn this;\n\t}\n\n\tgetSpawnPoint() {\n\t\treturn {\n\t\t\tx: this.size.width / 2 * TILE_SIZE,\n\t\t\ty: this.size.height / 2 * TILE_SIZE,\n\t\t};\n\t}\n\n\tstatic buildCollisions(collisions) {\n\t\tlet bodies = [];\n\n\t\tfor (let i = 0; i < collisions.length; i++) {\n\t\t\tlet object = collisions[i];\n\n\t\t\tif (!object.visible) continue;\n\n\t\t\t// create the shape\n\t\t\tif (Array.isArray(object.polygon)) {\n\t\t\t\tlet body = new p2.Body({ mass: 0 });\n\t\t\t\tbody.position[0] = object.x;\n\t\t\t\tbody.position[1] = object.y;\n\t\t\t\tbody.fromPolygon(object.polygon.map(point => [point.x, point.y]));\n\t\t\t\tbodies.push(body);\n\t\t\t} else if (Array.isArray(object.polyline)) {\n\t\t\t\tlet body = new p2.Body({ mass: 0 });\n\t\t\t\tbody.position[0] = object.x;\n\t\t\t\tbody.position[1] = object.y;\n\n\t\t\t\t// start at the second point\n\t\t\t\tfor (let i = 1; i < object.polyline.length; i++) {\n\t\t\t\t\tlet prev = object.polyline[i - 1];\n\t\t\t\t\tlet curr = object.polyline[i];\n\t\t\t\t\tlet length = Math.sqrt(Math.pow(curr.x - prev.x, 2) + Math.pow(curr.y - prev.y, 2));\n\t\t\t\t\tlet angle = Math.atan2(curr.y - prev.y, curr.x - prev.x);\n\t\t\t\t\tbody.addShape(\n\t\t\t\t\t\tnew p2.Line({\n\t\t\t\t\t\t\tposition: [lerp(prev.x, curr.x, 0.5), lerp(prev.y, curr.y, 0.5)],\n\t\t\t\t\t\t\tlength: length,\n\t\t\t\t\t\t\tangle: angle,\n\t\t\t\t\t\t}),\n\t\t\t\t\t);\n\t\t\t\t}\n\n\t\t\t\tbodies.push(body);\n\t\t\t} else if (object.height > 0 && object.width > 0) {\n\t\t\t\tlet body = new p2.Body({ mass: 0 });\n\t\t\t\tbody.position[0] = object.x + object.width / 2;\n\t\t\t\tbody.position[1] = object.y + object.height / 2;\n\t\t\t\tbody.addShape(\n\t\t\t\t\tnew p2.Box({\n\t\t\t\t\t\twidth: object.width,\n\t\t\t\t\t\theight: object.height,\n\t\t\t\t\t}),\n\t\t\t\t);\n\t\t\t\tbodies.push(body);\n\t\t\t}\n\t\t}\n\n\t\treturn bodies;\n\t}\n\n\tstatic parseTiledJSON(json) {\n\t\tlet mapJSON = {\n\t\t\tsize: {\n\t\t\t\twidth: json.width,\n\t\t\t\theight: json.height,\n\t\t\t},\n\t\t\ttypes: [],\n\t\t\ttiles: [],\n\t\t};\n\n\t\t// get the collisions\n\t\tmapJSON.collisions = json.layers.find(layer => {\n\t\t\treturn layer.objects && layer.name == \"collision\" && layer.type == \"objectgroup\";\n\t\t}).objects;\n\n\t\t// get all the tile props\n\t\tlet tileProperties = {};\n\t\tjson.tilesets.forEach(tileset => {\n\t\t\tfor (let id in tileset.tileproperties) {\n\t\t\t\tlet tileID = parseInt(id) + tileset.firstgid;\n\t\t\t\tif (Reflect.ownKeys(tileset.tileproperties[id]).length > 0) {\n\t\t\t\t\tif (!tileProperties[tileID]) tileProperties[tileID] = {};\n\t\t\t\t\tObject.assign(tileProperties[tileID], tileset.tileproperties[id]);\n\t\t\t\t}\n\t\t\t}\n\t\t});\n\n\t\t// compile all the tile props\n\t\tjson.layers.filter(layer => layer.type === \"tilelayer\").forEach(layer => {\n\t\t\tfor (let i = 0; i < layer.data.length; i++) {\n\t\t\t\tlet y = Math.floor(i / json.width);\n\t\t\t\tlet x = i - y * json.width;\n\t\t\t\tif (!mapJSON.tiles[y]) mapJSON.tiles[y] = [];\n\t\t\t\tif (!mapJSON.tiles[y][x]) mapJSON.tiles[y][x] = [];\n\n\t\t\t\tlet props = tileProperties[layer.data[i]];\n\t\t\t\tif (props) mapJSON.tiles[y][x].push(props);\n\t\t\t}\n\t\t});\n\n\t\t// condense the tiles down to types\n\t\tmapJSON.tiles = mapJSON.tiles.map(row => {\n\t\t\treturn row.map(tile => {\n\t\t\t\t// find a type that has exactaly the make models as the tile\n\t\t\t\tlet type = mapJSON.types.find(type => _.isEqual(tile, type));\n\n\t\t\t\tif (!type && tile.length > 0) mapJSON.types.push((type = tile));\n\n\t\t\t\treturn mapJSON.types.indexOf(type);\n\t\t\t});\n\t\t});\n\n\t\treturn mapJSON;\n\t}\n}\n",
+    "static": true,
+    "longname": "/home/circleci/repo/src/Tilemap.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 156,
+    "kind": "variable",
+    "name": "TILE_SIZE",
+    "memberof": "src/Tilemap.js",
+    "static": true,
+    "longname": "src/Tilemap.js~TILE_SIZE",
+    "access": "public",
+    "export": false,
+    "importPath": "lazer-game-core/src/Tilemap.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 8,
+    "undocument": true,
+    "type": {
+      "types": [
+        "number"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 157,
+    "kind": "class",
+    "name": "Tilemap",
+    "memberof": "src/Tilemap.js",
+    "static": true,
+    "longname": "src/Tilemap.js~Tilemap",
+    "access": "public",
+    "export": true,
+    "importPath": "lazer-game-core/src/Tilemap.js",
+    "importStyle": "Tilemap",
+    "description": null,
+    "lineNumber": 9,
+    "undocument": true,
+    "interface": false,
+    "extends": [
+      "regexp-events~Emitter"
+    ]
+  },
+  {
+    "__docId__": 158,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/Tilemap.js~Tilemap",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Tilemap.js~Tilemap#constructor",
+    "access": "public",
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true
+  },
+  {
+    "__docId__": 159,
+    "kind": "member",
+    "name": "game",
+    "memberof": "src/Tilemap.js~Tilemap",
+    "static": false,
+    "longname": "src/Tilemap.js~Tilemap#game",
+    "access": "public",
+    "description": null,
+    "lineNumber": 13,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 160,
+    "kind": "member",
+    "name": "size",
+    "memberof": "src/Tilemap.js~Tilemap",
+    "static": false,
+    "longname": "src/Tilemap.js~Tilemap#size",
+    "access": "public",
+    "description": null,
+    "lineNumber": 14,
+    "undocument": true,
+    "type": {
+      "types": [
+        "{\"width\": *, \"height\": *}"
+      ]
+    }
+  },
+  {
+    "__docId__": 161,
+    "kind": "member",
+    "name": "bodies",
+    "memberof": "src/Tilemap.js~Tilemap",
+    "static": false,
+    "longname": "src/Tilemap.js~Tilemap#bodies",
+    "access": "public",
+    "description": null,
+    "lineNumber": 15,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*[]"
+      ]
+    }
+  },
+  {
+    "__docId__": 162,
+    "kind": "member",
+    "name": "spawnAreas",
+    "memberof": "src/Tilemap.js~Tilemap",
+    "static": false,
+    "longname": "src/Tilemap.js~Tilemap#spawnAreas",
+    "access": "public",
+    "description": null,
+    "lineNumber": 16,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*[]"
+      ]
+    }
+  },
+  {
+    "__docId__": 163,
+    "kind": "member",
+    "name": "loadedJSON",
+    "memberof": "src/Tilemap.js~Tilemap",
+    "static": false,
+    "longname": "src/Tilemap.js~Tilemap#loadedJSON",
+    "access": "public",
+    "description": null,
+    "lineNumber": 17,
+    "undocument": true,
+    "type": {
+      "types": [
+        "{}"
+      ]
+    }
+  },
+  {
+    "__docId__": 164,
+    "kind": "method",
+    "name": "clearBodies",
+    "memberof": "src/Tilemap.js~Tilemap",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Tilemap.js~Tilemap#clearBodies",
+    "access": "public",
+    "description": null,
+    "lineNumber": 20,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 166,
+    "kind": "method",
+    "name": "toJSON",
+    "memberof": "src/Tilemap.js~Tilemap",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Tilemap.js~Tilemap#toJSON",
+    "access": "public",
+    "description": null,
+    "lineNumber": 27,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 167,
+    "kind": "method",
+    "name": "fromJSON",
+    "memberof": "src/Tilemap.js~Tilemap",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Tilemap.js~Tilemap#fromJSON",
+    "access": "public",
+    "description": null,
+    "lineNumber": 31,
+    "undocument": true,
+    "params": [
+      {
+        "name": "json",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 170,
+    "kind": "method",
+    "name": "getSpawnPoint",
+    "memberof": "src/Tilemap.js~Tilemap",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Tilemap.js~Tilemap#getSpawnPoint",
+    "access": "public",
+    "description": null,
+    "lineNumber": 55,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "{\"x\": *, \"y\": *}"
+      ]
+    }
+  },
+  {
+    "__docId__": 171,
+    "kind": "method",
+    "name": "buildCollisions",
+    "memberof": "src/Tilemap.js~Tilemap",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/Tilemap.js~Tilemap.buildCollisions",
+    "access": "public",
+    "description": null,
+    "lineNumber": 62,
+    "undocument": true,
+    "params": [
+      {
+        "name": "collisions",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 172,
+    "kind": "method",
+    "name": "parseTiledJSON",
+    "memberof": "src/Tilemap.js~Tilemap",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/Tilemap.js~Tilemap.parseTiledJSON",
+    "access": "public",
+    "description": null,
+    "lineNumber": 115,
+    "undocument": true,
+    "params": [
+      {
+        "name": "json",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 173,
+    "kind": "file",
+    "name": "src/const.js",
+    "content": "const COLLISION_GROUPS = {\n\tPLAYER: Math.pow(2, 0),\n\tWALLS: Math.pow(2, 1),\n\tBULLET: Math.pow(2, 2),\n};\n\nCOLLISION_GROUPS.ALL = Object.keys(COLLISION_GROUPS)\n\t.map(key => COLLISION_GROUPS[key])\n\t.reduce((a, b) => a | b);\n\nexport { COLLISION_GROUPS };\n",
+    "static": true,
+    "longname": "/home/circleci/repo/src/const.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 174,
+    "kind": "variable",
+    "name": "COLLISION_GROUPS",
+    "memberof": "src/const.js",
+    "static": true,
+    "longname": "src/const.js~COLLISION_GROUPS",
+    "access": "public",
+    "export": true,
+    "importPath": "lazer-game-core/src/const.js",
+    "importStyle": "{COLLISION_GROUPS}",
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true,
+    "type": {
+      "types": [
+        "{\"PLAYER\": *, \"WALLS\": *, \"BULLET\": *}"
+      ]
+    }
+  },
+  {
+    "__docId__": 175,
+    "kind": "file",
+    "name": "src/gameConfig.js",
+    "content": "const BASE_CONFIG = {\n\tplayer: {\n\t\tmovement: {\n\t\t\tspeed: 180,\n\t\t\texcelerate: 0.9,\n\t\t\tdecelerate: 0.7,\n\t\t},\n\t\tmax: 10,\n\t},\n};\n\nexport { BASE_CONFIG as default };\n",
+    "static": true,
+    "longname": "/home/circleci/repo/src/gameConfig.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 176,
+    "kind": "variable",
+    "name": "BASE_CONFIG",
+    "memberof": "src/gameConfig.js",
+    "static": true,
+    "longname": "src/gameConfig.js~BASE_CONFIG",
+    "access": "public",
+    "export": false,
+    "importPath": "lazer-game-core/src/gameConfig.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true,
+    "type": {
+      "types": [
+        "{\"player\": *}"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 177,
+    "kind": "file",
+    "name": "src/index.js",
+    "content": "import Game from \"./Game\";\nimport Player from \"./Player\";\nimport PlayerManager from \"./PlayerManager\";\nimport Tilemap from \"./Tilemap\";\nimport Bullet from \"./Bullet\";\nimport BulletManager from \"./BulletManager\";\n\nexport { Game, Player, PlayerManager, Tilemap, Bullet, BulletManager };\n",
+    "static": true,
+    "longname": "/home/circleci/repo/src/index.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 178,
+    "kind": "file",
+    "name": "src/utils.js",
+    "content": "import _ from \"lodash\";\nimport p2 from \"p2\";\n\nexport const NAME_TEMPLATES = [\n\t\"nice {{name}}\",\n\t\"awesome {{name}}\",\n\t\"{{name}} the cool\",\n\t\"{{name}} the short\",\n\t\"{{name}} the tall\",\n\t\"{{name}} the fat\",\n\t\"{{name}} the thin\",\n\t\"{{name}} the scared\",\n\t\"insane {{name}}\",\n\t\"{{name}} the kid\",\n\t\"really fat {{name}}\",\n\t\"{{name}} the smart\",\n\t\"{{name}} the brave\",\n\t\"the amazing {{name}}\",\n\t\"{{name}} the bald\",\n];\nexport const NAMES = [\n\t\"James\",\n\t\"John\",\n\t\"Robert\",\n\t\"Michael\",\n\t\"William\",\n\t\"David\",\n\t\"Richard\",\n\t\"Charles\",\n\t\"Joseph\",\n\t\"Thomas\",\n\t\"Christopher\",\n\t\"Daniel\",\n\t\"Paul\",\n\t\"Mark\",\n\t\"Donald\",\n\t\"George\",\n\t\"Kenneth\",\n\t\"Steven\",\n\t\"Edward\",\n\t\"Brian\",\n\t\"Ronald\",\n\t\"Anthony\",\n\t\"Kevin\",\n\t\"Jason\",\n\t\"Matthew\",\n\t\"Gary\",\n\t\"Timothy\",\n\t\"Jose\",\n\t\"Larry\",\n\t\"Jeffrey\",\n\t\"Frank\",\n\t\"Scott\",\n\t\"Eric\",\n\t\"Stephen\",\n\t\"Andrew\",\n\t\"Raymond\",\n\t\"Gregory\",\n\t\"Joshua\",\n\t\"Jerry\",\n\t\"Dennis\",\n\t\"Walter\",\n\t\"Patrick\",\n\t\"Peter\",\n\t\"Harold\",\n\t\"Douglas\",\n\t\"Henry\",\n\t\"Carl\",\n\t\"Arthur\",\n\t\"Ryan\",\n\t\"Roger\",\n\t\"Joe\",\n\t\"Juan\",\n\t\"Jack\",\n\t\"Albert\",\n\t\"Jonathan\",\n\t\"Justin\",\n\t\"Terry\",\n\t\"Gerald\",\n\t\"Keith\",\n\t\"Samuel\",\n\t\"Willie\",\n\t\"Ralph\",\n\t\"Lawrence\",\n\t\"Nicholas\",\n\t\"Roy\",\n\t\"Benjamin\",\n\t\"Bruce\",\n\t\"Brandon\",\n\t\"Adam\",\n\t\"Harry\",\n\t\"Fred\",\n\t\"Wayne\",\n\t\"Billy\",\n\t\"Steve\",\n\t\"Louis\",\n\t\"Jeremy\",\n\t\"Aaron\",\n\t\"Randy\",\n\t\"Howard\",\n\t\"Eugene\",\n\t\"Carlos\",\n\t\"Russell\",\n\t\"Bobby\",\n\t\"Victor\",\n\t\"Martin\",\n\t\"Ernest\",\n\t\"Phillip\",\n\t\"Todd\",\n\t\"Jesse\",\n\t\"Craig\",\n\t\"Alan\",\n\t\"Shawn\",\n\t\"Clarence\",\n\t\"Sean\",\n\t\"Philip\",\n\t\"Chris\",\n\t\"Johnny\",\n\t\"Earl\",\n\t\"Jimmy\",\n\t\"Antonio\",\n];\n\nexport function createName() {\n\treturn NAME_TEMPLATES[Math.floor(Math.random() * NAME_TEMPLATES.length)].replace(\n\t\t\"{{name}}\",\n\t\tNAMES[Math.floor(Math.random() * NAMES.length)],\n\t);\n}\n\nexport function lerp(v0, v1, t) {\n\treturn v0 * (1 - t) + v1 * t;\n}\n\nexport function parseSearch(url) {\n\turl = url || (window && window.location.href);\n\tparseSearch.cache = parseSearch.cache || {};\n\tif (!parseSearch.cache[url]) {\n\t\tlet search = url.indexOf(\"?\") !== -1 ? url.substr(url.indexOf(\"?\") + 1, url.length + 1) : \"\";\n\t\tlet queries = search\n\t\t\t.replace(/^\\?/, \"\")\n\t\t\t.replace(/\\+/g, \" \")\n\t\t\t.split(\"&\");\n\t\tparseSearch.cache[url] = {};\n\t\tfor (let i = 0; i < queries.length; i++) {\n\t\t\tlet split = queries[i].split(\"=\");\n\t\t\tif (split[0] !== \"\") {\n\t\t\t\tlet value = split[1];\n\t\t\t\tif (!isNaN(value)) value = parseFloat(value);\n\t\t\t\telse if (value === \"true\" || value === undefined || value === \"on\") value = true;\n\t\t\t\telse if (value === \"false\" || value === \"off\") value = false;\n\t\t\t\telse value = window.unescape(value);\n\n\t\t\t\tparseSearch.cache[url][split[0]] = value;\n\t\t\t}\n\t\t}\n\t}\n\treturn parseSearch.cache[url];\n}\n\nconst DEFAULT_SETTINGS = {\n\tcolor: undefined,\n\tname: undefined,\n\tshadows: true,\n\tdebug: false,\n};\nexport function getURLSearchSettings(url = location.href) {\n\tif (!getURLSearchSettings.cache) getURLSearchSettings.cache = {};\n\n\tif (!getURLSearchSettings.cache[url]) {\n\t\tlet params = parseSearch(url);\n\t\tlet settings = _.clone(DEFAULT_SETTINGS);\n\n\t\t// only trun off the shadows if its set to false\n\t\tif (params.shadows === false) settings.shadows = false;\n\n\t\tsettings.debug = !!params.debug;\n\n\t\tgetURLSearchSettings.cache[url] = settings;\n\t}\n\n\treturn getURLSearchSettings.cache[url];\n}\n\nexport function buildCollisions(collisions) {\n\tlet bodies = [];\n\n\tfor (let i = 0; i < collisions.length; i++) {\n\t\tlet object = collisions[i];\n\n\t\tif (!object.visible) continue;\n\n\t\t// create the shape\n\t\tif (Array.isArray(object.polygon)) {\n\t\t\tlet body = new p2.Body({ mass: 0 });\n\t\t\tbody.position[0] = object.x;\n\t\t\tbody.position[1] = object.y;\n\t\t\tbody.fromPolygon(object.polygon.map(point => [point.x, point.y]));\n\t\t\tbodies.push(body);\n\t\t} else if (Array.isArray(object.polyline)) {\n\t\t\tlet body = new p2.Body({ mass: 0 });\n\t\t\tbody.position[0] = object.x;\n\t\t\tbody.position[1] = object.y;\n\n\t\t\t// start at the second point\n\t\t\tfor (let i = 1; i < object.polyline.length; i++) {\n\t\t\t\tlet prev = object.polyline[i - 1];\n\t\t\t\tlet curr = object.polyline[i];\n\t\t\t\tlet length = Math.sqrt(Math.pow(curr.x - prev.x, 2) + Math.pow(curr.y - prev.y, 2));\n\t\t\t\tlet angle = Math.atan2(curr.y - prev.y, curr.x - prev.x);\n\t\t\t\tbody.addShape(\n\t\t\t\t\tnew p2.Line({\n\t\t\t\t\t\tposition: [lerp(prev.x, curr.x, 0.5), lerp(prev.y, curr.y, 0.5)],\n\t\t\t\t\t\tlength: length,\n\t\t\t\t\t\tangle: angle,\n\t\t\t\t\t}),\n\t\t\t\t);\n\t\t\t}\n\n\t\t\tbodies.push(body);\n\t\t} else if (object.height > 0 && object.width > 0) {\n\t\t\tlet body = new p2.Body({ mass: 0 });\n\t\t\tbody.position[0] = object.x + object.width / 2;\n\t\t\tbody.position[1] = object.y + object.height / 2;\n\t\t\tbody.addShape(\n\t\t\t\tnew p2.Box({\n\t\t\t\t\twidth: object.width,\n\t\t\t\t\theight: object.height,\n\t\t\t\t}),\n\t\t\t);\n\t\t\tbodies.push(body);\n\t\t}\n\t}\n\n\treturn bodies;\n}\n\nexport function clipDecimals(v, n = 3) {\n\treturn Math.round(v * Math.pow(10, n)) / Math.pow(10, n);\n}\n",
+    "static": true,
+    "longname": "/home/circleci/repo/src/utils.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 179,
+    "kind": "variable",
+    "name": "NAME_TEMPLATES",
+    "memberof": "src/utils.js",
+    "static": true,
+    "longname": "src/utils.js~NAME_TEMPLATES",
+    "access": "public",
+    "export": true,
+    "importPath": "lazer-game-core/src/utils.js",
+    "importStyle": "{NAME_TEMPLATES}",
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string[]"
+      ]
+    }
+  },
+  {
+    "__docId__": 180,
+    "kind": "variable",
+    "name": "NAMES",
+    "memberof": "src/utils.js",
+    "static": true,
+    "longname": "src/utils.js~NAMES",
+    "access": "public",
+    "export": true,
+    "importPath": "lazer-game-core/src/utils.js",
+    "importStyle": "{NAMES}",
+    "description": null,
+    "lineNumber": 21,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string[]"
+      ]
+    }
+  },
+  {
+    "__docId__": 181,
+    "kind": "function",
+    "name": "createName",
+    "memberof": "src/utils.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils.js~createName",
+    "access": "public",
+    "export": true,
+    "importPath": "lazer-game-core/src/utils.js",
+    "importStyle": "{createName}",
+    "description": null,
+    "lineNumber": 124,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 182,
+    "kind": "function",
+    "name": "lerp",
+    "memberof": "src/utils.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils.js~lerp",
+    "access": "public",
+    "export": true,
+    "importPath": "lazer-game-core/src/utils.js",
+    "importStyle": "{lerp}",
+    "description": null,
+    "lineNumber": 131,
+    "undocument": true,
+    "params": [
+      {
+        "name": "v0",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "v1",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "t",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 183,
+    "kind": "function",
+    "name": "parseSearch",
+    "memberof": "src/utils.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils.js~parseSearch",
+    "access": "public",
+    "export": true,
+    "importPath": "lazer-game-core/src/utils.js",
+    "importStyle": "{parseSearch}",
+    "description": null,
+    "lineNumber": 135,
+    "undocument": true,
+    "params": [
+      {
+        "name": "url",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 184,
+    "kind": "variable",
+    "name": "DEFAULT_SETTINGS",
+    "memberof": "src/utils.js",
+    "static": true,
+    "longname": "src/utils.js~DEFAULT_SETTINGS",
+    "access": "public",
+    "export": false,
+    "importPath": "lazer-game-core/src/utils.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 161,
+    "undocument": true,
+    "type": {
+      "types": [
+        "{\"color\": *, \"name\": *, \"shadows\": boolean, \"debug\": *}"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 185,
+    "kind": "function",
+    "name": "getURLSearchSettings",
+    "memberof": "src/utils.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils.js~getURLSearchSettings",
+    "access": "public",
+    "export": true,
+    "importPath": "lazer-game-core/src/utils.js",
+    "importStyle": "{getURLSearchSettings}",
+    "description": null,
+    "lineNumber": 167,
+    "undocument": true,
+    "params": [
+      {
+        "name": "url",
+        "optional": true,
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 186,
+    "kind": "function",
+    "name": "buildCollisions",
+    "memberof": "src/utils.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils.js~buildCollisions",
+    "access": "public",
+    "export": true,
+    "importPath": "lazer-game-core/src/utils.js",
+    "importStyle": "{buildCollisions}",
+    "description": null,
+    "lineNumber": 185,
+    "undocument": true,
+    "params": [
+      {
+        "name": "collisions",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 187,
+    "kind": "function",
+    "name": "clipDecimals",
+    "memberof": "src/utils.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils.js~clipDecimals",
+    "access": "public",
+    "export": true,
+    "importPath": "lazer-game-core/src/utils.js",
+    "importStyle": "{clipDecimals}",
+    "description": null,
+    "lineNumber": 238,
+    "undocument": true,
+    "params": [
+      {
+        "name": "v",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "n",
+        "optional": true,
+        "types": [
+          "number"
+        ],
+        "defaultRaw": 3,
+        "defaultValue": "3"
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "kind": "index",
+    "content": "# Lazer Game Core\n\n[![CircleCI branch](https://img.shields.io/circleci/project/github/rdfriedl/lazer-game-core/master.svg?style=flat-square)](https://circleci.com/gh/rdfriedl/workflows/lazer-game-core/tree/master)\n[![Codecov](https://img.shields.io/codecov/c/github/rdfriedl/lazer-game-core.svg?style=flat-square)](https://circleci.com/gh/rdfriedl/workflows/lazer-game-core)\n[![Docs: Published](https://img.shields.io/badge/Docs-Published-green.svg?style=flat-square)](http://www.rdfriedl.com/lazer-game-core/)\n[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)\n",
+    "longname": "/home/circleci/repo/README.md",
+    "name": "./README.md",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "packageJSON",
+    "content": "{\n  \"name\": \"lazer-game-core\",\n  \"version\": \"0.1.0\",\n  \"description\": \"The core logic for lazer-game\",\n  \"license\": \"MIT\",\n  \"repository\": \"https://github.com/rdfriedl/lazer-game-core.git\",\n  \"author\": \"Robert Friedl <rdfriedl@gmail.com>\",\n  \"main\": \"dist/lazer-game-core.js\",\n  \"browser\": \"dist/lazer-game-core.umd.js\",\n  \"module\": \"dist/lazer-game-core.es.js\",\n  \"jsnext:main\": \"dist/lazer-game-core.es.js\",\n  \"scripts\": {\n    \"precommit\": \"pretty-quick --staged\",\n    \"commitmsg\": \"commitlint -e $GIT_PARAMS\",\n    \"commit\": \"commit\",\n    \"prepublishOnly\": \"npm run build\",\n    \"clean\": \"rimraf dist\",\n    \"prebuild\": \"npm run clean\",\n    \"build\": \"webpack --mode production\",\n    \"clean:test\": \"rimraf coverage\",\n    \"pretest\": \"npm run clean:test\",\n    \"test\": \"npm-run-all --parallel test:browser test:node\",\n    \"test:browser\": \"karma start karma.config.js --single-run\",\n    \"test:node\": \"mocha --compilers js:babel-register --R spec test/node.js\",\n    \"test:debug\": \"karma start karma.config.js --browsers Chrome --no-single-run\",\n    \"format\": \"prettier --write ./**/*.{js,json,css,md}\",\n    \"predocs\": \"rimraf docs\",\n    \"docs\": \"esdoc\"\n  },\n  \"directories\": {\n    \"test\": \"./test/\",\n    \"lib\": \"./src/\"\n  },\n  \"engines\": {\n    \"node\": \">=6.0.0\"\n  },\n  \"dependencies\": {\n    \"lodash\": \"^4.17.5\",\n    \"p2\": \"^0.7.1\",\n    \"regexp-events\": \"^1.0.2\",\n    \"shortid\": \"^2.2.8\"\n  },\n  \"devDependencies\": {\n    \"@commitlint/cli\": \"^6.1.3\",\n    \"@commitlint/config-conventional\": \"^6.1.3\",\n    \"@commitlint/prompt-cli\": \"^6.1.3\",\n    \"@semantic-release/changelog\": \"^2.0.1\",\n    \"@semantic-release/git\": \"^4.0.1\",\n    \"babel-core\": \"^6.26.0\",\n    \"babel-loader\": \"^7.1.4\",\n    \"babel-plugin-lodash\": \"^3.3.2\",\n    \"babel-polyfill\": \"^6.26.0\",\n    \"babel-preset-env\": \"^1.6.1\",\n    \"babel-register\": \"^6.26.0\",\n    \"chai\": \"^4.1.2\",\n    \"core-js\": \"^2.5.3\",\n    \"esdoc\": \"^1.0.4\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"husky\": \"^0.14.3\",\n    \"istanbul-instrumenter-loader\": \"^3.0.0\",\n    \"karma\": \"^2.0.0\",\n    \"karma-chrome-launcher\": \"^2.2.0\",\n    \"karma-coverage-istanbul-reporter\": \"^1.4.2\",\n    \"karma-firefox-launcher\": \"^1.1.0\",\n    \"karma-mocha\": \"^1.3.0\",\n    \"karma-mocha-reporter\": \"^2.2.5\",\n    \"karma-phantomjs-launcher\": \"^1.0.4\",\n    \"karma-sinon-chai\": \"^1.3.3\",\n    \"karma-source-map-support\": \"^1.2.0\",\n    \"karma-webpack\": \"^3.0.0\",\n    \"mocha\": \"^5.0.4\",\n    \"npm-run-all\": \"^4.1.2\",\n    \"prettier\": \"^1.11.1\",\n    \"pretty-quick\": \"^1.4.1\",\n    \"rimraf\": \"^2.6.2\",\n    \"semantic-release\": \"^15.1.3\",\n    \"sinon\": \"^4.4.8\",\n    \"sinon-chai\": \"^3.0.0\",\n    \"source-map-loader\": \"^0.2.3\",\n    \"webpack\": \"^4.2.0\",\n    \"webpack-cli\": \"^2.0.12\"\n  },\n  \"prettier\": {\n    \"useTabs\": true,\n    \"semi\": true,\n    \"trailingComma\": \"all\",\n    \"printWidth\": 120\n  },\n  \"commitlint\": {\n    \"extends\": [\n      \"@commitlint/config-conventional\"\n    ]\n  },\n  \"release\": {\n    \"verifyConditions\": [\n      \"@semantic-release/changelog\",\n      \"@semantic-release/git\",\n      \"@semantic-release/github\"\n    ],\n    \"prepare\": [\n      \"@semantic-release/changelog\",\n      {\n        \"path\": \"@semantic-release/git\",\n        \"assets\": [\n          \"package.json\",\n          \"package-lock.json\",\n          \"CHANGELOG.md\",\n          \"dist\"\n        ],\n        \"message\": \"chore(release): ${nextRelease.version} [skip ci]\\n\\n${nextRelease.notes}\"\n      }\n    ],\n    \"publish\": [\n      \"@semantic-release/github\"\n    ]\n  }\n}\n",
+    "longname": "/home/circleci/repo/package.json",
+    "name": "package.json",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "__docId__": 188,
+    "kind": "testFile",
+    "name": "test/Game.spec.js",
+    "content": "import { Emitter } from \"regexp-events\";\nimport Game from \"../src/Game\";\n\ndescribe(\"Game\", function() {\n\tit(\"extends Emitter\", function() {\n\t\tlet game = new Game();\n\t\texpect(game).to.be.instanceOf(Emitter);\n\t});\n});\n",
+    "static": true,
+    "longname": "/home/circleci/repo/test/Game.spec.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 189,
+    "kind": "test",
+    "name": "describe0",
+    "testId": 0,
+    "memberof": "test/Game.spec.js",
+    "testDepth": 0,
+    "static": true,
+    "longname": "test/Game.spec.js~describe0",
+    "access": null,
+    "description": "Game",
+    "lineNumber": 4
+  },
+  {
+    "__docId__": 190,
+    "kind": "test",
+    "name": "it1",
+    "testId": 1,
+    "memberof": "test/Game.spec.js~describe0",
+    "testDepth": 1,
+    "static": true,
+    "longname": "test/Game.spec.js~describe0.it1",
+    "access": null,
+    "description": "extends Emitter",
+    "lineNumber": 5
+  }
+]

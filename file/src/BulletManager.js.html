@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">src/BulletManager.js | Lazer Game Core</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="The core logic for lazer-game"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="Lazer Game Core"><meta property="twitter:description" content="The core logic for lazer-game"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/rdfriedl/lazer-game-core"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Bullet.js~Bullet.html">Bullet</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Bullet.js~DefaultBullet.html">DefaultBullet</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/BulletManager.js~BulletManager.html">BulletManager</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Game.js~Game.html">Game</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Player.js~Player.html">Player</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/PlayerManager.js~PlayerManager.html">PlayerManager</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Tilemap.js~Tilemap.html">Tilemap</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-buildCollisions">buildCollisions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-clipDecimals">clipDecimals</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createName">createName</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getURLSearchSettings">getURLSearchSettings</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-lerp">lerp</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-parseSearch">parseSearch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-COLLISION_GROUPS">COLLISION_GROUPS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-NAMES">NAMES</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-NAME_TEMPLATES">NAME_TEMPLATES</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/BulletManager.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { Emitter } from &quot;regexp-events&quot;;
+import Bullet from &quot;./Bullet.js&quot;;
+
+export default class BulletManager extends Emitter {
+	constructor(game) {
+		super();
+
+		this.game = game;
+		this.bullets = [];
+	}
+
+	createBullet(type, info, props) {
+		let BulletType = BulletManager.BulletTypes[type];
+		if (!BulletType) return;
+		let bullet = new BulletType(this, info, props);
+		this.bullets.push(bullet);
+		this.emit(&quot;bullet-created&quot;, bullet);
+		return bullet;
+	}
+
+	createFromJSON(json) {
+		let BulletType = BulletManager.BulletTypes[json.type];
+		if (!BulletType) return;
+		let bullet = new BulletType(this, json.info, json.props);
+		bullet.fromJSON(json);
+		this.bullets.push(bullet);
+		this.emit(&quot;bullet-created&quot;, bullet);
+		return bullet;
+	}
+
+	getBullet(id) {
+		if (id instanceof Bullet) return this.bullets.includes(id) ? id : undefined;
+		else return this.bullets.find(bullet =&gt; bullet.id == id);
+	}
+
+	removeBullet(id) {
+		let bullet = this.getBullet(id);
+		if (this.bullets.includes(bullet)) {
+			this.bullets.splice(this.bullets.indexOf(bullet), 1);
+			this.emit(&quot;bullet-removed&quot;, bullet);
+		}
+		return this;
+	}
+
+	clearBullets() {
+		this.bullets.forEach(bullet =&gt; this.removeBullet(bullet));
+		this.bullets = [];
+		return this;
+	}
+
+	update(d) {
+		// update the bullets
+		this.bullets.forEach(bullet =&gt; bullet.update(d));
+	}
+
+	toJSON() {
+		let json = this.bullets.map(bullet =&gt; bullet.toJSON());
+
+		this.emit(&quot;to-json&quot;, json);
+		return json;
+	}
+
+	fromJSON(json) {
+		this.clearBullets();
+
+		json.forEach(data =&gt; {
+			let bullet = this.createBullet(data.type);
+			bullet.fromJSON(data.data);
+		});
+
+		this.emit(&quot;from-json&quot;, json);
+		return this;
+	}
+
+	getBulletType(bullet) {
+		for (let id in BulletManager.BulletTypes) {
+			if (bullet instanceof BulletManager.BulletTypes[id]) return id;
+		}
+	}
+}
+
+BulletManager.BulletTypes = {
+	default: Bullet.DefaultBullet,
+};
+BulletManager.BULLET_TYPE = {
+	DEFAULT: &quot;default&quot;,
+};
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.0.4)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

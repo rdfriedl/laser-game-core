@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">src/Tilemap.js | Lazer Game Core</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="The core logic for lazer-game"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="Lazer Game Core"><meta property="twitter:description" content="The core logic for lazer-game"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/rdfriedl/lazer-game-core"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Bullet.js~Bullet.html">Bullet</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Bullet.js~DefaultBullet.html">DefaultBullet</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/BulletManager.js~BulletManager.html">BulletManager</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Game.js~Game.html">Game</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Player.js~Player.html">Player</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/PlayerManager.js~PlayerManager.html">PlayerManager</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Tilemap.js~Tilemap.html">Tilemap</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-buildCollisions">buildCollisions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-clipDecimals">clipDecimals</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createName">createName</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getURLSearchSettings">getURLSearchSettings</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-lerp">lerp</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-parseSearch">parseSearch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-COLLISION_GROUPS">COLLISION_GROUPS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-NAMES">NAMES</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-NAME_TEMPLATES">NAME_TEMPLATES</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/Tilemap.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { Emitter } from &quot;regexp-events&quot;;
+import p2 from &quot;p2&quot;;
+import _ from &quot;lodash&quot;;
+
+import { lerp } from &quot;./utils&quot;;
+import { COLLISION_GROUPS } from &quot;./const&quot;;
+
+const TILE_SIZE = 50;
+export default class Tilemap extends Emitter {
+	constructor(game) {
+		super();
+
+		this.game = game;
+		this.size = { width: 0, height: 0 };
+		this.bodies = [];
+		this.spawnAreas = [];
+		this.loadedJSON = {};
+	}
+
+	clearBodies() {
+		this.bodies.forEach(body =&gt; this.game.world.removeBody(body));
+		this.bodies = [];
+		this.emit(&quot;collisions-cleared&quot;);
+		return this;
+	}
+
+	toJSON() {
+		return this.loadedJSON;
+	}
+
+	fromJSON(json) {
+		this.clearBodies();
+
+		this.loadedJSON = json;
+
+		this.size.width = json.size.width;
+		this.size.height = json.size.height;
+
+		// build the collisions for the map
+		this.bodies = Tilemap.buildCollisions(json.collisions);
+
+		// set all the collisions groups
+		this.bodies.forEach(body =&gt; {
+			body.shapes.forEach(shape =&gt; {
+				shape.collisionGroup = COLLISION_GROUPS.WALLS;
+				shape.collisionMask = COLLISION_GROUPS.ALL;
+			});
+		});
+
+		this.bodies.forEach(body =&gt; this.game.world.addBody(body));
+		this.emit(&quot;from-json&quot;, json);
+		return this;
+	}
+
+	getSpawnPoint() {
+		return {
+			x: this.size.width / 2 * TILE_SIZE,
+			y: this.size.height / 2 * TILE_SIZE,
+		};
+	}
+
+	static buildCollisions(collisions) {
+		let bodies = [];
+
+		for (let i = 0; i &lt; collisions.length; i++) {
+			let object = collisions[i];
+
+			if (!object.visible) continue;
+
+			// create the shape
+			if (Array.isArray(object.polygon)) {
+				let body = new p2.Body({ mass: 0 });
+				body.position[0] = object.x;
+				body.position[1] = object.y;
+				body.fromPolygon(object.polygon.map(point =&gt; [point.x, point.y]));
+				bodies.push(body);
+			} else if (Array.isArray(object.polyline)) {
+				let body = new p2.Body({ mass: 0 });
+				body.position[0] = object.x;
+				body.position[1] = object.y;
+
+				// start at the second point
+				for (let i = 1; i &lt; object.polyline.length; i++) {
+					let prev = object.polyline[i - 1];
+					let curr = object.polyline[i];
+					let length = Math.sqrt(Math.pow(curr.x - prev.x, 2) + Math.pow(curr.y - prev.y, 2));
+					let angle = Math.atan2(curr.y - prev.y, curr.x - prev.x);
+					body.addShape(
+						new p2.Line({
+							position: [lerp(prev.x, curr.x, 0.5), lerp(prev.y, curr.y, 0.5)],
+							length: length,
+							angle: angle,
+						}),
+					);
+				}
+
+				bodies.push(body);
+			} else if (object.height &gt; 0 &amp;&amp; object.width &gt; 0) {
+				let body = new p2.Body({ mass: 0 });
+				body.position[0] = object.x + object.width / 2;
+				body.position[1] = object.y + object.height / 2;
+				body.addShape(
+					new p2.Box({
+						width: object.width,
+						height: object.height,
+					}),
+				);
+				bodies.push(body);
+			}
+		}
+
+		return bodies;
+	}
+
+	static parseTiledJSON(json) {
+		let mapJSON = {
+			size: {
+				width: json.width,
+				height: json.height,
+			},
+			types: [],
+			tiles: [],
+		};
+
+		// get the collisions
+		mapJSON.collisions = json.layers.find(layer =&gt; {
+			return layer.objects &amp;&amp; layer.name == &quot;collision&quot; &amp;&amp; layer.type == &quot;objectgroup&quot;;
+		}).objects;
+
+		// get all the tile props
+		let tileProperties = {};
+		json.tilesets.forEach(tileset =&gt; {
+			for (let id in tileset.tileproperties) {
+				let tileID = parseInt(id) + tileset.firstgid;
+				if (Reflect.ownKeys(tileset.tileproperties[id]).length &gt; 0) {
+					if (!tileProperties[tileID]) tileProperties[tileID] = {};
+					Object.assign(tileProperties[tileID], tileset.tileproperties[id]);
+				}
+			}
+		});
+
+		// compile all the tile props
+		json.layers.filter(layer =&gt; layer.type === &quot;tilelayer&quot;).forEach(layer =&gt; {
+			for (let i = 0; i &lt; layer.data.length; i++) {
+				let y = Math.floor(i / json.width);
+				let x = i - y * json.width;
+				if (!mapJSON.tiles[y]) mapJSON.tiles[y] = [];
+				if (!mapJSON.tiles[y][x]) mapJSON.tiles[y][x] = [];
+
+				let props = tileProperties[layer.data[i]];
+				if (props) mapJSON.tiles[y][x].push(props);
+			}
+		});
+
+		// condense the tiles down to types
+		mapJSON.tiles = mapJSON.tiles.map(row =&gt; {
+			return row.map(tile =&gt; {
+				// find a type that has exactaly the make models as the tile
+				let type = mapJSON.types.find(type =&gt; _.isEqual(tile, type));
+
+				if (!type &amp;&amp; tile.length &gt; 0) mapJSON.types.push((type = tile));
+
+				return mapJSON.types.indexOf(type);
+			});
+		});
+
+		return mapJSON;
+	}
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.0.4)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
