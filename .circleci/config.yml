@@ -136,7 +136,7 @@ jobs:
             git config --global user.name "${GIT_USERNAME}";
       - run:
           name: Publish Docs
-          command: npx gh-pages -d docs -m Update Docs
+          command: npx gh-pages -d docs -m "Update Docs [skip ci]"
 
   release:
     docker:
