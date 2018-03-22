@@ -6,9 +6,6 @@
   "repository": "https://github.com/rdfriedl/lazer-game-core.git",
   "author": "Robert Friedl <rdfriedl@gmail.com>",
   "main": "dist/lazer-game-core.js",
-  "browser": "dist/lazer-game-core.umd.js",
-  "module": "dist/lazer-game-core.es.js",
-  "jsnext:main": "dist/lazer-game-core.es.js",
   "scripts": {
     "precommit": "pretty-quick --staged",
     "commitmsg": "commitlint -e $GIT_PARAMS",
@@ -26,10 +23,6 @@
     "format": "prettier --write ./**/*.{js,json,css,md}",
     "predocs": "rimraf docs",
     "docs": "esdoc"
-  },
-  "directories": {
-    "test": "./test/",
-    "lib": "./src/"
   },
   "engines": {
     "node": ">=6.0.0"
@@ -94,11 +87,13 @@
   "release": {
     "verifyConditions": [
       "@semantic-release/changelog",
+      "@semantic-release/npm",
       "@semantic-release/git",
       "@semantic-release/github"
     ],
     "prepare": [
       "@semantic-release/changelog",
+      "@semantic-release/npm",
       {
         "path": "@semantic-release/git",
         "assets": [
@@ -111,6 +106,7 @@
       }
     ],
     "publish": [
+      "@semantic-release/npm",
       "@semantic-release/github"
     ]
   }

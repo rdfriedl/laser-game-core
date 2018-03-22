@@ -1,7 +1,6 @@
-\.circleci/
-\.idea/
+.circleci/
+.idea/
 
-config/
 coverage/
 node_modules/
 docs/
@@ -11,5 +10,4 @@ test/
 .gitignore
 .prettierignore
 CHANGELOG.md
-commitlint.config.js
 karma.config.js
