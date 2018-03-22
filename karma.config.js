@@ -1,5 +1,5 @@
 const path = require("path");
-const webpackConfig = require("./webpack.config");
+const webpackConfig = require("./config/webpack.base");
 webpackConfig.mode = "development";
 webpackConfig.devtool = "inline-source-map";
 delete webpackConfig.externals;
