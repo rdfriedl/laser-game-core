@@ -1,4 +1,4 @@
-import _ from "lodash";
+import _clone from "lodash/clone";
 import p2 from "p2";
 
 export const NAME_TEMPLATES = [
@@ -169,7 +169,7 @@ export function getURLSearchSettings(url = location.href) {
 
 	if (!getURLSearchSettings.cache[url]) {
 		let params = parseSearch(url);
-		let settings = _.clone(DEFAULT_SETTINGS);
+		let settings = _clone(DEFAULT_SETTINGS);
 
 		// only trun off the shadows if its set to false
 		if (params.shadows === false) settings.shadows = false;

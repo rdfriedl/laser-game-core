@@ -2,7 +2,6 @@ module.exports = {
 	output: {
 		filename: "lazer-game-core.js",
 		libraryTarget: "umd",
-		libraryExport: "default",
 		library: "lazerGameCore",
 	},
 	externals: {
