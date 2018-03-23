@@ -1,4 +1,6 @@
 const path = require("path");
+const webpack = require("webpack");
+const pkg = require("../package.json");
 
 module.exports = {
 	entry: {
@@ -29,6 +31,7 @@ module.exports = {
 			root: "p2",
 		},
 	},
+	plugins: [new webpack.BannerPlugin(`${pkg.name} v${pkg.version}`)],
 	module: {
 		rules: [
 			{
