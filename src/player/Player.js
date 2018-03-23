@@ -1,6 +1,6 @@
 import { Emitter } from "regexp-events";
 import p2 from "p2";
-import { generate as shortID } from "shortid";
+import shortID from "shortid";
 
 import BulletManager from "../bullet/BulletManager";
 import { lerp, clipDecimals } from "../utils";
