@@ -1,6 +1,6 @@
 import { Emitter } from "regexp-events";
 import p2 from "p2";
-import shortID from "shortid";
+import hashids from "hashids";
 
 import BulletManager from "../bullet/BulletManager";
 import { lerp, clipDecimals } from "../utils";
@@ -11,7 +11,7 @@ export default class Player extends Emitter {
 		super();
 
 		this.manager = manager;
-		this.id = shortID();
+		this.id = hashids.encode(Date.now());
 
 		// this is basic info about the player
 		// NOTE: this is set once when the bullet is created and then never changes

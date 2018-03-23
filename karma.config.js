@@ -1,16 +1,11 @@
 const path = require("path");
-const webpackConfig = require("./config/webpack.base");
-webpackConfig.mode = "development";
-webpackConfig.devtool = "inline-source-map";
-delete webpackConfig.externals;
-webpackConfig.module.rules.push({
-	test: /\.js$/,
-	include: path.resolve(__dirname, "./src/"),
-	exclude: /node_modules|-spec\.js$/,
-	loader: "istanbul-instrumenter-loader",
-	options: { esModules: true },
-	enforce: "post",
-});
+
+// rollup plugins
+const resolve = require("rollup-plugin-node-resolve");
+const commonjs = require("rollup-plugin-commonjs");
+const babel = require("rollup-plugin-babel");
+const json = require("rollup-plugin-json");
+const replace = require("rollup-plugin-replace");
 
 module.exports = function(config) {
 	config.set({
@@ -25,7 +20,7 @@ module.exports = function(config) {
 			"karma-mocha-reporter",
 			"karma-sinon-chai",
 			"karma-source-map-support",
-			"karma-webpack",
+			"karma-rollup-preprocessor",
 			"karma-coverage-istanbul-reporter",
 		],
 
@@ -41,13 +36,45 @@ module.exports = function(config) {
 		files: ["node_modules/core-js/client/shim.min.js", { pattern: "test/index.js", watched: false }],
 
 		preprocessors: {
-			"test/index.js": ["webpack"],
+			"test/index.js": ["rollup"],
 		},
 
-		webpack: webpackConfig,
-
-		webpackMiddleware: {
-			stats: "errors-only",
+		rollupPreprocessor: {
+			output: {
+				format: "iife",
+				sourcemap: "inline",
+			},
+			plugins: [
+				replace({
+					"process.env.NODE_ENV": '"development"',
+				}),
+				resolve(),
+				commonjs(),
+				json(),
+				babel({
+					exclude: "node_modules/**",
+					presets: [
+						[
+							"env",
+							{
+								useBuiltIns: true,
+								modules: false,
+							},
+						],
+					],
+					plugins: [
+						"external-helpers",
+						[
+							"istanbul",
+							{
+								exclude: ["dist/**/*.js", "test/**/*.js", "**/*.spec.js"],
+							},
+						],
+					],
+					sourceMaps: true,
+					babelrc: false,
+				}),
+			],
 		},
 
 		reporters: ["mocha", "coverage-istanbul"],

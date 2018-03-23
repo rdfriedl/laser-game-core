@@ -3,7 +3,17 @@ import commonjs from "rollup-plugin-commonjs";
 import json from "rollup-plugin-json";
 import babel from "rollup-plugin-babel";
 import uglify from "rollup-plugin-uglify";
+import replace from "rollup-plugin-replace";
 import pkg from "./package.json";
+
+const plugins = [
+	replace({
+		"process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV),
+	}),
+	resolve(),
+	commonjs(),
+	json(),
+];
 
 const configs = [
 	{
@@ -15,21 +25,21 @@ const configs = [
 			sourcemap: true,
 		},
 		plugins: [
-			resolve(),
-			commonjs(),
-			json(),
+			...plugins,
 			babel({
+				babelrc: false,
 				exclude: "node_modules/**",
+				presets: [["env", { modules: false }]],
+				plugins: ["external-helpers"],
 			}),
 		],
 	},
 	{
 		input: "src/index.js",
 		plugins: [
-			resolve(),
-			commonjs(),
-			json(),
+			...plugins,
 			babel({
+				babelrc: false,
 				exclude: "node_modules/**",
 				presets: [
 					[
@@ -42,6 +52,7 @@ const configs = [
 						},
 					],
 				],
+				plugins: ["external-helpers"],
 			}),
 		],
 		external: Object.keys(pkg.dependencies),
@@ -54,12 +65,12 @@ const configs = [
 	{
 		input: "src/index.js",
 		plugins: [
-			resolve(),
-			commonjs(),
-			json(),
+			...plugins,
 			babel({
+				babelrc: false,
 				exclude: "node_modules/**",
 				presets: [["env", { modules: false }]],
+				plugins: ["external-helpers"],
 			}),
 		],
 		external: Object.keys(pkg.dependencies),
