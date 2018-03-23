@@ -7,6 +7,7 @@ module.exports = {
 	output: {
 		filename: "[name].js",
 		library: "lazerGameCore",
+		umdNamedDefine: true,
 	},
 	externals: {
 		lodash: {
@@ -45,5 +46,5 @@ module.exports = {
 			},
 		],
 	},
-	devtool: "source-maps",
+	devtool: "source-map",
 };
