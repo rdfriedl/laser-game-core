@@ -2,9 +2,10 @@ import resolve from "rollup-plugin-node-resolve";
 import commonjs from "rollup-plugin-commonjs";
 import json from "rollup-plugin-json";
 import babel from "rollup-plugin-babel";
+import uglify from "rollup-plugin-uglify";
 import pkg from "./package.json";
 
-export default [
+const configs = [
 	{
 		input: "src/index.js",
 		output: {
@@ -52,7 +53,15 @@ export default [
 	},
 	{
 		input: "src/index.js",
-		plugins: [resolve(), commonjs(), json()],
+		plugins: [
+			resolve(),
+			commonjs(),
+			json(),
+			babel({
+				exclude: "node_modules/**",
+				presets: [["env", { modules: false }]],
+			}),
+		],
 		external: Object.keys(pkg.dependencies),
 		output: {
 			file: pkg.module,
@@ -61,3 +70,14 @@ export default [
 		},
 	},
 ];
+
+const minifiedConfigs = configs.map(config => ({
+	...config,
+	plugins: [...config.plugins, uglify()],
+	output: {
+		...config.output,
+		file: config.output.file.replace(".js", ".min.js"),
+	},
+}));
+
+export default [...configs, ...minifiedConfigs];

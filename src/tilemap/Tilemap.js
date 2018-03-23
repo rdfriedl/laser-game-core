@@ -155,7 +155,7 @@ export default class Tilemap extends Emitter {
 		// condense the tiles down to types
 		mapJSON.tiles = mapJSON.tiles.map(row => {
 			return row.map(tile => {
-				// find a type that has exactaly the make models as the tile
+				// find a type that has exactly the make models as the tile
 				let type = mapJSON.types.find(type => _isEqual(tile, type));
 
 				if (!type && tile.length > 0) mapJSON.types.push((type = tile));
