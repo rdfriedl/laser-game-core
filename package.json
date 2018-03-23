@@ -1,6 +1,6 @@
 {
   "name": "lazer-game-core",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "The core logic for lazer-game",
   "license": "MIT",
   "repository": "https://github.com/rdfriedl/lazer-game-core.git",
