@@ -47,18 +47,20 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/player/Player.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { Emitter } from &quot;regexp-events&quot;;
 import p2 from &quot;p2&quot;;
-import hashids from &quot;hashids&quot;;
+import Hashids from &quot;hashids&quot;;
 
 import BulletManager from &quot;../bullet/BulletManager&quot;;
 import { lerp, clipDecimals } from &quot;../utils&quot;;
 import { COLLISION_GROUPS } from &quot;../const&quot;;
+
+const playerIds = new Hashids(&quot;players&quot;);
 
 export default class Player extends Emitter {
 	constructor(manager, info, props) {
 		super();
 
 		this.manager = manager;
-		this.id = hashids.encode(Date.now());
+		this.id = playerIds.encode(Date.now());
 
 		// this is basic info about the player
 		// NOTE: this is set once when the bullet is created and then never changes

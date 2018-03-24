@@ -45,15 +45,17 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/bullet/Bullet.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import hashids from &quot;hashids&quot;;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Hashids from &quot;hashids&quot;;
 import { Emitter } from &quot;regexp-events&quot;;
+
+const bulletIds = new Hashids(&quot;bullets&quot;);
 
 export default class Bullet extends Emitter {
 	constructor(manager, info = {}, props = {}) {
 		super();
 		this.manager = manager;
 
-		this.id = hashids.encode(Date.now());
+		this.id = bulletIds.encode(Date.now());
 
 		// this is basic info about the bullet
 		// like: who shot it, how long its supposed to last
