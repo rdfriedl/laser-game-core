@@ -1,340 +1,505 @@
-'use strict';
+import hashids from 'hashids';
+import { Emitter } from 'regexp-events';
+import p2 from 'p2';
 
-Object.defineProperty(exports, '__esModule', { value: true });
+var classCallCheck = function (instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+};
 
-function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+var createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
 
-var hashids = _interopDefault(require('hashids'));
-var regexpEvents = require('regexp-events');
-var p2 = _interopDefault(require('p2'));
+  return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) defineProperties(Constructor, staticProps);
+    return Constructor;
+  };
+}();
 
-class Bullet extends regexpEvents.Emitter {
-	constructor(manager, info = {}, props = {}) {
-		super();
-		this.manager = manager;
+var get = function get(object, property, receiver) {
+  if (object === null) object = Function.prototype;
+  var desc = Object.getOwnPropertyDescriptor(object, property);
 
-		this.id = hashids.encode(Date.now());
+  if (desc === undefined) {
+    var parent = Object.getPrototypeOf(object);
+
+    if (parent === null) {
+      return undefined;
+    } else {
+      return get(parent, property, receiver);
+    }
+  } else if ("value" in desc) {
+    return desc.value;
+  } else {
+    var getter = desc.get;
+
+    if (getter === undefined) {
+      return undefined;
+    }
+
+    return getter.call(receiver);
+  }
+};
+
+var inherits = function (subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      enumerable: false,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+};
+
+var possibleConstructorReturn = function (self, call) {
+  if (!self) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return call && (typeof call === "object" || typeof call === "function") ? call : self;
+};
+
+var Bullet = function (_Emitter) {
+	inherits(Bullet, _Emitter);
+
+	function Bullet(manager) {
+		var info = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+		var props = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+		classCallCheck(this, Bullet);
+
+		var _this = possibleConstructorReturn(this, (Bullet.__proto__ || Object.getPrototypeOf(Bullet)).call(this));
+
+		_this.manager = manager;
+
+		_this.id = hashids.encode(Date.now());
 
 		// this is basic info about the bullet
 		// like: who shot it, how long its supposed to last
 		// NOTE: this is set once when the bullet is created and then never changes
-		this.info = Object.assign({
+		_this.info = Object.assign({
 			owner: undefined
 		}, info);
 
 		// important info about the bullet
 		// like: current speed, its path, who its locked onto, and so on
 		// NOTE: everything a prop changes its sent to the clients
-		this.props = Object.assign({}, props);
+		_this.props = Object.assign({}, props);
 
 		// this is anything that is used in the bullets update function
 		// NOTE: this is not send to the client
-		this.data = {};
+		_this.data = {};
 
 		// set the bullet up
-		this.init();
+		_this.init();
+		return _this;
 	}
 
-	init() {}
+	createClass(Bullet, [{
+		key: "init",
+		value: function init() {}
+	}, {
+		key: "setProp",
+		value: function setProp(key, value) {
+			if (key instanceof Object) {
+				for (var i in key) {
+					this.props[i] = key[i];
+				}this.emit("props-changed", this.props);
+			} else {
+				this.props[key] = value;
+				this.emit("props-changed", this.props);
+			}
 
-	setProp(key, value) {
-		if (key instanceof Object) {
-			for (let i in key) this.props[i] = key[i];
+			return this;
+		}
+	}, {
+		key: "getProp",
+		value: function getProp(key) {
+			return this.props[key];
+		}
+	}, {
+		key: "update",
+		value: function update(d) {}
+	}, {
+		key: "destroy",
+		value: function destroy() {
+			this.manager.removeBullet(this);
+			return this;
+		}
+	}, {
+		key: "die",
+		value: function die() {
+			return this.destroy();
+		}
+	}, {
+		key: "toJSON",
+		value: function toJSON() {
+			var json = {
+				id: this.id,
+				info: this.info,
+				props: this.props,
+				type: this.type
+			};
 
-			this.emit("props-changed", this.props);
-		} else {
-			this.props[key] = value;
-			this.emit("props-changed", this.props);
+			this.emit("to-json", json);
+			return json;
+		}
+	}, {
+		key: "fromJSON",
+		value: function fromJSON(json) {
+			this.id = json.id || this.id;
+			if (json.info) Object.assign(this.info, json.info);
+			if (json.props) Object.assign(this.props, json.props);
+			this.init();
+			return this;
 		}
 
-		return this;
-	}
+		// overwrite emit so we can fire events on the manager
 
-	getProp(key) {
-		return this.props[key];
-	}
+	}, {
+		key: "emit",
+		value: function emit(event) {
+			var _Emitter$prototype$em, _manager, _manager2;
 
-	update(d) {}
+			for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+				args[_key - 1] = arguments[_key];
+			}
 
-	destroy() {
-		this.manager.removeBullet(this);
-		return this;
-	}
-	die() {
-		return this.destroy();
-	}
-
-	toJSON() {
-		let json = {
-			id: this.id,
-			info: this.info,
-			props: this.props,
-			type: this.type
-		};
-
-		this.emit("to-json", json);
-		return json;
-	}
-
-	fromJSON(json) {
-		this.id = json.id || this.id;
-		if (json.info) Object.assign(this.info, json.info);
-		if (json.props) Object.assign(this.props, json.props);
-		this.init();
-		return this;
-	}
-
-	// overwrite emit so we can fire events on the manager
-	emit(event, ...args) {
-		let v = regexpEvents.Emitter.prototype.emit.call(this, event, ...args);
-		this.manager.emit("bullet-" + event, this, ...args);
-		this.manager.emit(`bullet-${this.id}-${event}`, this, ...args);
-		return v;
-	}
-
-	get game() {
-		return this.manager.game;
-	}
-
-	get player() {
-		return this.game.players.getPlayer(this.info.owner);
-	}
-
-	get type() {
-		return this.manager.getBulletType(this);
-	}
-}
+			var v = (_Emitter$prototype$em = Emitter.prototype.emit).call.apply(_Emitter$prototype$em, [this, event].concat(args));
+			(_manager = this.manager).emit.apply(_manager, ["bullet-" + event, this].concat(args));
+			(_manager2 = this.manager).emit.apply(_manager2, ["bullet-" + this.id + "-" + event, this].concat(args));
+			return v;
+		}
+	}, {
+		key: "game",
+		get: function get$$1() {
+			return this.manager.game;
+		}
+	}, {
+		key: "player",
+		get: function get$$1() {
+			return this.game.players.getPlayer(this.info.owner);
+		}
+	}, {
+		key: "type",
+		get: function get$$1() {
+			return this.manager.getBulletType(this);
+		}
+	}]);
+	return Bullet;
+}(Emitter);
 
 function lerp(v0, v1, t) {
 	return v0 * (1 - t) + v1 * t;
 }
 
-function clipDecimals(v, n = 3) {
+function clipDecimals(v) {
+	var n = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 3;
+
 	return Math.round(v * Math.pow(10, n)) / Math.pow(10, n);
 }
 
-const COLLISION_GROUPS = {
+var COLLISION_GROUPS = {
 	PLAYER: Math.pow(2, 0),
 	WALLS: Math.pow(2, 1),
 	BULLET: Math.pow(2, 2)
 };
 
-COLLISION_GROUPS.ALL = Object.keys(COLLISION_GROUPS).map(key => COLLISION_GROUPS[key]).reduce((a, b) => a | b);
+COLLISION_GROUPS.ALL = Object.keys(COLLISION_GROUPS).map(function (key) {
+	return COLLISION_GROUPS[key];
+}).reduce(function (a, b) {
+	return a | b;
+});
 
-class DefaultBullet extends Bullet {
-	init() {
-		super.init();
+var DefaultBullet = function (_Bullet) {
+	inherits(DefaultBullet, _Bullet);
 
-		// init data
-		this.data.speed = 500;
-		this.data.pathPosition = 0;
-		this.data.position = { x: 0, y: 0 };
-		this.data.path = DefaultBullet.calcPath(this.game.world, {
-			start: [this.props.start.x, this.props.start.y],
-			direction: this.props.direction
-		});
-		this.data.pathLength = this.data.path.length ? this.data.path[this.data.path.length - 1][2] : 0;
-	}
-	update(d) {
-		// move along the path
-		this.data.pathPosition += this.data.speed * d;
-
-		// set position
-		this.data.position = DefaultBullet.pointOnPath(this.data.path, this.data.pathPosition);
-
-		// set the direction
-		this.data.direction = DefaultBullet.directionOnPath(this.data.path, this.data.pathPosition);
-
-		// die if the bullet is at the end of the path
-		if (this.data.pathPosition > this.data.pathLength && this.game.isMaster) this.die();
+	function DefaultBullet() {
+		classCallCheck(this, DefaultBullet);
+		return possibleConstructorReturn(this, (DefaultBullet.__proto__ || Object.getPrototypeOf(DefaultBullet)).apply(this, arguments));
 	}
 
-	static calcPath(world, opts = {}) {
-		if (!world) return [];
-		opts = Object.assign({}, {
-			maxDistance: 1000,
-			maxBounces: 5,
-			start: [0, 0],
-			direction: 0
-		}, opts);
+	createClass(DefaultBullet, [{
+		key: "init",
+		value: function init() {
+			get(DefaultBullet.prototype.__proto__ || Object.getPrototypeOf(DefaultBullet.prototype), "init", this).call(this);
 
-		let path = [],
-		    currentLength = 0;
-		let ray = this.calcPath.ray = this.calcPath.ray || new p2.Ray({
-			mode: p2.Ray.CLOSEST,
-			collisionGroup: COLLISION_GROUPS.BULLET,
-			collisionMask: COLLISION_GROUPS.WALLS
-		});
-		let result = this.calcPath.result = this.calcPath.result || new p2.RaycastResult();
-		let hitPoint = this.calcPath.hitPoint = this.calcPath.hitPoint || p2.vec2.create();
+			// init data
+			this.data.speed = 500;
+			this.data.pathPosition = 0;
+			this.data.position = { x: 0, y: 0 };
+			this.data.path = DefaultBullet.calcPath(this.game.world, {
+				start: [this.props.start.x, this.props.start.y],
+				direction: this.props.direction
+			});
+			this.data.pathLength = this.data.path.length ? this.data.path[this.data.path.length - 1][2] : 0;
+		}
+	}, {
+		key: "update",
+		value: function update(d) {
+			// move along the path
+			this.data.pathPosition += this.data.speed * d;
 
-		// set the rays direction
-		ray.from[0] = opts.start[0];
-		ray.from[1] = opts.start[1];
-		ray.direction[0] = Math.cos(opts.direction);
-		ray.direction[1] = Math.sin(opts.direction);
+			// set position
+			this.data.position = DefaultBullet.pointOnPath(this.data.path, this.data.pathPosition);
 
-		ray.to[0] = ray.from[0] + ray.direction[0] * (opts.maxDistance - currentLength);
-		ray.to[1] = ray.from[1] + ray.direction[1] * (opts.maxDistance - currentLength);
+			// set the direction
+			this.data.direction = DefaultBullet.directionOnPath(this.data.path, this.data.pathPosition);
 
-		ray.update();
+			// die if the bullet is at the end of the path
+			if (this.data.pathPosition > this.data.pathLength && this.game.isMaster) this.die();
+		}
+	}], [{
+		key: "calcPath",
+		value: function calcPath(world) {
+			var opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
-		// cast
-		path = [[opts.start[0], opts.start[1], 0]];
-		let hits = 0;
-		while (currentLength < opts.maxDistance && hits < opts.maxBounces) {
-			if (world.raycast(result, ray)) {
-				hits++;
-				result.getHitPoint(hitPoint, ray);
-				// add the path segment
-				path.push([hitPoint[0], hitPoint[1], currentLength += result.getHitDistance(ray)]);
+			if (!world) return [];
+			opts = Object.assign({}, {
+				maxDistance: 1000,
+				maxBounces: 5,
+				start: [0, 0],
+				direction: 0
+			}, opts);
 
-				// move start to the hit point
-				p2.vec2.copy(ray.from, hitPoint);
+			var path = [],
+			    currentLength = 0;
+			var ray = this.calcPath.ray = this.calcPath.ray || new p2.Ray({
+				mode: p2.Ray.CLOSEST,
+				collisionGroup: COLLISION_GROUPS.BULLET,
+				collisionMask: COLLISION_GROUPS.WALLS
+			});
+			var result = this.calcPath.result = this.calcPath.result || new p2.RaycastResult();
+			var hitPoint = this.calcPath.hitPoint = this.calcPath.hitPoint || p2.vec2.create();
 
-				// reflect the direction
-				p2.vec2.reflect(ray.direction, ray.direction, result.normal);
+			// set the rays direction
+			ray.from[0] = opts.start[0];
+			ray.from[1] = opts.start[1];
+			ray.direction[0] = Math.cos(opts.direction);
+			ray.direction[1] = Math.sin(opts.direction);
 
-				// move the ray out a bit
-				ray.from[0] += ray.direction[0] * 0.001;
-				ray.from[1] += ray.direction[1] * 0.001;
-				ray.to[0] = ray.from[0] + ray.direction[0] * (opts.maxDistance - currentLength);
-				ray.to[1] = ray.from[1] + ray.direction[1] * (opts.maxDistance - currentLength);
-				ray.update();
-				result.reset();
+			ray.to[0] = ray.from[0] + ray.direction[0] * (opts.maxDistance - currentLength);
+			ray.to[1] = ray.from[1] + ray.direction[1] * (opts.maxDistance - currentLength);
+
+			ray.update();
+
+			// cast
+			path = [[opts.start[0], opts.start[1], 0]];
+			var hits = 0;
+			while (currentLength < opts.maxDistance && hits < opts.maxBounces) {
+				if (world.raycast(result, ray)) {
+					hits++;
+					result.getHitPoint(hitPoint, ray);
+					// add the path segment
+					path.push([hitPoint[0], hitPoint[1], currentLength += result.getHitDistance(ray)]);
+
+					// move start to the hit point
+					p2.vec2.copy(ray.from, hitPoint);
+
+					// reflect the direction
+					p2.vec2.reflect(ray.direction, ray.direction, result.normal);
+
+					// move the ray out a bit
+					ray.from[0] += ray.direction[0] * 0.001;
+					ray.from[1] += ray.direction[1] * 0.001;
+					ray.to[0] = ray.from[0] + ray.direction[0] * (opts.maxDistance - currentLength);
+					ray.to[1] = ray.from[1] + ray.direction[1] * (opts.maxDistance - currentLength);
+					ray.update();
+					result.reset();
+				} else {
+					var distanceLeft = opts.maxDistance - currentLength;
+					path.push([ray.to[0], ray.to[1], currentLength += distanceLeft]);
+				}
+			}
+
+			return path;
+		}
+
+		/**
+   * @param path
+   * @param {Number} position - a number between 0 and 1
+   */
+
+	}, {
+		key: "pointOnPath",
+		value: function pointOnPath(path) {
+			var position = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+
+			var pos = {};
+			var prev = void 0,
+			    next = path.find(function (point) {
+				return point[2] > position;
+			});
+			for (var i = path.length - 1; i >= 0; i--) {
+				if (path[i][2] <= position) {
+					prev = path[i];
+					break;
+				}
+			}
+			if (next) {
+				var delta = (position - prev[2]) / (next[2] - prev[2]);
+				pos.x = lerp(prev[0], next[0], delta);
+				pos.y = lerp(prev[1], next[1], delta);
 			} else {
-				let distanceLeft = opts.maxDistance - currentLength;
-				path.push([ray.to[0], ray.to[1], currentLength += distanceLeft]);
+				pos.x = prev[0];
+				pos.y = prev[1];
+			}
+
+			return pos;
+		}
+
+		/**
+   * returns the bullets directions on a point on the path
+   * @param path
+   * @param position
+   * @return {number} - the rotation is in radians
+   */
+
+	}, {
+		key: "directionOnPath",
+		value: function directionOnPath(path) {
+			var position = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+
+			var prev = void 0,
+			    next = path.find(function (point) {
+				return point[2] > position;
+			});
+			for (var i = path.length - 1; i >= 0; i--) {
+				if (path[i][2] <= position) {
+					prev = path[i];
+					break;
+				}
+			}
+
+			if (next) return Math.atan2(next[0] - prev[0], next[1] - prev[1]);
+
+			return 0;
+		}
+	}]);
+	return DefaultBullet;
+}(Bullet);
+
+var BulletManager = function (_Emitter) {
+	inherits(BulletManager, _Emitter);
+
+	function BulletManager(game) {
+		classCallCheck(this, BulletManager);
+
+		var _this = possibleConstructorReturn(this, (BulletManager.__proto__ || Object.getPrototypeOf(BulletManager)).call(this));
+
+		_this.game = game;
+		_this.bullets = [];
+		return _this;
+	}
+
+	createClass(BulletManager, [{
+		key: "createBullet",
+		value: function createBullet(type, info, props) {
+			var BulletType = BulletManager.BulletTypes[type];
+			if (!BulletType) return;
+			var bullet = new BulletType(this, info, props);
+			this.bullets.push(bullet);
+			this.emit("bullet-created", bullet);
+			return bullet;
+		}
+	}, {
+		key: "createFromJSON",
+		value: function createFromJSON(json) {
+			var BulletType = BulletManager.BulletTypes[json.type];
+			if (!BulletType) return;
+			var bullet = new BulletType(this, json.info, json.props);
+			bullet.fromJSON(json);
+			this.bullets.push(bullet);
+			this.emit("bullet-created", bullet);
+			return bullet;
+		}
+	}, {
+		key: "getBullet",
+		value: function getBullet(id) {
+			if (id instanceof Bullet) return this.bullets.includes(id) ? id : undefined;else return this.bullets.find(function (bullet) {
+				return bullet.id == id;
+			});
+		}
+	}, {
+		key: "removeBullet",
+		value: function removeBullet(id) {
+			var bullet = this.getBullet(id);
+			if (this.bullets.includes(bullet)) {
+				this.bullets.splice(this.bullets.indexOf(bullet), 1);
+				this.emit("bullet-removed", bullet);
+			}
+			return this;
+		}
+	}, {
+		key: "clearBullets",
+		value: function clearBullets() {
+			var _this2 = this;
+
+			this.bullets.forEach(function (bullet) {
+				return _this2.removeBullet(bullet);
+			});
+			this.bullets = [];
+			return this;
+		}
+	}, {
+		key: "update",
+		value: function update(d) {
+			// update the bullets
+			this.bullets.forEach(function (bullet) {
+				return bullet.update(d);
+			});
+		}
+	}, {
+		key: "toJSON",
+		value: function toJSON() {
+			var json = this.bullets.map(function (bullet) {
+				return bullet.toJSON();
+			});
+
+			this.emit("to-json", json);
+			return json;
+		}
+	}, {
+		key: "fromJSON",
+		value: function fromJSON(json) {
+			var _this3 = this;
+
+			this.clearBullets();
+
+			json.forEach(function (data) {
+				var bullet = _this3.createBullet(data.type);
+				bullet.fromJSON(data.data);
+			});
+
+			this.emit("from-json", json);
+			return this;
+		}
+	}, {
+		key: "getBulletType",
+		value: function getBulletType(bullet) {
+			for (var id in BulletManager.BulletTypes) {
+				if (bullet instanceof BulletManager.BulletTypes[id]) return id;
 			}
 		}
+	}]);
+	return BulletManager;
+}(Emitter);
 
-		return path;
-	}
-
-	/**
-  * @param path
-  * @param {Number} position - a number between 0 and 1
-  */
-	static pointOnPath(path, position = 0) {
-		let pos = {};
-		let prev,
-		    next = path.find(point => point[2] > position);
-		for (let i = path.length - 1; i >= 0; i--) {
-			if (path[i][2] <= position) {
-				prev = path[i];
-				break;
-			}
-		}
-		if (next) {
-			let delta = (position - prev[2]) / (next[2] - prev[2]);
-			pos.x = lerp(prev[0], next[0], delta);
-			pos.y = lerp(prev[1], next[1], delta);
-		} else {
-			pos.x = prev[0];
-			pos.y = prev[1];
-		}
-
-		return pos;
-	}
-
-	/**
-  * returns the bullets directions on a point on the path
-  * @param path
-  * @param position
-  * @return {number} - the rotation is in radians
-  */
-	static directionOnPath(path, position = 0) {
-		let prev,
-		    next = path.find(point => point[2] > position);
-		for (let i = path.length - 1; i >= 0; i--) {
-			if (path[i][2] <= position) {
-				prev = path[i];
-				break;
-			}
-		}
-
-		if (next) return Math.atan2(next[0] - prev[0], next[1] - prev[1]);
-
-		return 0;
-	}
-}
-
-class BulletManager extends regexpEvents.Emitter {
-	constructor(game) {
-		super();
-
-		this.game = game;
-		this.bullets = [];
-	}
-
-	createBullet(type, info, props) {
-		let BulletType = BulletManager.BulletTypes[type];
-		if (!BulletType) return;
-		let bullet = new BulletType(this, info, props);
-		this.bullets.push(bullet);
-		this.emit("bullet-created", bullet);
-		return bullet;
-	}
-
-	createFromJSON(json) {
-		let BulletType = BulletManager.BulletTypes[json.type];
-		if (!BulletType) return;
-		let bullet = new BulletType(this, json.info, json.props);
-		bullet.fromJSON(json);
-		this.bullets.push(bullet);
-		this.emit("bullet-created", bullet);
-		return bullet;
-	}
-
-	getBullet(id) {
-		if (id instanceof Bullet) return this.bullets.includes(id) ? id : undefined;else return this.bullets.find(bullet => bullet.id == id);
-	}
-
-	removeBullet(id) {
-		let bullet = this.getBullet(id);
-		if (this.bullets.includes(bullet)) {
-			this.bullets.splice(this.bullets.indexOf(bullet), 1);
-			this.emit("bullet-removed", bullet);
-		}
-		return this;
-	}
-
-	clearBullets() {
-		this.bullets.forEach(bullet => this.removeBullet(bullet));
-		this.bullets = [];
-		return this;
-	}
-
-	update(d) {
-		// update the bullets
-		this.bullets.forEach(bullet => bullet.update(d));
-	}
-
-	toJSON() {
-		let json = this.bullets.map(bullet => bullet.toJSON());
-
-		this.emit("to-json", json);
-		return json;
-	}
-
-	fromJSON(json) {
-		this.clearBullets();
-
-		json.forEach(data => {
-			let bullet = this.createBullet(data.type);
-			bullet.fromJSON(data.data);
-		});
-
-		this.emit("from-json", json);
-		return this;
-	}
-
-	getBulletType(bullet) {
-		for (let id in BulletManager.BulletTypes) {
-			if (bullet instanceof BulletManager.BulletTypes[id]) return id;
-		}
-	}
-}
 
 BulletManager.BulletTypes = {
 	default: DefaultBullet
@@ -343,267 +508,335 @@ BulletManager.BULLET_TYPE = {
 	DEFAULT: "default"
 };
 
-class Player extends regexpEvents.Emitter {
-	constructor(manager, info, props) {
-		super();
+var Player = function (_Emitter) {
+	inherits(Player, _Emitter);
 
-		this.manager = manager;
-		this.id = hashids.encode(Date.now());
+	function Player(manager, info, props) {
+		classCallCheck(this, Player);
+
+		var _this = possibleConstructorReturn(this, (Player.__proto__ || Object.getPrototypeOf(Player)).call(this));
+
+		_this.manager = manager;
+		_this.id = hashids.encode(Date.now());
 
 		// this is basic info about the player
 		// NOTE: this is set once when the bullet is created and then never changes
-		this.info = {
+		_this.info = {
 			name: undefined,
 			color: 0x000000
 		};
-		this.props = {
+		_this.props = {
 			health: 100,
 			spawned: false
 		};
-		this.position = {
+		_this.position = {
 			x: 0,
 			y: 0,
 			vx: 0,
 			vy: 0,
 			direction: 0
 		};
-		this.controls = {
+		_this.controls = {
 			moveX: 0,
 			moveY: 0,
 			shoot: false,
 			direction: 0
 		};
 
-		this.body = new p2.Body({
+		_this.body = new p2.Body({
 			mass: 10,
 			damping: 0,
 			fixedRotation: true
 		});
-		this.body.addShape(new p2.Circle({
+		_this.body.addShape(new p2.Circle({
 			radius: 10
 		}));
 
-		this.body.shapes.forEach(shape => {
+		_this.body.shapes.forEach(function (shape) {
 			shape.collisionGroup = COLLISION_GROUPS.PLAYER;
 			shape.collisionMask = COLLISION_GROUPS.WALLS | COLLISION_GROUPS.BULLET | COLLISION_GROUPS.PLAYER;
 		});
 
 		// tmp gun var
-		this.cooldown = 0.15;
-		this.tmp = 0;
+		_this.cooldown = 0.15;
+		_this.tmp = 0;
 
-		if (info) this.setInfo(info);
+		if (info) _this.setInfo(info);
 
-		if (props) this.setProp(props);
+		if (props) _this.setProp(props);
+		return _this;
 	}
 
-	setProp(key, value) {
-		if (key instanceof Object) {
-			for (let i in key) this.props[i] = key[i];
-
-			this.emit("props-changed", this.props);
-		} else {
-			this.props[key] = value;
-			this.emit("props-changed", this.props);
-		}
-
-		return this;
-	}
-	setInfo(key, value) {
-		if (key instanceof Object) {
-			for (let i in key) this.info[i] = key[i];
-
-			this.emit("info-changed", this.info);
-		} else {
-			this.info[key] = value;
-			this.emit("info-changed", this.info);
-		}
-
-		return this;
-	}
-	setControl(key, value) {
-		if (key instanceof Object) {
-			for (let i in key) this.controls[i] = key[i];
-
-			this.emit("controls-changed", this.controls);
-		} else {
-			this.controls[key] = value;
-			this.emit("controls-changed", this.controls);
-		}
-
-		return this;
-	}
-	getProp(key, value) {
-		return this.props[key];
-	}
-	getInfo(key, value) {
-		return this.info[key];
-	}
-	getControl(key, value) {
-		return this.controls[key];
-	}
-
-	setPosition(x = this.body.position[0], y = this.body.position[1], vx = 0, vy = 0, direction) {
-		this.body.position[0] = x;
-		this.body.position[1] = y;
-		this.body.velocity[0] = vx;
-		this.body.velocity[1] = vy;
-
-		// TODO: set the rotation on the p2 body instead
-		this.position.direction = direction;
-
-		// update position
-		this._updatePosition();
-	}
-
-	update(d) {
-		let { speed, excelerate, decelerate } = this.game.config.player.movement;
-
-		// apply controls
-		if (this.controls.moveX !== 0) this.body.velocity[0] = lerp(this.body.velocity[0], speed * Math.sign(this.controls.moveX), excelerate);else this.body.velocity[0] *= decelerate;
-
-		if (this.controls.moveY !== 0) this.body.velocity[1] = lerp(this.body.velocity[1], speed * Math.sign(this.controls.moveY), excelerate);else this.body.velocity[1] *= decelerate;
-
-		this.tmp += d;
-		if (this.controls.shoot && this.game.isMaster) {
-			if (this.tmp > this.cooldown) {
-				this.tmp = 0;
-				this.game.bullets.createBullet(BulletManager.BULLET_TYPE.DEFAULT, { owner: this.id }, {
-					start: { x: this.position.x, y: this.position.y },
-					direction: this.controls.direction + (Math.random() - 0.5) * (Math.PI / 32)
-				});
+	createClass(Player, [{
+		key: "setProp",
+		value: function setProp(key, value) {
+			if (key instanceof Object) {
+				for (var i in key) {
+					this.props[i] = key[i];
+				}this.emit("props-changed", this.props);
+			} else {
+				this.props[key] = value;
+				this.emit("props-changed", this.props);
 			}
+
+			return this;
+		}
+	}, {
+		key: "setInfo",
+		value: function setInfo(key, value) {
+			if (key instanceof Object) {
+				for (var i in key) {
+					this.info[i] = key[i];
+				}this.emit("info-changed", this.info);
+			} else {
+				this.info[key] = value;
+				this.emit("info-changed", this.info);
+			}
+
+			return this;
+		}
+	}, {
+		key: "setControl",
+		value: function setControl(key, value) {
+			if (key instanceof Object) {
+				for (var i in key) {
+					this.controls[i] = key[i];
+				}this.emit("controls-changed", this.controls);
+			} else {
+				this.controls[key] = value;
+				this.emit("controls-changed", this.controls);
+			}
+
+			return this;
+		}
+	}, {
+		key: "getProp",
+		value: function getProp(key, value) {
+			return this.props[key];
+		}
+	}, {
+		key: "getInfo",
+		value: function getInfo(key, value) {
+			return this.info[key];
+		}
+	}, {
+		key: "getControl",
+		value: function getControl(key, value) {
+			return this.controls[key];
+		}
+	}, {
+		key: "setPosition",
+		value: function setPosition() {
+			var x = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.body.position[0];
+			var y = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.body.position[1];
+			var vx = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+			var vy = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0;
+			var direction = arguments[4];
+
+			this.body.position[0] = x;
+			this.body.position[1] = y;
+			this.body.velocity[0] = vx;
+			this.body.velocity[1] = vy;
+
+			// TODO: set the rotation on the p2 body instead
+			this.position.direction = direction;
+
+			// update position
+			this._updatePosition();
+		}
+	}, {
+		key: "update",
+		value: function update(d) {
+			var _game$config$player$m = this.game.config.player.movement,
+			    speed = _game$config$player$m.speed,
+			    excelerate = _game$config$player$m.excelerate,
+			    decelerate = _game$config$player$m.decelerate;
+
+			// apply controls
+
+			if (this.controls.moveX !== 0) this.body.velocity[0] = lerp(this.body.velocity[0], speed * Math.sign(this.controls.moveX), excelerate);else this.body.velocity[0] *= decelerate;
+
+			if (this.controls.moveY !== 0) this.body.velocity[1] = lerp(this.body.velocity[1], speed * Math.sign(this.controls.moveY), excelerate);else this.body.velocity[1] *= decelerate;
+
+			this.tmp += d;
+			if (this.controls.shoot && this.game.isMaster) {
+				if (this.tmp > this.cooldown) {
+					this.tmp = 0;
+					this.game.bullets.createBullet(BulletManager.BULLET_TYPE.DEFAULT, { owner: this.id }, {
+						start: { x: this.position.x, y: this.position.y },
+						direction: this.controls.direction + (Math.random() - 0.5) * (Math.PI / 32)
+					});
+				}
+			}
+
+			// update position
+			this._updatePosition();
+
+			this.emit("update", d);
+		}
+	}, {
+		key: "_updatePosition",
+		value: function _updatePosition() {
+			this.position.x = clipDecimals(this.body.position[0]);
+			this.position.y = clipDecimals(this.body.position[1]);
+			this.position.vx = clipDecimals(this.body.velocity[0]);
+			this.position.vy = clipDecimals(this.body.velocity[1]);
+		}
+	}, {
+		key: "toJSON",
+		value: function toJSON() {
+			var json = {
+				id: this.id,
+				info: this.info,
+				props: this.props,
+				position: this.position,
+				controls: this.controls
+			};
+
+			this.emit("to-json", json);
+
+			return json;
+		}
+	}, {
+		key: "fromJSON",
+		value: function fromJSON(json) {
+			this.id = json.id;
+			this.setInfo(json.info);
+			this.setProp(json.props);
+			this.setControl(json.controls);
+			Object.assign(this.position, json.position);
+
+			this.emit("from-json", json);
+
+			return this;
 		}
 
-		// update position
-		this._updatePosition();
+		// overwrite emit so we can fire events on the manager
 
-		this.emit("update", d);
-	}
+	}, {
+		key: "emit",
+		value: function emit(event) {
+			var _Emitter$prototype$em, _manager, _manager2;
 
-	_updatePosition() {
-		this.position.x = clipDecimals(this.body.position[0]);
-		this.position.y = clipDecimals(this.body.position[1]);
-		this.position.vx = clipDecimals(this.body.velocity[0]);
-		this.position.vy = clipDecimals(this.body.velocity[1]);
-	}
+			for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+				args[_key - 1] = arguments[_key];
+			}
 
-	toJSON() {
-		let json = {
-			id: this.id,
-			info: this.info,
-			props: this.props,
-			position: this.position,
-			controls: this.controls
-		};
-
-		this.emit("to-json", json);
-
-		return json;
-	}
-
-	fromJSON(json) {
-		this.id = json.id;
-		this.setInfo(json.info);
-		this.setProp(json.props);
-		this.setControl(json.controls);
-		Object.assign(this.position, json.position);
-
-		this.emit("from-json", json);
-
-		return this;
-	}
-
-	// overwrite emit so we can fire events on the manager
-	emit(event, ...args) {
-		let v = regexpEvents.Emitter.prototype.emit.call(this, event, ...args);
-		this.manager.emit("player-" + event, this, ...args);
-		this.manager.emit(`player-${this.id}-${event}`, this, ...args);
-		return v;
-	}
-
-	get game() {
-		return this.manager.game;
-	}
-}
-
-class PlayerManager extends regexpEvents.Emitter {
-	constructor(game) {
-		super();
-
-		this.game = game;
-		this.players = [];
-	}
-
-	getPlayer(id) {
-		if (id instanceof Player) return this.players.includes(id) ? id : undefined;else return this.players.find(player => player.id === id);
-	}
-
-	createPlayer(info, props) {
-		let player = new Player(this, info, props);
-
-		// add the player to the list of players
-		this.players.push(player);
-		// add the player to the world
-		this.game.world.addBody(player.body);
-
-		this.emit("player-created", player);
-		return player;
-	}
-
-	createFromJSON(json) {
-		let player = new Player(this, json.info, json.props);
-		player.fromJSON(json);
-
-		// add the player to the list of players
-		this.players.push(player);
-		// add the player to the world
-		this.game.world.addBody(player.body);
-
-		this.emit("player-created", player);
-		return player;
-	}
-
-	removePlayer(id) {
-		let player = this.getPlayer(id);
-		if (this.players.includes(player)) {
-			// remove player from the list
-			this.players.splice(this.players.indexOf(player), 1);
-			// remove the player from the world
-			this.game.world.removeBody(player.body);
-
-			this.emit("player-removed", player);
+			var v = (_Emitter$prototype$em = Emitter.prototype.emit).call.apply(_Emitter$prototype$em, [this, event].concat(args));
+			(_manager = this.manager).emit.apply(_manager, ["player-" + event, this].concat(args));
+			(_manager2 = this.manager).emit.apply(_manager2, ["player-" + this.id + "-" + event, this].concat(args));
+			return v;
 		}
-		return this;
+	}, {
+		key: "game",
+		get: function get$$1() {
+			return this.manager.game;
+		}
+	}]);
+	return Player;
+}(Emitter);
+
+var PlayerManager = function (_Emitter) {
+	inherits(PlayerManager, _Emitter);
+
+	function PlayerManager(game) {
+		classCallCheck(this, PlayerManager);
+
+		var _this = possibleConstructorReturn(this, (PlayerManager.__proto__ || Object.getPrototypeOf(PlayerManager)).call(this));
+
+		_this.game = game;
+		_this.players = [];
+		return _this;
 	}
 
-	clearPlayers() {
-		let players = Array.from(this.players);
-		this.players.forEach(this.removePlayer.bind(this));
-		this.emit("players-cleared", players);
-		return this;
-	}
+	createClass(PlayerManager, [{
+		key: "getPlayer",
+		value: function getPlayer(id) {
+			if (id instanceof Player) return this.players.includes(id) ? id : undefined;else return this.players.find(function (player) {
+				return player.id === id;
+			});
+		}
+	}, {
+		key: "createPlayer",
+		value: function createPlayer(info, props) {
+			var player = new Player(this, info, props);
 
-	update(d) {
-		this.players.forEach(player => player.update(d));
-	}
+			// add the player to the list of players
+			this.players.push(player);
+			// add the player to the world
+			this.game.world.addBody(player.body);
 
-	toJSON() {
-		let json = this.players.map(player => player.toJSON());
-		this.emit("to-json", json);
-		return json;
-	}
+			this.emit("player-created", player);
+			return player;
+		}
+	}, {
+		key: "createFromJSON",
+		value: function createFromJSON(json) {
+			var player = new Player(this, json.info, json.props);
+			player.fromJSON(json);
 
-	fromJSON(json) {
-		this.clearPlayers();
-		json.forEach(data => {
-			let player = this.createPlayer();
-			player.fromJSON(data);
-		});
-		this.emit("from-json", json);
-		return this;
-	}
-}
+			// add the player to the list of players
+			this.players.push(player);
+			// add the player to the world
+			this.game.world.addBody(player.body);
+
+			this.emit("player-created", player);
+			return player;
+		}
+	}, {
+		key: "removePlayer",
+		value: function removePlayer(id) {
+			var player = this.getPlayer(id);
+			if (this.players.includes(player)) {
+				// remove player from the list
+				this.players.splice(this.players.indexOf(player), 1);
+				// remove the player from the world
+				this.game.world.removeBody(player.body);
+
+				this.emit("player-removed", player);
+			}
+			return this;
+		}
+	}, {
+		key: "clearPlayers",
+		value: function clearPlayers() {
+			var players = Array.from(this.players);
+			this.players.forEach(this.removePlayer.bind(this));
+			this.emit("players-cleared", players);
+			return this;
+		}
+	}, {
+		key: "update",
+		value: function update(d) {
+			this.players.forEach(function (player) {
+				return player.update(d);
+			});
+		}
+	}, {
+		key: "toJSON",
+		value: function toJSON() {
+			var json = this.players.map(function (player) {
+				return player.toJSON();
+			});
+			this.emit("to-json", json);
+			return json;
+		}
+	}, {
+		key: "fromJSON",
+		value: function fromJSON(json) {
+			var _this2 = this;
+
+			this.clearPlayers();
+			json.forEach(function (data) {
+				var player = _this2.createPlayer();
+				player.fromJSON(data);
+			});
+			this.emit("from-json", json);
+			return this;
+		}
+	}]);
+	return PlayerManager;
+}(Emitter);
 
 /**
  * Removes all key-value entries from the list cache.
@@ -879,9 +1112,9 @@ var root = _freeGlobal || freeSelf || Function('return this')();
 var _root = root;
 
 /** Built-in value references. */
-var Symbol = _root.Symbol;
+var Symbol$1 = _root.Symbol;
 
-var _Symbol = Symbol;
+var _Symbol = Symbol$1;
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -2598,9 +2831,9 @@ var DataView = _getNative(_root, 'DataView');
 var _DataView = DataView;
 
 /* Built-in method references that are verified to be native. */
-var Promise = _getNative(_root, 'Promise');
+var Promise$1 = _getNative(_root, 'Promise');
 
-var _Promise = Promise;
+var _Promise = Promise$1;
 
 /* Built-in method references that are verified to be native. */
 var Set = _getNative(_root, 'Set');
@@ -2798,166 +3031,195 @@ function isEqual(value, other) {
 
 var isEqual_1 = isEqual;
 
-const TILE_SIZE = 50;
-class Tilemap extends regexpEvents.Emitter {
-	constructor(game) {
-		super();
+var TILE_SIZE = 50;
 
-		this.game = game;
-		this.size = { width: 0, height: 0 };
-		this.bodies = [];
-		this.spawnAreas = [];
-		this.loadedJSON = {};
+var Tilemap = function (_Emitter) {
+	inherits(Tilemap, _Emitter);
+
+	function Tilemap(game) {
+		classCallCheck(this, Tilemap);
+
+		var _this = possibleConstructorReturn(this, (Tilemap.__proto__ || Object.getPrototypeOf(Tilemap)).call(this));
+
+		_this.game = game;
+		_this.size = { width: 0, height: 0 };
+		_this.bodies = [];
+		_this.spawnAreas = [];
+		_this.loadedJSON = {};
+		return _this;
 	}
 
-	clearBodies() {
-		this.bodies.forEach(body => this.game.world.removeBody(body));
-		this.bodies = [];
-		this.emit("collisions-cleared");
-		return this;
-	}
+	createClass(Tilemap, [{
+		key: "clearBodies",
+		value: function clearBodies() {
+			var _this2 = this;
 
-	toJSON() {
-		return this.loadedJSON;
-	}
-
-	fromJSON(json) {
-		this.clearBodies();
-
-		this.loadedJSON = json;
-
-		this.size.width = json.size.width;
-		this.size.height = json.size.height;
-
-		// build the collisions for the map
-		this.bodies = Tilemap.buildCollisions(json.collisions);
-
-		// set all the collisions groups
-		this.bodies.forEach(body => {
-			body.shapes.forEach(shape => {
-				shape.collisionGroup = COLLISION_GROUPS.WALLS;
-				shape.collisionMask = COLLISION_GROUPS.ALL;
+			this.bodies.forEach(function (body) {
+				return _this2.game.world.removeBody(body);
 			});
-		});
-
-		this.bodies.forEach(body => this.game.world.addBody(body));
-		this.emit("from-json", json);
-		return this;
-	}
-
-	getSpawnPoint() {
-		return {
-			x: this.size.width / 2 * TILE_SIZE,
-			y: this.size.height / 2 * TILE_SIZE
-		};
-	}
-
-	static buildCollisions(collisions) {
-		let bodies = [];
-
-		for (let i = 0; i < collisions.length; i++) {
-			let object = collisions[i];
-
-			if (!object.visible) continue;
-
-			// create the shape
-			if (Array.isArray(object.polygon)) {
-				let body = new p2.Body({ mass: 0 });
-				body.position[0] = object.x;
-				body.position[1] = object.y;
-				body.fromPolygon(object.polygon.map(point => [point.x, point.y]));
-				bodies.push(body);
-			} else if (Array.isArray(object.polyline)) {
-				let body = new p2.Body({ mass: 0 });
-				body.position[0] = object.x;
-				body.position[1] = object.y;
-
-				// start at the second point
-				for (let i = 1; i < object.polyline.length; i++) {
-					let prev = object.polyline[i - 1];
-					let curr = object.polyline[i];
-					let length = Math.sqrt(Math.pow(curr.x - prev.x, 2) + Math.pow(curr.y - prev.y, 2));
-					let angle = Math.atan2(curr.y - prev.y, curr.x - prev.x);
-					body.addShape(new p2.Line({
-						position: [lerp(prev.x, curr.x, 0.5), lerp(prev.y, curr.y, 0.5)],
-						length: length,
-						angle: angle
-					}));
-				}
-
-				bodies.push(body);
-			} else if (object.height > 0 && object.width > 0) {
-				let body = new p2.Body({ mass: 0 });
-				body.position[0] = object.x + object.width / 2;
-				body.position[1] = object.y + object.height / 2;
-				body.addShape(new p2.Box({
-					width: object.width,
-					height: object.height
-				}));
-				bodies.push(body);
-			}
+			this.bodies = [];
+			this.emit("collisions-cleared");
+			return this;
 		}
+	}, {
+		key: "toJSON",
+		value: function toJSON() {
+			return this.loadedJSON;
+		}
+	}, {
+		key: "fromJSON",
+		value: function fromJSON(json) {
+			var _this3 = this;
 
-		return bodies;
-	}
+			this.clearBodies();
 
-	static parseTiledJSON(json) {
-		let mapJSON = {
-			size: {
-				width: json.width,
-				height: json.height
-			},
-			types: [],
-			tiles: []
-		};
+			this.loadedJSON = json;
 
-		// get the collisions
-		mapJSON.collisions = json.layers.find(layer => {
-			return layer.objects && layer.name == "collision" && layer.type == "objectgroup";
-		}).objects;
+			this.size.width = json.size.width;
+			this.size.height = json.size.height;
 
-		// get all the tile props
-		let tileProperties = {};
-		json.tilesets.forEach(tileset => {
-			for (let id in tileset.tileproperties) {
-				let tileID = parseInt(id) + tileset.firstgid;
-				if (Reflect.ownKeys(tileset.tileproperties[id]).length > 0) {
-					if (!tileProperties[tileID]) tileProperties[tileID] = {};
-					Object.assign(tileProperties[tileID], tileset.tileproperties[id]);
+			// build the collisions for the map
+			this.bodies = Tilemap.buildCollisions(json.collisions);
+
+			// set all the collisions groups
+			this.bodies.forEach(function (body) {
+				body.shapes.forEach(function (shape) {
+					shape.collisionGroup = COLLISION_GROUPS.WALLS;
+					shape.collisionMask = COLLISION_GROUPS.ALL;
+				});
+			});
+
+			this.bodies.forEach(function (body) {
+				return _this3.game.world.addBody(body);
+			});
+			this.emit("from-json", json);
+			return this;
+		}
+	}, {
+		key: "getSpawnPoint",
+		value: function getSpawnPoint() {
+			return {
+				x: this.size.width / 2 * TILE_SIZE,
+				y: this.size.height / 2 * TILE_SIZE
+			};
+		}
+	}], [{
+		key: "buildCollisions",
+		value: function buildCollisions$$1(collisions) {
+			var bodies = [];
+
+			for (var i = 0; i < collisions.length; i++) {
+				var object = collisions[i];
+
+				if (!object.visible) continue;
+
+				// create the shape
+				if (Array.isArray(object.polygon)) {
+					var body = new p2.Body({ mass: 0 });
+					body.position[0] = object.x;
+					body.position[1] = object.y;
+					body.fromPolygon(object.polygon.map(function (point) {
+						return [point.x, point.y];
+					}));
+					bodies.push(body);
+				} else if (Array.isArray(object.polyline)) {
+					var _body = new p2.Body({ mass: 0 });
+					_body.position[0] = object.x;
+					_body.position[1] = object.y;
+
+					// start at the second point
+					for (var _i = 1; _i < object.polyline.length; _i++) {
+						var prev = object.polyline[_i - 1];
+						var curr = object.polyline[_i];
+						var length = Math.sqrt(Math.pow(curr.x - prev.x, 2) + Math.pow(curr.y - prev.y, 2));
+						var angle = Math.atan2(curr.y - prev.y, curr.x - prev.x);
+						_body.addShape(new p2.Line({
+							position: [lerp(prev.x, curr.x, 0.5), lerp(prev.y, curr.y, 0.5)],
+							length: length,
+							angle: angle
+						}));
+					}
+
+					bodies.push(_body);
+				} else if (object.height > 0 && object.width > 0) {
+					var _body2 = new p2.Body({ mass: 0 });
+					_body2.position[0] = object.x + object.width / 2;
+					_body2.position[1] = object.y + object.height / 2;
+					_body2.addShape(new p2.Box({
+						width: object.width,
+						height: object.height
+					}));
+					bodies.push(_body2);
 				}
 			}
-		});
 
-		// compile all the tile props
-		json.layers.filter(layer => layer.type === "tilelayer").forEach(layer => {
-			for (let i = 0; i < layer.data.length; i++) {
-				let y = Math.floor(i / json.width);
-				let x = i - y * json.width;
-				if (!mapJSON.tiles[y]) mapJSON.tiles[y] = [];
-				if (!mapJSON.tiles[y][x]) mapJSON.tiles[y][x] = [];
+			return bodies;
+		}
+	}, {
+		key: "parseTiledJSON",
+		value: function parseTiledJSON(json) {
+			var mapJSON = {
+				size: {
+					width: json.width,
+					height: json.height
+				},
+				types: [],
+				tiles: []
+			};
 
-				let props = tileProperties[layer.data[i]];
-				if (props) mapJSON.tiles[y][x].push(props);
-			}
-		});
+			// get the collisions
+			mapJSON.collisions = json.layers.find(function (layer) {
+				return layer.objects && layer.name == "collision" && layer.type == "objectgroup";
+			}).objects;
 
-		// condense the tiles down to types
-		mapJSON.tiles = mapJSON.tiles.map(row => {
-			return row.map(tile => {
-				// find a type that has exactly the make models as the tile
-				let type = mapJSON.types.find(type => isEqual_1(tile, type));
-
-				if (!type && tile.length > 0) mapJSON.types.push(type = tile);
-
-				return mapJSON.types.indexOf(type);
+			// get all the tile props
+			var tileProperties = {};
+			json.tilesets.forEach(function (tileset) {
+				for (var id in tileset.tileproperties) {
+					var tileID = parseInt(id) + tileset.firstgid;
+					if (Reflect.ownKeys(tileset.tileproperties[id]).length > 0) {
+						if (!tileProperties[tileID]) tileProperties[tileID] = {};
+						Object.assign(tileProperties[tileID], tileset.tileproperties[id]);
+					}
+				}
 			});
-		});
 
-		return mapJSON;
-	}
-}
+			// compile all the tile props
+			json.layers.filter(function (layer) {
+				return layer.type === "tilelayer";
+			}).forEach(function (layer) {
+				for (var i = 0; i < layer.data.length; i++) {
+					var y = Math.floor(i / json.width);
+					var x = i - y * json.width;
+					if (!mapJSON.tiles[y]) mapJSON.tiles[y] = [];
+					if (!mapJSON.tiles[y][x]) mapJSON.tiles[y][x] = [];
 
-const BASE_CONFIG = {
+					var props = tileProperties[layer.data[i]];
+					if (props) mapJSON.tiles[y][x].push(props);
+				}
+			});
+
+			// condense the tiles down to types
+			mapJSON.tiles = mapJSON.tiles.map(function (row) {
+				return row.map(function (tile) {
+					// find a type that has exactly the make models as the tile
+					var type = mapJSON.types.find(function (type) {
+						return isEqual_1(tile, type);
+					});
+
+					if (!type && tile.length > 0) mapJSON.types.push(type = tile);
+
+					return mapJSON.types.indexOf(type);
+				});
+			});
+
+			return mapJSON;
+		}
+	}]);
+	return Tilemap;
+}(Emitter);
+
+var BASE_CONFIG = {
 	player: {
 		movement: {
 			speed: 180,
@@ -2968,119 +3230,144 @@ const BASE_CONFIG = {
 	}
 };
 
-class Game extends regexpEvents.Emitter {
-	constructor(id) {
-		super();
+var Game = function (_Emitter) {
+	inherits(Game, _Emitter);
 
-		this.id = id;
-		this.info = {};
-		this.isMaster = false;
-		this.config = JSON.parse(JSON.stringify(BASE_CONFIG));
+	function Game(id) {
+		classCallCheck(this, Game);
 
-		this.players = new PlayerManager(this);
-		this.map = new Tilemap(this);
-		this.bullets = new BulletManager(this);
+		var _this = possibleConstructorReturn(this, (Game.__proto__ || Object.getPrototypeOf(Game)).call(this));
+
+		_this.id = id;
+		_this.info = {};
+		_this.isMaster = false;
+		_this.config = JSON.parse(JSON.stringify(BASE_CONFIG));
+
+		_this.players = new PlayerManager(_this);
+		_this.map = new Tilemap(_this);
+		_this.bullets = new BulletManager(_this);
 
 		// create the physics world
-		this.world = new p2.World({
+		_this.world = new p2.World({
 			gravity: [0, 0]
 		});
+		return _this;
 	}
 
-	getPlayer(...args) {
-		return this.players.getPlayer(...args);
-	}
-	createPlayer(...args) {
-		return this.players.createPlayer(...args);
-	}
-	removePlayer(...args) {
-		return this.players.removePlayer(...args);
-	}
+	createClass(Game, [{
+		key: "getPlayer",
+		value: function getPlayer() {
+			var _players;
 
-	spawnPlayer(id) {
-		let player = this.players.getPlayer(id);
-		let point = this.map.getSpawnPoint();
-
-		player.setPosition(point.x, point.y);
-		player.setProp("spawned", true);
-		return this;
-	}
-
-	setInfo(key, value) {
-		if (key instanceof Object) {
-			for (let i in key) this.info[i] = key[i];
-
-			this.emit("info-changed", key);
-		} else {
-			this.info[key] = value;
-			this.emit("info-changed", key, value);
+			return (_players = this.players).getPlayer.apply(_players, arguments);
 		}
+	}, {
+		key: "createPlayer",
+		value: function createPlayer() {
+			var _players2;
 
-		return this;
-	}
-	getInfo(key, value) {
-		return this.info[key];
-	}
+			return (_players2 = this.players).createPlayer.apply(_players2, arguments);
+		}
+	}, {
+		key: "removePlayer",
+		value: function removePlayer() {
+			var _players3;
 
-	getDelta() {
-		let newTime = new Date();
-		let delta = (newTime - this.lastDelta) / 1000;
-		this.lastDelta = newTime;
-		return delta;
-	}
-	update() {
-		let d = this.getDelta();
+			return (_players3 = this.players).removePlayer.apply(_players3, arguments);
+		}
+	}, {
+		key: "spawnPlayer",
+		value: function spawnPlayer(id) {
+			var player = this.players.getPlayer(id);
+			var point = this.map.getSpawnPoint();
 
-		// update the physics world
-		this.world.step(1 / 60, d, 1);
+			player.setPosition(point.x, point.y);
+			player.setProp("spawned", true);
+			return this;
+		}
+	}, {
+		key: "setInfo",
+		value: function setInfo(key, value) {
+			if (key instanceof Object) {
+				for (var i in key) {
+					this.info[i] = key[i];
+				}this.emit("info-changed", key);
+			} else {
+				this.info[key] = value;
+				this.emit("info-changed", key, value);
+			}
 
-		// update the players
-		this.players.update(d);
+			return this;
+		}
+	}, {
+		key: "getInfo",
+		value: function getInfo(key, value) {
+			return this.info[key];
+		}
+	}, {
+		key: "getDelta",
+		value: function getDelta() {
+			var newTime = new Date();
+			var delta = (newTime - this.lastDelta) / 1000;
+			this.lastDelta = newTime;
+			return delta;
+		}
+	}, {
+		key: "update",
+		value: function update() {
+			var d = this.getDelta();
 
-		// update the bullets
-		this.bullets.update(d);
+			// update the physics world
+			this.world.step(1 / 60, d, 1);
 
-		this.emit("update", d);
-	}
+			// update the players
+			this.players.update(d);
 
-	toJSON() {
-		let json = {
-			id: this.id,
-			info: this.info,
-			config: this.config,
-			map: this.map.toJSON(),
-			players: this.players.toJSON()
-		};
+			// update the bullets
+			this.bullets.update(d);
 
-		// fire the event
-		this.emit("to-json", json);
+			this.emit("update", d);
+		}
+	}, {
+		key: "toJSON",
+		value: function toJSON() {
+			var json = {
+				id: this.id,
+				info: this.info,
+				config: this.config,
+				map: this.map.toJSON(),
+				players: this.players.toJSON()
+			};
 
-		return json;
-	}
+			// fire the event
+			this.emit("to-json", json);
 
-	fromJSON(json) {
-		this.id = json.id;
-		this.setInfo(json.info);
-		this.players.fromJSON(json.players);
-		this.map.fromJSON(json.map);
+			return json;
+		}
+	}, {
+		key: "fromJSON",
+		value: function fromJSON(json) {
+			this.id = json.id;
+			this.setInfo(json.info);
+			this.players.fromJSON(json.players);
+			this.map.fromJSON(json.map);
 
-		// fire the event
-		this.emit("from-json", json);
+			// fire the event
+			this.emit("from-json", json);
 
-		return this;
-	}
+			return this;
+		}
+	}, {
+		key: "isClient",
+		get: function get$$1() {
+			return !this.isMaster;
+		}
+	}]);
+	return Game;
+}(Emitter);
 
-	get isClient() {
-		return !this.isMaster;
-	}
-}
 
 Game.DEFAULT_FPS = 1 / 60;
 
-exports.Game = Game;
-exports.Player = Player;
-exports.PlayerManager = PlayerManager;
-exports.Tilemap = Tilemap;
-exports.Bullet = Bullet;
-exports.BulletManager = BulletManager;
-//# sourceMappingURL=lazer-game-core.js.map
+export { Game, Player, PlayerManager, Tilemap, Bullet, BulletManager };
+//# sourceMappingURL=lazer-game-core.module.js.map
