@@ -1,31 +1,31 @@
 {
-  "coverage": "1.65%",
-  "expectCount": 121,
+  "coverage": "1.73%",
+  "expectCount": 115,
   "actualCount": 2,
   "files": {
     "src/bullet/Bullet.js": {
       "expectCount": 19,
       "actualCount": 0,
       "undocumentLines": [
+        4,
+        5,
         7,
-        8,
-        10,
-        12,
-        17,
-        27,
-        31,
-        37,
-        39,
-        52,
-        56,
-        58,
-        62,
-        66,
-        78,
-        87,
-        94,
-        98,
-        102
+        9,
+        14,
+        24,
+        28,
+        34,
+        36,
+        49,
+        53,
+        55,
+        59,
+        63,
+        75,
+        84,
+        91,
+        95,
+        99
       ]
     },
     "src/bullet/BulletManager.js": {
@@ -168,18 +168,12 @@
       ]
     },
     "src/utils.js": {
-      "expectCount": 9,
+      "expectCount": 3,
       "actualCount": 0,
       "undocumentLines": [
-        4,
-        21,
-        124,
-        131,
-        135,
-        161,
-        167,
-        185,
-        238
+        3,
+        7,
+        60
       ]
     }
   }

@@ -30,18 +30,6 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "lazer-game-core/src/utils.js~names",
-    "variable/index.html#static-variable-NAMES",
-    "<span>NAMES</span> <span class=\"search-result-import-path\">lazer-game-core/src/utils.js</span>",
-    "variable"
-  ],
-  [
-    "lazer-game-core/src/utils.js~name_templates",
-    "variable/index.html#static-variable-NAME_TEMPLATES",
-    "<span>NAME_TEMPLATES</span> <span class=\"search-result-import-path\">lazer-game-core/src/utils.js</span>",
-    "variable"
-  ],
-  [
     "lazer-game-core/src/player/player.js~player",
     "class/src/player/Player.js~Player.html",
     "<span>Player</span> <span class=\"search-result-import-path\">lazer-game-core/src/player/Player.js</span>",
@@ -72,27 +60,9 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
-    "lazer-game-core/src/utils.js~createname",
-    "function/index.html#static-function-createName",
-    "<span>createName</span> <span class=\"search-result-import-path\">lazer-game-core/src/utils.js</span>",
-    "function"
-  ],
-  [
-    "lazer-game-core/src/utils.js~geturlsearchsettings",
-    "function/index.html#static-function-getURLSearchSettings",
-    "<span>getURLSearchSettings</span> <span class=\"search-result-import-path\">lazer-game-core/src/utils.js</span>",
-    "function"
-  ],
-  [
     "lazer-game-core/src/utils.js~lerp",
     "function/index.html#static-function-lerp",
     "<span>lerp</span> <span class=\"search-result-import-path\">lazer-game-core/src/utils.js</span>",
-    "function"
-  ],
-  [
-    "lazer-game-core/src/utils.js~parsesearch",
-    "function/index.html#static-function-parseSearch",
-    "<span>parseSearch</span> <span class=\"search-result-import-path\">lazer-game-core/src/utils.js</span>",
     "function"
   ],
   [
