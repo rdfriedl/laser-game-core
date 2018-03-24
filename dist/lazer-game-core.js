@@ -4,16 +4,18 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
-var hashids = _interopDefault(require('hashids'));
+var Hashids = _interopDefault(require('hashids'));
 var regexpEvents = require('regexp-events');
 var p2 = _interopDefault(require('p2'));
+
+const bulletIds = new Hashids("bullets");
 
 class Bullet extends regexpEvents.Emitter {
 	constructor(manager, info = {}, props = {}) {
 		super();
 		this.manager = manager;
 
-		this.id = hashids.encode(Date.now());
+		this.id = bulletIds.encode(Date.now());
 
 		// this is basic info about the bullet
 		// like: who shot it, how long its supposed to last
@@ -343,12 +345,14 @@ BulletManager.BULLET_TYPE = {
 	DEFAULT: "default"
 };
 
+const playerIds = new Hashids("players");
+
 class Player extends regexpEvents.Emitter {
 	constructor(manager, info, props) {
 		super();
 
 		this.manager = manager;
-		this.id = hashids.encode(Date.now());
+		this.id = playerIds.encode(Date.now());
 
 		// this is basic info about the player
 		// NOTE: this is set once when the bullet is created and then never changes

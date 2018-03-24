@@ -14198,7 +14198,7 @@
 	});
 	});
 
-	var hashids$1 = unwrapExports(hashids);
+	var Hashids = unwrapExports(hashids);
 
 	var classCallCheck$1 = function (instance, Constructor) {
 	  if (!(instance instanceof Constructor)) {
@@ -14273,6 +14273,8 @@
 	  return call && (typeof call === "object" || typeof call === "function") ? call : self;
 	};
 
+	var bulletIds = new Hashids("bullets");
+
 	var Bullet = function (_Emitter) {
 		inherits(Bullet, _Emitter);
 
@@ -14285,7 +14287,7 @@
 
 			_this.manager = manager;
 
-			_this.id = hashids$1.encode(Date.now());
+			_this.id = bulletIds.encode(Date.now());
 
 			// this is basic info about the bullet
 			// like: who shot it, how long its supposed to last
@@ -14706,6 +14708,8 @@
 		DEFAULT: "default"
 	};
 
+	var playerIds = new Hashids("players");
+
 	var Player = function (_Emitter) {
 		inherits(Player, _Emitter);
 
@@ -14715,7 +14719,7 @@
 			var _this = possibleConstructorReturn(this, (Player.__proto__ || Object.getPrototypeOf(Player)).call(this));
 
 			_this.manager = manager;
-			_this.id = hashids$1.encode(Date.now());
+			_this.id = playerIds.encode(Date.now());
 
 			// this is basic info about the player
 			// NOTE: this is set once when the bullet is created and then never changes
