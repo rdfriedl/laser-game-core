@@ -1,12 +1,14 @@
-import hashids from "hashids";
+import Hashids from "hashids";
 import { Emitter } from "regexp-events";
+
+const bulletIds = new Hashids("bullets");
 
 export default class Bullet extends Emitter {
 	constructor(manager, info = {}, props = {}) {
 		super();
 		this.manager = manager;
 
-		this.id = hashids.encode(Date.now());
+		this.id = bulletIds.encode(Date.now());
 
 		// this is basic info about the bullet
 		// like: who shot it, how long its supposed to last

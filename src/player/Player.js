@@ -1,17 +1,19 @@
 import { Emitter } from "regexp-events";
 import p2 from "p2";
-import hashids from "hashids";
+import Hashids from "hashids";
 
 import BulletManager from "../bullet/BulletManager";
 import { lerp, clipDecimals } from "../utils";
 import { COLLISION_GROUPS } from "../const";
+
+const playerIds = new Hashids("players");
 
 export default class Player extends Emitter {
 	constructor(manager, info, props) {
 		super();
 
 		this.manager = manager;
-		this.id = hashids.encode(Date.now());
+		this.id = playerIds.encode(Date.now());
 
 		// this is basic info about the player
 		// NOTE: this is set once when the bullet is created and then never changes
