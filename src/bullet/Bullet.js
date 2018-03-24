@@ -1,15 +1,12 @@
-import shortID from "shortid";
+import hashids from "hashids";
 import { Emitter } from "regexp-events";
-import p2 from "p2";
-import { lerp } from "../utils";
-import { COLLISION_GROUPS } from "../const";
 
 export default class Bullet extends Emitter {
 	constructor(manager, info = {}, props = {}) {
 		super();
 		this.manager = manager;
 
-		this.id = shortID();
+		this.id = hashids.encode(Date.now());
 
 		// this is basic info about the bullet
 		// like: who shot it, how long its supposed to last
