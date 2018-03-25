@@ -6,14 +6,14 @@ import BulletManager from "../bullet/BulletManager";
 import { lerp, clipDecimals } from "../utils";
 import { COLLISION_GROUPS } from "../const";
 
-const playerIds = new Hashids("players");
-
 export default class Player extends Emitter {
+	static ids = new Hashids("players");
+
 	constructor(manager, info, props) {
 		super();
 
 		this.manager = manager;
-		this.id = playerIds.encode(Date.now());
+		this.id = Player.ids.encode(Date.now());
 
 		// this is basic info about the player
 		// NOTE: this is set once when the bullet is created and then never changes

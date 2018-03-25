@@ -25,19 +25,18 @@ const configs = [
 			sourcemap: true,
 		},
 		plugins: [
-			...plugins,
 			babel({
 				babelrc: false,
 				exclude: "node_modules/**",
-				presets: [["env", { modules: false }]],
+				presets: [["env", { modules: false }], "stage-2"],
 				plugins: ["external-helpers"],
 			}),
+			...plugins,
 		],
 	},
 	{
 		input: "src/index.js",
 		plugins: [
-			...plugins,
 			babel({
 				babelrc: false,
 				exclude: "node_modules/**",
@@ -51,9 +50,11 @@ const configs = [
 							},
 						},
 					],
+					"stage-2",
 				],
 				plugins: ["external-helpers"],
 			}),
+			...plugins,
 		],
 		external: Object.keys(pkg.dependencies),
 		output: {
@@ -65,13 +66,13 @@ const configs = [
 	{
 		input: "src/index.js",
 		plugins: [
-			...plugins,
 			babel({
 				babelrc: false,
 				exclude: "node_modules/**",
-				presets: [["env", { modules: false }]],
+				presets: [["env", { modules: false }], "stage-2"],
 				plugins: ["external-helpers"],
 			}),
+			...plugins,
 		],
 		external: Object.keys(pkg.dependencies),
 		output: {

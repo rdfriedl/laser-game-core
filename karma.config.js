@@ -45,12 +45,6 @@ module.exports = function(config) {
 				sourcemap: "inline",
 			},
 			plugins: [
-				replace({
-					"process.env.NODE_ENV": '"development"',
-				}),
-				resolve(),
-				commonjs(),
-				json(),
 				babel({
 					exclude: "node_modules/**",
 					presets: [
@@ -61,6 +55,7 @@ module.exports = function(config) {
 								modules: false,
 							},
 						],
+						"stage-2",
 					],
 					plugins: [
 						"external-helpers",
@@ -74,6 +69,12 @@ module.exports = function(config) {
 					sourceMaps: true,
 					babelrc: false,
 				}),
+				replace({
+					"process.env.NODE_ENV": '"development"',
+				}),
+				resolve(),
+				commonjs(),
+				json(),
 			],
 		},
 

@@ -2,15 +2,18 @@ import { Emitter } from "regexp-events";
 import PlayerManager from "../player/PlayerManager";
 import BulletManager from "../bullet/BulletManager";
 import p2 from "p2";
+import Hashids from "hashids";
 import Tilemap from "../tilemap/Tilemap";
 
 import BASE_CONFIG from "./gameConfig";
 
 export default class Game extends Emitter {
-	constructor(id) {
+	static ids = new Hashids("games");
+
+	constructor() {
 		super();
 
-		this.id = id;
+		this.id = Game.ids.encode(Date.now());
 		this.info = {};
 		this.isMaster = false;
 		this.config = JSON.parse(JSON.stringify(BASE_CONFIG));
