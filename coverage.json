@@ -1,34 +1,8 @@
 {
-  "coverage": "1.7%",
-  "expectCount": 117,
+  "coverage": "4%",
+  "expectCount": 50,
   "actualCount": 2,
   "files": {
-    "src/bullet/Bullet.js": {
-      "expectCount": 20,
-      "actualCount": 0,
-      "undocumentLines": [
-        4,
-        6,
-        7,
-        9,
-        11,
-        16,
-        26,
-        30,
-        36,
-        38,
-        51,
-        55,
-        57,
-        61,
-        65,
-        77,
-        86,
-        93,
-        97,
-        101
-      ]
-    },
     "src/bullet/BulletManager.js": {
       "expectCount": 13,
       "actualCount": 0,
@@ -65,70 +39,11 @@
         1
       ]
     },
-    "src/game/Game.js": {
-      "expectCount": 22,
-      "actualCount": 0,
-      "undocumentLines": [
-        9,
-        10,
-        13,
-        14,
-        15,
-        16,
-        18,
-        19,
-        20,
-        23,
-        28,
-        31,
-        34,
-        38,
-        47,
-        59,
-        63,
-        66,
-        69,
-        84,
-        99,
-        111
-      ]
-    },
     "src/game/gameConfig.js": {
       "expectCount": 1,
       "actualCount": 0,
       "undocumentLines": [
         1
-      ]
-    },
-    "src/player/Player.js": {
-      "expectCount": 25,
-      "actualCount": 0,
-      "undocumentLines": [
-        9,
-        11,
-        12,
-        15,
-        16,
-        20,
-        24,
-        28,
-        35,
-        42,
-        59,
-        60,
-        67,
-        79,
-        91,
-        103,
-        106,
-        109,
-        113,
-        126,
-        159,
-        166,
-        180,
-        193,
-        200
       ]
     },
     "src/player/PlayerManager.js": {

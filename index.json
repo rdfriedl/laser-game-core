@@ -566,433 +566,6 @@
   {
     "__docId__": 48,
     "kind": "file",
-    "name": "src/bullet/Bullet.js",
-    "content": "import Hashids from \"hashids\";\nimport { Emitter } from \"regexp-events\";\n\nconst bulletIds = new Hashids(\"bullets\");\n\nexport default class Bullet extends Emitter {\n\tconstructor(manager, info = {}, props = {}) {\n\t\tsuper();\n\t\tthis.manager = manager;\n\n\t\tthis.id = bulletIds.encode(Date.now());\n\n\t\t// this is basic info about the bullet\n\t\t// like: who shot it, how long its supposed to last\n\t\t// NOTE: this is set once when the bullet is created and then never changes\n\t\tthis.info = Object.assign(\n\t\t\t{\n\t\t\t\towner: undefined,\n\t\t\t},\n\t\t\tinfo,\n\t\t);\n\n\t\t// important info about the bullet\n\t\t// like: current speed, its path, who its locked onto, and so on\n\t\t// NOTE: everything a prop changes its sent to the clients\n\t\tthis.props = Object.assign({}, props);\n\n\t\t// this is anything that is used in the bullets update function\n\t\t// NOTE: this is not send to the client\n\t\tthis.data = {};\n\n\t\t// set the bullet up\n\t\tthis.init();\n\t}\n\n\tinit() {}\n\n\tsetProp(key, value) {\n\t\tif (key instanceof Object) {\n\t\t\tfor (let i in key) this.props[i] = key[i];\n\n\t\t\tthis.emit(\"props-changed\", this.props);\n\t\t} else {\n\t\t\tthis.props[key] = value;\n\t\t\tthis.emit(\"props-changed\", this.props);\n\t\t}\n\n\t\treturn this;\n\t}\n\n\tgetProp(key) {\n\t\treturn this.props[key];\n\t}\n\n\tupdate(d) {}\n\n\tdestroy() {\n\t\tthis.manager.removeBullet(this);\n\t\treturn this;\n\t}\n\tdie() {\n\t\treturn this.destroy();\n\t}\n\n\ttoJSON() {\n\t\tlet json = {\n\t\t\tid: this.id,\n\t\t\tinfo: this.info,\n\t\t\tprops: this.props,\n\t\t\ttype: this.type,\n\t\t};\n\n\t\tthis.emit(\"to-json\", json);\n\t\treturn json;\n\t}\n\n\tfromJSON(json) {\n\t\tthis.id = json.id || this.id;\n\t\tif (json.info) Object.assign(this.info, json.info);\n\t\tif (json.props) Object.assign(this.props, json.props);\n\t\tthis.init();\n\t\treturn this;\n\t}\n\n\t// overwrite emit so we can fire events on the manager\n\temit(event, ...args) {\n\t\tlet v = Emitter.prototype.emit.call(this, event, ...args);\n\t\tthis.manager.emit(\"bullet-\" + event, this, ...args);\n\t\tthis.manager.emit(`bullet-${this.id}-${event}`, this, ...args);\n\t\treturn v;\n\t}\n\n\tget game() {\n\t\treturn this.manager.game;\n\t}\n\n\tget player() {\n\t\treturn this.game.players.getPlayer(this.info.owner);\n\t}\n\n\tget type() {\n\t\treturn this.manager.getBulletType(this);\n\t}\n}\n",
-    "static": true,
-    "longname": "/home/circleci/repo/src/bullet/Bullet.js",
-    "access": "public",
-    "description": null,
-    "lineNumber": 1
-  },
-  {
-    "__docId__": 49,
-    "kind": "variable",
-    "name": "bulletIds",
-    "memberof": "src/bullet/Bullet.js",
-    "static": true,
-    "longname": "src/bullet/Bullet.js~bulletIds",
-    "access": "public",
-    "export": false,
-    "importPath": "lazer-game-core/src/bullet/Bullet.js",
-    "importStyle": null,
-    "description": null,
-    "lineNumber": 4,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    },
-    "ignore": true
-  },
-  {
-    "__docId__": 50,
-    "kind": "class",
-    "name": "Bullet",
-    "memberof": "src/bullet/Bullet.js",
-    "static": true,
-    "longname": "src/bullet/Bullet.js~Bullet",
-    "access": "public",
-    "export": true,
-    "importPath": "lazer-game-core/src/bullet/Bullet.js",
-    "importStyle": "Bullet",
-    "description": null,
-    "lineNumber": 6,
-    "undocument": true,
-    "interface": false,
-    "extends": [
-      "regexp-events~Emitter"
-    ]
-  },
-  {
-    "__docId__": 51,
-    "kind": "constructor",
-    "name": "constructor",
-    "memberof": "src/bullet/Bullet.js~Bullet",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/bullet/Bullet.js~Bullet#constructor",
-    "access": "public",
-    "description": null,
-    "lineNumber": 7,
-    "undocument": true
-  },
-  {
-    "__docId__": 52,
-    "kind": "member",
-    "name": "manager",
-    "memberof": "src/bullet/Bullet.js~Bullet",
-    "static": false,
-    "longname": "src/bullet/Bullet.js~Bullet#manager",
-    "access": "public",
-    "description": null,
-    "lineNumber": 9,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 53,
-    "kind": "member",
-    "name": "id",
-    "memberof": "src/bullet/Bullet.js~Bullet",
-    "static": false,
-    "longname": "src/bullet/Bullet.js~Bullet#id",
-    "access": "public",
-    "description": null,
-    "lineNumber": 11,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 54,
-    "kind": "member",
-    "name": "info",
-    "memberof": "src/bullet/Bullet.js~Bullet",
-    "static": false,
-    "longname": "src/bullet/Bullet.js~Bullet#info",
-    "access": "public",
-    "description": null,
-    "lineNumber": 16,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 55,
-    "kind": "member",
-    "name": "props",
-    "memberof": "src/bullet/Bullet.js~Bullet",
-    "static": false,
-    "longname": "src/bullet/Bullet.js~Bullet#props",
-    "access": "public",
-    "description": null,
-    "lineNumber": 26,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 56,
-    "kind": "member",
-    "name": "data",
-    "memberof": "src/bullet/Bullet.js~Bullet",
-    "static": false,
-    "longname": "src/bullet/Bullet.js~Bullet#data",
-    "access": "public",
-    "description": null,
-    "lineNumber": 30,
-    "undocument": true,
-    "type": {
-      "types": [
-        "{}"
-      ]
-    }
-  },
-  {
-    "__docId__": 57,
-    "kind": "method",
-    "name": "init",
-    "memberof": "src/bullet/Bullet.js~Bullet",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/bullet/Bullet.js~Bullet#init",
-    "access": "public",
-    "description": null,
-    "lineNumber": 36,
-    "undocument": true,
-    "params": [],
-    "return": null
-  },
-  {
-    "__docId__": 58,
-    "kind": "method",
-    "name": "setProp",
-    "memberof": "src/bullet/Bullet.js~Bullet",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/bullet/Bullet.js~Bullet#setProp",
-    "access": "public",
-    "description": null,
-    "lineNumber": 38,
-    "undocument": true,
-    "params": [
-      {
-        "name": "key",
-        "types": [
-          "*"
-        ]
-      },
-      {
-        "name": "value",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 59,
-    "kind": "method",
-    "name": "getProp",
-    "memberof": "src/bullet/Bullet.js~Bullet",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/bullet/Bullet.js~Bullet#getProp",
-    "access": "public",
-    "description": null,
-    "lineNumber": 51,
-    "undocument": true,
-    "params": [
-      {
-        "name": "key",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 60,
-    "kind": "method",
-    "name": "update",
-    "memberof": "src/bullet/Bullet.js~Bullet",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/bullet/Bullet.js~Bullet#update",
-    "access": "public",
-    "description": null,
-    "lineNumber": 55,
-    "undocument": true,
-    "params": [
-      {
-        "name": "d",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": null
-  },
-  {
-    "__docId__": 61,
-    "kind": "method",
-    "name": "destroy",
-    "memberof": "src/bullet/Bullet.js~Bullet",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/bullet/Bullet.js~Bullet#destroy",
-    "access": "public",
-    "description": null,
-    "lineNumber": 57,
-    "undocument": true,
-    "params": [],
-    "return": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 62,
-    "kind": "method",
-    "name": "die",
-    "memberof": "src/bullet/Bullet.js~Bullet",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/bullet/Bullet.js~Bullet#die",
-    "access": "public",
-    "description": null,
-    "lineNumber": 61,
-    "undocument": true,
-    "params": [],
-    "return": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 63,
-    "kind": "method",
-    "name": "toJSON",
-    "memberof": "src/bullet/Bullet.js~Bullet",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/bullet/Bullet.js~Bullet#toJSON",
-    "access": "public",
-    "description": null,
-    "lineNumber": 65,
-    "undocument": true,
-    "params": [],
-    "return": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 64,
-    "kind": "method",
-    "name": "fromJSON",
-    "memberof": "src/bullet/Bullet.js~Bullet",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/bullet/Bullet.js~Bullet#fromJSON",
-    "access": "public",
-    "description": null,
-    "lineNumber": 77,
-    "undocument": true,
-    "params": [
-      {
-        "name": "json",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 66,
-    "kind": "method",
-    "name": "emit",
-    "memberof": "src/bullet/Bullet.js~Bullet",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/bullet/Bullet.js~Bullet#emit",
-    "access": "public",
-    "description": null,
-    "lineNumber": 86,
-    "undocument": true,
-    "params": [
-      {
-        "name": "event",
-        "types": [
-          "*"
-        ]
-      },
-      {
-        "name": "args",
-        "types": [
-          "...*"
-        ],
-        "spread": true
-      }
-    ],
-    "return": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 67,
-    "kind": "get",
-    "name": "game",
-    "memberof": "src/bullet/Bullet.js~Bullet",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/bullet/Bullet.js~Bullet#game",
-    "access": "public",
-    "description": null,
-    "lineNumber": 93,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 68,
-    "kind": "get",
-    "name": "player",
-    "memberof": "src/bullet/Bullet.js~Bullet",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/bullet/Bullet.js~Bullet#player",
-    "access": "public",
-    "description": null,
-    "lineNumber": 97,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 69,
-    "kind": "get",
-    "name": "type",
-    "memberof": "src/bullet/Bullet.js~Bullet",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/bullet/Bullet.js~Bullet#type",
-    "access": "public",
-    "description": null,
-    "lineNumber": 101,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 70,
-    "kind": "file",
     "name": "src/bullet/BulletManager.js",
     "content": "import { Emitter } from \"regexp-events\";\nimport Bullet from \"./Bullet.js\";\nimport DefaultBullet from \"./types/DefaultBullet\";\n\nexport default class BulletManager extends Emitter {\n\tconstructor(game) {\n\t\tsuper();\n\n\t\tthis.game = game;\n\t\tthis.bullets = [];\n\t}\n\n\tcreateBullet(type, info, props) {\n\t\tlet BulletType = BulletManager.BulletTypes[type];\n\t\tif (!BulletType) return;\n\t\tlet bullet = new BulletType(this, info, props);\n\t\tthis.bullets.push(bullet);\n\t\tthis.emit(\"bullet-created\", bullet);\n\t\treturn bullet;\n\t}\n\n\tcreateFromJSON(json) {\n\t\tlet BulletType = BulletManager.BulletTypes[json.type];\n\t\tif (!BulletType) return;\n\t\tlet bullet = new BulletType(this, json.info, json.props);\n\t\tbullet.fromJSON(json);\n\t\tthis.bullets.push(bullet);\n\t\tthis.emit(\"bullet-created\", bullet);\n\t\treturn bullet;\n\t}\n\n\tgetBullet(id) {\n\t\tif (id instanceof Bullet) return this.bullets.includes(id) ? id : undefined;\n\t\telse return this.bullets.find(bullet => bullet.id == id);\n\t}\n\n\tremoveBullet(id) {\n\t\tlet bullet = this.getBullet(id);\n\t\tif (this.bullets.includes(bullet)) {\n\t\t\tthis.bullets.splice(this.bullets.indexOf(bullet), 1);\n\t\t\tthis.emit(\"bullet-removed\", bullet);\n\t\t}\n\t\treturn this;\n\t}\n\n\tclearBullets() {\n\t\tthis.bullets.forEach(bullet => this.removeBullet(bullet));\n\t\tthis.bullets = [];\n\t\treturn this;\n\t}\n\n\tupdate(d) {\n\t\t// update the bullets\n\t\tthis.bullets.forEach(bullet => bullet.update(d));\n\t}\n\n\ttoJSON() {\n\t\tlet json = this.bullets.map(bullet => bullet.toJSON());\n\n\t\tthis.emit(\"to-json\", json);\n\t\treturn json;\n\t}\n\n\tfromJSON(json) {\n\t\tthis.clearBullets();\n\n\t\tjson.forEach(data => {\n\t\t\tlet bullet = this.createBullet(data.type);\n\t\t\tbullet.fromJSON(data.data);\n\t\t});\n\n\t\tthis.emit(\"from-json\", json);\n\t\treturn this;\n\t}\n\n\tgetBulletType(bullet) {\n\t\tfor (let id in BulletManager.BulletTypes) {\n\t\t\tif (bullet instanceof BulletManager.BulletTypes[id]) return id;\n\t\t}\n\t}\n}\n\nBulletManager.BulletTypes = {\n\tdefault: DefaultBullet,\n};\nBulletManager.BULLET_TYPE = {\n\tDEFAULT: \"default\",\n};\n",
     "static": true,
@@ -1002,7 +575,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 71,
+    "__docId__": 49,
     "kind": "class",
     "name": "BulletManager",
     "memberof": "src/bullet/BulletManager.js",
@@ -1021,7 +594,7 @@
     ]
   },
   {
-    "__docId__": 72,
+    "__docId__": 50,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "src/bullet/BulletManager.js~BulletManager",
@@ -1035,7 +608,7 @@
     "undocument": true
   },
   {
-    "__docId__": 73,
+    "__docId__": 51,
     "kind": "member",
     "name": "game",
     "memberof": "src/bullet/BulletManager.js~BulletManager",
@@ -1052,7 +625,7 @@
     }
   },
   {
-    "__docId__": 74,
+    "__docId__": 52,
     "kind": "member",
     "name": "bullets",
     "memberof": "src/bullet/BulletManager.js~BulletManager",
@@ -1069,7 +642,7 @@
     }
   },
   {
-    "__docId__": 75,
+    "__docId__": 53,
     "kind": "method",
     "name": "createBullet",
     "memberof": "src/bullet/BulletManager.js~BulletManager",
@@ -1108,7 +681,7 @@
     }
   },
   {
-    "__docId__": 76,
+    "__docId__": 54,
     "kind": "method",
     "name": "createFromJSON",
     "memberof": "src/bullet/BulletManager.js~BulletManager",
@@ -1135,7 +708,7 @@
     }
   },
   {
-    "__docId__": 77,
+    "__docId__": 55,
     "kind": "method",
     "name": "getBullet",
     "memberof": "src/bullet/BulletManager.js~BulletManager",
@@ -1162,7 +735,7 @@
     }
   },
   {
-    "__docId__": 78,
+    "__docId__": 56,
     "kind": "method",
     "name": "removeBullet",
     "memberof": "src/bullet/BulletManager.js~BulletManager",
@@ -1189,7 +762,7 @@
     }
   },
   {
-    "__docId__": 79,
+    "__docId__": 57,
     "kind": "method",
     "name": "clearBullets",
     "memberof": "src/bullet/BulletManager.js~BulletManager",
@@ -1209,7 +782,7 @@
     }
   },
   {
-    "__docId__": 81,
+    "__docId__": 59,
     "kind": "method",
     "name": "update",
     "memberof": "src/bullet/BulletManager.js~BulletManager",
@@ -1232,7 +805,7 @@
     "return": null
   },
   {
-    "__docId__": 82,
+    "__docId__": 60,
     "kind": "method",
     "name": "toJSON",
     "memberof": "src/bullet/BulletManager.js~BulletManager",
@@ -1252,7 +825,7 @@
     }
   },
   {
-    "__docId__": 83,
+    "__docId__": 61,
     "kind": "method",
     "name": "fromJSON",
     "memberof": "src/bullet/BulletManager.js~BulletManager",
@@ -1279,7 +852,7 @@
     }
   },
   {
-    "__docId__": 84,
+    "__docId__": 62,
     "kind": "method",
     "name": "getBulletType",
     "memberof": "src/bullet/BulletManager.js~BulletManager",
@@ -1306,7 +879,7 @@
     }
   },
   {
-    "__docId__": 85,
+    "__docId__": 63,
     "kind": "file",
     "name": "src/bullet/types/DefaultBullet.js",
     "content": "import p2 from \"p2\";\nimport { lerp } from \"../../utils\";\nimport Bullet from \"../Bullet\";\nimport { COLLISION_GROUPS } from \"../../const\";\n\nexport default class DefaultBullet extends Bullet {\n\tinit() {\n\t\tsuper.init();\n\n\t\t// init data\n\t\tthis.data.speed = 500;\n\t\tthis.data.pathPosition = 0;\n\t\tthis.data.position = { x: 0, y: 0 };\n\t\tthis.data.path = DefaultBullet.calcPath(this.game.world, {\n\t\t\tstart: [this.props.start.x, this.props.start.y],\n\t\t\tdirection: this.props.direction,\n\t\t});\n\t\tthis.data.pathLength = this.data.path.length ? this.data.path[this.data.path.length - 1][2] : 0;\n\t}\n\tupdate(d) {\n\t\t// move along the path\n\t\tthis.data.pathPosition += this.data.speed * d;\n\n\t\t// set position\n\t\tthis.data.position = DefaultBullet.pointOnPath(this.data.path, this.data.pathPosition);\n\n\t\t// set the direction\n\t\tthis.data.direction = DefaultBullet.directionOnPath(this.data.path, this.data.pathPosition);\n\n\t\t// die if the bullet is at the end of the path\n\t\tif (this.data.pathPosition > this.data.pathLength && this.game.isMaster) this.die();\n\t}\n\n\tstatic calcPath(world, opts = {}) {\n\t\tif (!world) return [];\n\t\topts = Object.assign(\n\t\t\t{},\n\t\t\t{\n\t\t\t\tmaxDistance: 1000,\n\t\t\t\tmaxBounces: 5,\n\t\t\t\tstart: [0, 0],\n\t\t\t\tdirection: 0,\n\t\t\t},\n\t\t\topts,\n\t\t);\n\n\t\tlet path = [],\n\t\t\tcurrentLength = 0;\n\t\tlet ray = (this.calcPath.ray =\n\t\t\tthis.calcPath.ray ||\n\t\t\tnew p2.Ray({\n\t\t\t\tmode: p2.Ray.CLOSEST,\n\t\t\t\tcollisionGroup: COLLISION_GROUPS.BULLET,\n\t\t\t\tcollisionMask: COLLISION_GROUPS.WALLS,\n\t\t\t}));\n\t\tlet result = (this.calcPath.result = this.calcPath.result || new p2.RaycastResult());\n\t\tlet hitPoint = (this.calcPath.hitPoint = this.calcPath.hitPoint || p2.vec2.create());\n\n\t\t// set the rays direction\n\t\tray.from[0] = opts.start[0];\n\t\tray.from[1] = opts.start[1];\n\t\tray.direction[0] = Math.cos(opts.direction);\n\t\tray.direction[1] = Math.sin(opts.direction);\n\n\t\tray.to[0] = ray.from[0] + ray.direction[0] * (opts.maxDistance - currentLength);\n\t\tray.to[1] = ray.from[1] + ray.direction[1] * (opts.maxDistance - currentLength);\n\n\t\tray.update();\n\n\t\t// cast\n\t\tpath = [[opts.start[0], opts.start[1], 0]];\n\t\tlet hits = 0;\n\t\twhile (currentLength < opts.maxDistance && hits < opts.maxBounces) {\n\t\t\tif (world.raycast(result, ray)) {\n\t\t\t\thits++;\n\t\t\t\tresult.getHitPoint(hitPoint, ray);\n\t\t\t\t// add the path segment\n\t\t\t\tpath.push([hitPoint[0], hitPoint[1], (currentLength += result.getHitDistance(ray))]);\n\n\t\t\t\t// move start to the hit point\n\t\t\t\tp2.vec2.copy(ray.from, hitPoint);\n\n\t\t\t\t// reflect the direction\n\t\t\t\tp2.vec2.reflect(ray.direction, ray.direction, result.normal);\n\n\t\t\t\t// move the ray out a bit\n\t\t\t\tray.from[0] += ray.direction[0] * 0.001;\n\t\t\t\tray.from[1] += ray.direction[1] * 0.001;\n\t\t\t\tray.to[0] = ray.from[0] + ray.direction[0] * (opts.maxDistance - currentLength);\n\t\t\t\tray.to[1] = ray.from[1] + ray.direction[1] * (opts.maxDistance - currentLength);\n\t\t\t\tray.update();\n\t\t\t\tresult.reset();\n\t\t\t} else {\n\t\t\t\tlet distanceLeft = opts.maxDistance - currentLength;\n\t\t\t\tpath.push([ray.to[0], ray.to[1], (currentLength += distanceLeft)]);\n\t\t\t}\n\t\t}\n\n\t\treturn path;\n\t}\n\n\t/**\n\t * @param path\n\t * @param {Number} position - a number between 0 and 1\n\t */\n\tstatic pointOnPath(path, position = 0) {\n\t\tlet pos = {};\n\t\tlet prev,\n\t\t\tnext = path.find(point => point[2] > position);\n\t\tfor (let i = path.length - 1; i >= 0; i--) {\n\t\t\tif (path[i][2] <= position) {\n\t\t\t\tprev = path[i];\n\t\t\t\tbreak;\n\t\t\t}\n\t\t}\n\t\tif (next) {\n\t\t\tlet delta = (position - prev[2]) / (next[2] - prev[2]);\n\t\t\tpos.x = lerp(prev[0], next[0], delta);\n\t\t\tpos.y = lerp(prev[1], next[1], delta);\n\t\t} else {\n\t\t\tpos.x = prev[0];\n\t\t\tpos.y = prev[1];\n\t\t}\n\n\t\treturn pos;\n\t}\n\n\t/**\n\t * returns the bullets directions on a point on the path\n\t * @param path\n\t * @param position\n\t * @return {number} - the rotation is in radians\n\t */\n\tstatic directionOnPath(path, position = 0) {\n\t\tlet prev,\n\t\t\tnext = path.find(point => point[2] > position);\n\t\tfor (let i = path.length - 1; i >= 0; i--) {\n\t\t\tif (path[i][2] <= position) {\n\t\t\t\tprev = path[i];\n\t\t\t\tbreak;\n\t\t\t}\n\t\t}\n\n\t\tif (next) return Math.atan2(next[0] - prev[0], next[1] - prev[1]);\n\n\t\treturn 0;\n\t}\n}\n",
@@ -1317,7 +890,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 86,
+    "__docId__": 64,
     "kind": "class",
     "name": "DefaultBullet",
     "memberof": "src/bullet/types/DefaultBullet.js",
@@ -1336,7 +909,7 @@
     ]
   },
   {
-    "__docId__": 87,
+    "__docId__": 65,
     "kind": "method",
     "name": "init",
     "memberof": "src/bullet/types/DefaultBullet.js~DefaultBullet",
@@ -1352,7 +925,7 @@
     "return": null
   },
   {
-    "__docId__": 88,
+    "__docId__": 66,
     "kind": "method",
     "name": "update",
     "memberof": "src/bullet/types/DefaultBullet.js~DefaultBullet",
@@ -1375,7 +948,7 @@
     "return": null
   },
   {
-    "__docId__": 89,
+    "__docId__": 67,
     "kind": "method",
     "name": "calcPath",
     "memberof": "src/bullet/types/DefaultBullet.js~DefaultBullet",
@@ -1411,7 +984,7 @@
     }
   },
   {
-    "__docId__": 90,
+    "__docId__": 68,
     "kind": "method",
     "name": "pointOnPath",
     "memberof": "src/bullet/types/DefaultBullet.js~DefaultBullet",
@@ -1451,7 +1024,7 @@
     }
   },
   {
-    "__docId__": 91,
+    "__docId__": 69,
     "kind": "method",
     "name": "directionOnPath",
     "memberof": "src/bullet/types/DefaultBullet.js~DefaultBullet",
@@ -1494,7 +1067,7 @@
     }
   },
   {
-    "__docId__": 92,
+    "__docId__": 70,
     "kind": "file",
     "name": "src/const.js",
     "content": "const COLLISION_GROUPS = {\n\tPLAYER: Math.pow(2, 0),\n\tWALLS: Math.pow(2, 1),\n\tBULLET: Math.pow(2, 2),\n};\n\nCOLLISION_GROUPS.ALL = Object.keys(COLLISION_GROUPS)\n\t.map(key => COLLISION_GROUPS[key])\n\t.reduce((a, b) => a | b);\n\nexport { COLLISION_GROUPS };\n",
@@ -1505,7 +1078,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 93,
+    "__docId__": 71,
     "kind": "variable",
     "name": "COLLISION_GROUPS",
     "memberof": "src/const.js",
@@ -1525,483 +1098,7 @@
     }
   },
   {
-    "__docId__": 94,
-    "kind": "file",
-    "name": "src/game/Game.js",
-    "content": "import { Emitter } from \"regexp-events\";\nimport PlayerManager from \"../player/PlayerManager\";\nimport BulletManager from \"../bullet/BulletManager\";\nimport p2 from \"p2\";\nimport Tilemap from \"../tilemap/Tilemap\";\n\nimport BASE_CONFIG from \"./gameConfig\";\n\nexport default class Game extends Emitter {\n\tconstructor(id) {\n\t\tsuper();\n\n\t\tthis.id = id;\n\t\tthis.info = {};\n\t\tthis.isMaster = false;\n\t\tthis.config = JSON.parse(JSON.stringify(BASE_CONFIG));\n\n\t\tthis.players = new PlayerManager(this);\n\t\tthis.map = new Tilemap(this);\n\t\tthis.bullets = new BulletManager(this);\n\n\t\t// create the physics world\n\t\tthis.world = new p2.World({\n\t\t\tgravity: [0, 0],\n\t\t});\n\t}\n\n\tgetPlayer(...args) {\n\t\treturn this.players.getPlayer(...args);\n\t}\n\tcreatePlayer(...args) {\n\t\treturn this.players.createPlayer(...args);\n\t}\n\tremovePlayer(...args) {\n\t\treturn this.players.removePlayer(...args);\n\t}\n\n\tspawnPlayer(id) {\n\t\tlet player = this.players.getPlayer(id);\n\t\tlet point = this.map.getSpawnPoint();\n\n\t\tplayer.setPosition(point.x, point.y);\n\t\tplayer.setProp(\"spawned\", true);\n\t\treturn this;\n\t}\n\n\tsetInfo(key, value) {\n\t\tif (key instanceof Object) {\n\t\t\tfor (let i in key) this.info[i] = key[i];\n\n\t\t\tthis.emit(\"info-changed\", key);\n\t\t} else {\n\t\t\tthis.info[key] = value;\n\t\t\tthis.emit(\"info-changed\", key, value);\n\t\t}\n\n\t\treturn this;\n\t}\n\tgetInfo(key, value) {\n\t\treturn this.info[key];\n\t}\n\n\tgetDelta() {\n\t\tlet newTime = new Date();\n\t\tlet delta = (newTime - this.lastDelta) / 1000;\n\t\tthis.lastDelta = newTime;\n\t\treturn delta;\n\t}\n\tupdate() {\n\t\tlet d = this.getDelta();\n\n\t\t// update the physics world\n\t\tthis.world.step(1 / 60, d, 1);\n\n\t\t// update the players\n\t\tthis.players.update(d);\n\n\t\t// update the bullets\n\t\tthis.bullets.update(d);\n\n\t\tthis.emit(\"update\", d);\n\t}\n\n\ttoJSON() {\n\t\tlet json = {\n\t\t\tid: this.id,\n\t\t\tinfo: this.info,\n\t\t\tconfig: this.config,\n\t\t\tmap: this.map.toJSON(),\n\t\t\tplayers: this.players.toJSON(),\n\t\t};\n\n\t\t// fire the event\n\t\tthis.emit(\"to-json\", json);\n\n\t\treturn json;\n\t}\n\n\tfromJSON(json) {\n\t\tthis.id = json.id;\n\t\tthis.setInfo(json.info);\n\t\tthis.players.fromJSON(json.players);\n\t\tthis.map.fromJSON(json.map);\n\n\t\t// fire the event\n\t\tthis.emit(\"from-json\", json);\n\n\t\treturn this;\n\t}\n\n\tget isClient() {\n\t\treturn !this.isMaster;\n\t}\n}\n\nGame.DEFAULT_FPS = 1 / 60;\n",
-    "static": true,
-    "longname": "/home/circleci/repo/src/game/Game.js",
-    "access": "public",
-    "description": null,
-    "lineNumber": 1
-  },
-  {
-    "__docId__": 95,
-    "kind": "class",
-    "name": "Game",
-    "memberof": "src/game/Game.js",
-    "static": true,
-    "longname": "src/game/Game.js~Game",
-    "access": "public",
-    "export": true,
-    "importPath": "lazer-game-core/src/game/Game.js",
-    "importStyle": "Game",
-    "description": null,
-    "lineNumber": 9,
-    "undocument": true,
-    "interface": false,
-    "extends": [
-      "regexp-events~Emitter"
-    ]
-  },
-  {
-    "__docId__": 96,
-    "kind": "constructor",
-    "name": "constructor",
-    "memberof": "src/game/Game.js~Game",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/game/Game.js~Game#constructor",
-    "access": "public",
-    "description": null,
-    "lineNumber": 10,
-    "undocument": true
-  },
-  {
-    "__docId__": 97,
-    "kind": "member",
-    "name": "id",
-    "memberof": "src/game/Game.js~Game",
-    "static": false,
-    "longname": "src/game/Game.js~Game#id",
-    "access": "public",
-    "description": null,
-    "lineNumber": 13,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 98,
-    "kind": "member",
-    "name": "info",
-    "memberof": "src/game/Game.js~Game",
-    "static": false,
-    "longname": "src/game/Game.js~Game#info",
-    "access": "public",
-    "description": null,
-    "lineNumber": 14,
-    "undocument": true,
-    "type": {
-      "types": [
-        "{}"
-      ]
-    }
-  },
-  {
-    "__docId__": 99,
-    "kind": "member",
-    "name": "isMaster",
-    "memberof": "src/game/Game.js~Game",
-    "static": false,
-    "longname": "src/game/Game.js~Game#isMaster",
-    "access": "public",
-    "description": null,
-    "lineNumber": 15,
-    "undocument": true,
-    "type": {
-      "types": [
-        "boolean"
-      ]
-    }
-  },
-  {
-    "__docId__": 100,
-    "kind": "member",
-    "name": "config",
-    "memberof": "src/game/Game.js~Game",
-    "static": false,
-    "longname": "src/game/Game.js~Game#config",
-    "access": "public",
-    "description": null,
-    "lineNumber": 16,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 101,
-    "kind": "member",
-    "name": "players",
-    "memberof": "src/game/Game.js~Game",
-    "static": false,
-    "longname": "src/game/Game.js~Game#players",
-    "access": "public",
-    "description": null,
-    "lineNumber": 18,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 102,
-    "kind": "member",
-    "name": "map",
-    "memberof": "src/game/Game.js~Game",
-    "static": false,
-    "longname": "src/game/Game.js~Game#map",
-    "access": "public",
-    "description": null,
-    "lineNumber": 19,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 103,
-    "kind": "member",
-    "name": "bullets",
-    "memberof": "src/game/Game.js~Game",
-    "static": false,
-    "longname": "src/game/Game.js~Game#bullets",
-    "access": "public",
-    "description": null,
-    "lineNumber": 20,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 104,
-    "kind": "member",
-    "name": "world",
-    "memberof": "src/game/Game.js~Game",
-    "static": false,
-    "longname": "src/game/Game.js~Game#world",
-    "access": "public",
-    "description": null,
-    "lineNumber": 23,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 105,
-    "kind": "method",
-    "name": "getPlayer",
-    "memberof": "src/game/Game.js~Game",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/game/Game.js~Game#getPlayer",
-    "access": "public",
-    "description": null,
-    "lineNumber": 28,
-    "undocument": true,
-    "params": [
-      {
-        "name": "args",
-        "types": [
-          "...*"
-        ],
-        "spread": true
-      }
-    ],
-    "return": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 106,
-    "kind": "method",
-    "name": "createPlayer",
-    "memberof": "src/game/Game.js~Game",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/game/Game.js~Game#createPlayer",
-    "access": "public",
-    "description": null,
-    "lineNumber": 31,
-    "undocument": true,
-    "params": [
-      {
-        "name": "args",
-        "types": [
-          "...*"
-        ],
-        "spread": true
-      }
-    ],
-    "return": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 107,
-    "kind": "method",
-    "name": "removePlayer",
-    "memberof": "src/game/Game.js~Game",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/game/Game.js~Game#removePlayer",
-    "access": "public",
-    "description": null,
-    "lineNumber": 34,
-    "undocument": true,
-    "params": [
-      {
-        "name": "args",
-        "types": [
-          "...*"
-        ],
-        "spread": true
-      }
-    ],
-    "return": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 108,
-    "kind": "method",
-    "name": "spawnPlayer",
-    "memberof": "src/game/Game.js~Game",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/game/Game.js~Game#spawnPlayer",
-    "access": "public",
-    "description": null,
-    "lineNumber": 38,
-    "undocument": true,
-    "params": [
-      {
-        "name": "id",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 109,
-    "kind": "method",
-    "name": "setInfo",
-    "memberof": "src/game/Game.js~Game",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/game/Game.js~Game#setInfo",
-    "access": "public",
-    "description": null,
-    "lineNumber": 47,
-    "undocument": true,
-    "params": [
-      {
-        "name": "key",
-        "types": [
-          "*"
-        ]
-      },
-      {
-        "name": "value",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 110,
-    "kind": "method",
-    "name": "getInfo",
-    "memberof": "src/game/Game.js~Game",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/game/Game.js~Game#getInfo",
-    "access": "public",
-    "description": null,
-    "lineNumber": 59,
-    "undocument": true,
-    "params": [
-      {
-        "name": "key",
-        "types": [
-          "*"
-        ]
-      },
-      {
-        "name": "value",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 111,
-    "kind": "method",
-    "name": "getDelta",
-    "memberof": "src/game/Game.js~Game",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/game/Game.js~Game#getDelta",
-    "access": "public",
-    "description": null,
-    "lineNumber": 63,
-    "undocument": true,
-    "params": [],
-    "return": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 112,
-    "kind": "member",
-    "name": "lastDelta",
-    "memberof": "src/game/Game.js~Game",
-    "static": false,
-    "longname": "src/game/Game.js~Game#lastDelta",
-    "access": "public",
-    "description": null,
-    "lineNumber": 66,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 113,
-    "kind": "method",
-    "name": "update",
-    "memberof": "src/game/Game.js~Game",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/game/Game.js~Game#update",
-    "access": "public",
-    "description": null,
-    "lineNumber": 69,
-    "undocument": true,
-    "params": [],
-    "return": null
-  },
-  {
-    "__docId__": 114,
-    "kind": "method",
-    "name": "toJSON",
-    "memberof": "src/game/Game.js~Game",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/game/Game.js~Game#toJSON",
-    "access": "public",
-    "description": null,
-    "lineNumber": 84,
-    "undocument": true,
-    "params": [],
-    "return": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 115,
-    "kind": "method",
-    "name": "fromJSON",
-    "memberof": "src/game/Game.js~Game",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/game/Game.js~Game#fromJSON",
-    "access": "public",
-    "description": null,
-    "lineNumber": 99,
-    "undocument": true,
-    "params": [
-      {
-        "name": "json",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 117,
-    "kind": "get",
-    "name": "isClient",
-    "memberof": "src/game/Game.js~Game",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/game/Game.js~Game#isClient",
-    "access": "public",
-    "description": null,
-    "lineNumber": 111,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 118,
+    "__docId__": 72,
     "kind": "file",
     "name": "src/game/gameConfig.js",
     "content": "const BASE_CONFIG = {\n\tplayer: {\n\t\tmovement: {\n\t\t\tspeed: 180,\n\t\t\texcelerate: 0.9,\n\t\t\tdecelerate: 0.7,\n\t\t},\n\t\tmax: 10,\n\t},\n};\n\nexport { BASE_CONFIG as default };\n",
@@ -2012,7 +1109,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 119,
+    "__docId__": 73,
     "kind": "variable",
     "name": "BASE_CONFIG",
     "memberof": "src/game/gameConfig.js",
@@ -2033,7 +1130,7 @@
     "ignore": true
   },
   {
-    "__docId__": 120,
+    "__docId__": 74,
     "kind": "file",
     "name": "src/index.js",
     "content": "import Game from \"./game/Game\";\nimport Player from \"./player/Player\";\nimport PlayerManager from \"./player/PlayerManager\";\nimport Tilemap from \"./tilemap/Tilemap\";\nimport Bullet from \"./bullet/Bullet\";\nimport BulletManager from \"./bullet/BulletManager\";\n\nexport { Game, Player, PlayerManager, Tilemap, Bullet, BulletManager };\n",
@@ -2044,617 +1141,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 121,
-    "kind": "file",
-    "name": "src/player/Player.js",
-    "content": "import { Emitter } from \"regexp-events\";\nimport p2 from \"p2\";\nimport Hashids from \"hashids\";\n\nimport BulletManager from \"../bullet/BulletManager\";\nimport { lerp, clipDecimals } from \"../utils\";\nimport { COLLISION_GROUPS } from \"../const\";\n\nconst playerIds = new Hashids(\"players\");\n\nexport default class Player extends Emitter {\n\tconstructor(manager, info, props) {\n\t\tsuper();\n\n\t\tthis.manager = manager;\n\t\tthis.id = playerIds.encode(Date.now());\n\n\t\t// this is basic info about the player\n\t\t// NOTE: this is set once when the bullet is created and then never changes\n\t\tthis.info = {\n\t\t\tname: undefined,\n\t\t\tcolor: 0x000000,\n\t\t};\n\t\tthis.props = {\n\t\t\thealth: 100,\n\t\t\tspawned: false,\n\t\t};\n\t\tthis.position = {\n\t\t\tx: 0,\n\t\t\ty: 0,\n\t\t\tvx: 0,\n\t\t\tvy: 0,\n\t\t\tdirection: 0,\n\t\t};\n\t\tthis.controls = {\n\t\t\tmoveX: 0,\n\t\t\tmoveY: 0,\n\t\t\tshoot: false,\n\t\t\tdirection: 0,\n\t\t};\n\n\t\tthis.body = new p2.Body({\n\t\t\tmass: 10,\n\t\t\tdamping: 0,\n\t\t\tfixedRotation: true,\n\t\t});\n\t\tthis.body.addShape(\n\t\t\tnew p2.Circle({\n\t\t\t\tradius: 10,\n\t\t\t}),\n\t\t);\n\n\t\tthis.body.shapes.forEach(shape => {\n\t\t\tshape.collisionGroup = COLLISION_GROUPS.PLAYER;\n\t\t\tshape.collisionMask = COLLISION_GROUPS.WALLS | COLLISION_GROUPS.BULLET | COLLISION_GROUPS.PLAYER;\n\t\t});\n\n\t\t// tmp gun var\n\t\tthis.cooldown = 0.15;\n\t\tthis.tmp = 0;\n\n\t\tif (info) this.setInfo(info);\n\n\t\tif (props) this.setProp(props);\n\t}\n\n\tsetProp(key, value) {\n\t\tif (key instanceof Object) {\n\t\t\tfor (let i in key) this.props[i] = key[i];\n\n\t\t\tthis.emit(\"props-changed\", this.props);\n\t\t} else {\n\t\t\tthis.props[key] = value;\n\t\t\tthis.emit(\"props-changed\", this.props);\n\t\t}\n\n\t\treturn this;\n\t}\n\tsetInfo(key, value) {\n\t\tif (key instanceof Object) {\n\t\t\tfor (let i in key) this.info[i] = key[i];\n\n\t\t\tthis.emit(\"info-changed\", this.info);\n\t\t} else {\n\t\t\tthis.info[key] = value;\n\t\t\tthis.emit(\"info-changed\", this.info);\n\t\t}\n\n\t\treturn this;\n\t}\n\tsetControl(key, value) {\n\t\tif (key instanceof Object) {\n\t\t\tfor (let i in key) this.controls[i] = key[i];\n\n\t\t\tthis.emit(\"controls-changed\", this.controls);\n\t\t} else {\n\t\t\tthis.controls[key] = value;\n\t\t\tthis.emit(\"controls-changed\", this.controls);\n\t\t}\n\n\t\treturn this;\n\t}\n\tgetProp(key, value) {\n\t\treturn this.props[key];\n\t}\n\tgetInfo(key, value) {\n\t\treturn this.info[key];\n\t}\n\tgetControl(key, value) {\n\t\treturn this.controls[key];\n\t}\n\n\tsetPosition(x = this.body.position[0], y = this.body.position[1], vx = 0, vy = 0, direction) {\n\t\tthis.body.position[0] = x;\n\t\tthis.body.position[1] = y;\n\t\tthis.body.velocity[0] = vx;\n\t\tthis.body.velocity[1] = vy;\n\n\t\t// TODO: set the rotation on the p2 body instead\n\t\tthis.position.direction = direction;\n\n\t\t// update position\n\t\tthis._updatePosition();\n\t}\n\n\tupdate(d) {\n\t\tlet { speed, excelerate, decelerate } = this.game.config.player.movement;\n\n\t\t// apply controls\n\t\tif (this.controls.moveX !== 0)\n\t\t\tthis.body.velocity[0] = lerp(this.body.velocity[0], speed * Math.sign(this.controls.moveX), excelerate);\n\t\telse this.body.velocity[0] *= decelerate;\n\n\t\tif (this.controls.moveY !== 0)\n\t\t\tthis.body.velocity[1] = lerp(this.body.velocity[1], speed * Math.sign(this.controls.moveY), excelerate);\n\t\telse this.body.velocity[1] *= decelerate;\n\n\t\tthis.tmp += d;\n\t\tif (this.controls.shoot && this.game.isMaster) {\n\t\t\tif (this.tmp > this.cooldown) {\n\t\t\t\tthis.tmp = 0;\n\t\t\t\tthis.game.bullets.createBullet(\n\t\t\t\t\tBulletManager.BULLET_TYPE.DEFAULT,\n\t\t\t\t\t{ owner: this.id },\n\t\t\t\t\t{\n\t\t\t\t\t\tstart: { x: this.position.x, y: this.position.y },\n\t\t\t\t\t\tdirection: this.controls.direction + (Math.random() - 0.5) * (Math.PI / 32),\n\t\t\t\t\t},\n\t\t\t\t);\n\t\t\t}\n\t\t}\n\n\t\t// update position\n\t\tthis._updatePosition();\n\n\t\tthis.emit(\"update\", d);\n\t}\n\n\t_updatePosition() {\n\t\tthis.position.x = clipDecimals(this.body.position[0]);\n\t\tthis.position.y = clipDecimals(this.body.position[1]);\n\t\tthis.position.vx = clipDecimals(this.body.velocity[0]);\n\t\tthis.position.vy = clipDecimals(this.body.velocity[1]);\n\t}\n\n\ttoJSON() {\n\t\tlet json = {\n\t\t\tid: this.id,\n\t\t\tinfo: this.info,\n\t\t\tprops: this.props,\n\t\t\tposition: this.position,\n\t\t\tcontrols: this.controls,\n\t\t};\n\n\t\tthis.emit(\"to-json\", json);\n\n\t\treturn json;\n\t}\n\n\tfromJSON(json) {\n\t\tthis.id = json.id;\n\t\tthis.setInfo(json.info);\n\t\tthis.setProp(json.props);\n\t\tthis.setControl(json.controls);\n\t\tObject.assign(this.position, json.position);\n\n\t\tthis.emit(\"from-json\", json);\n\n\t\treturn this;\n\t}\n\n\t// overwrite emit so we can fire events on the manager\n\temit(event, ...args) {\n\t\tlet v = Emitter.prototype.emit.call(this, event, ...args);\n\t\tthis.manager.emit(\"player-\" + event, this, ...args);\n\t\tthis.manager.emit(`player-${this.id}-${event}`, this, ...args);\n\t\treturn v;\n\t}\n\n\tget game() {\n\t\treturn this.manager.game;\n\t}\n}\n",
-    "static": true,
-    "longname": "/home/circleci/repo/src/player/Player.js",
-    "access": "public",
-    "description": null,
-    "lineNumber": 1
-  },
-  {
-    "__docId__": 122,
-    "kind": "variable",
-    "name": "playerIds",
-    "memberof": "src/player/Player.js",
-    "static": true,
-    "longname": "src/player/Player.js~playerIds",
-    "access": "public",
-    "export": false,
-    "importPath": "lazer-game-core/src/player/Player.js",
-    "importStyle": null,
-    "description": null,
-    "lineNumber": 9,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    },
-    "ignore": true
-  },
-  {
-    "__docId__": 123,
-    "kind": "class",
-    "name": "Player",
-    "memberof": "src/player/Player.js",
-    "static": true,
-    "longname": "src/player/Player.js~Player",
-    "access": "public",
-    "export": true,
-    "importPath": "lazer-game-core/src/player/Player.js",
-    "importStyle": "Player",
-    "description": null,
-    "lineNumber": 11,
-    "undocument": true,
-    "interface": false,
-    "extends": [
-      "regexp-events~Emitter"
-    ]
-  },
-  {
-    "__docId__": 124,
-    "kind": "constructor",
-    "name": "constructor",
-    "memberof": "src/player/Player.js~Player",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/player/Player.js~Player#constructor",
-    "access": "public",
-    "description": null,
-    "lineNumber": 12,
-    "undocument": true
-  },
-  {
-    "__docId__": 125,
-    "kind": "member",
-    "name": "manager",
-    "memberof": "src/player/Player.js~Player",
-    "static": false,
-    "longname": "src/player/Player.js~Player#manager",
-    "access": "public",
-    "description": null,
-    "lineNumber": 15,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 126,
-    "kind": "member",
-    "name": "id",
-    "memberof": "src/player/Player.js~Player",
-    "static": false,
-    "longname": "src/player/Player.js~Player#id",
-    "access": "public",
-    "description": null,
-    "lineNumber": 16,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 127,
-    "kind": "member",
-    "name": "info",
-    "memberof": "src/player/Player.js~Player",
-    "static": false,
-    "longname": "src/player/Player.js~Player#info",
-    "access": "public",
-    "description": null,
-    "lineNumber": 20,
-    "undocument": true,
-    "type": {
-      "types": [
-        "{\"name\": *, \"color\": *}"
-      ]
-    }
-  },
-  {
-    "__docId__": 128,
-    "kind": "member",
-    "name": "props",
-    "memberof": "src/player/Player.js~Player",
-    "static": false,
-    "longname": "src/player/Player.js~Player#props",
-    "access": "public",
-    "description": null,
-    "lineNumber": 24,
-    "undocument": true,
-    "type": {
-      "types": [
-        "{\"health\": number, \"spawned\": *}"
-      ]
-    }
-  },
-  {
-    "__docId__": 129,
-    "kind": "member",
-    "name": "position",
-    "memberof": "src/player/Player.js~Player",
-    "static": false,
-    "longname": "src/player/Player.js~Player#position",
-    "access": "public",
-    "description": null,
-    "lineNumber": 28,
-    "undocument": true,
-    "type": {
-      "types": [
-        "{\"x\": *, \"y\": *, \"vx\": *, \"vy\": *, \"direction\": *}"
-      ]
-    }
-  },
-  {
-    "__docId__": 130,
-    "kind": "member",
-    "name": "controls",
-    "memberof": "src/player/Player.js~Player",
-    "static": false,
-    "longname": "src/player/Player.js~Player#controls",
-    "access": "public",
-    "description": null,
-    "lineNumber": 35,
-    "undocument": true,
-    "type": {
-      "types": [
-        "{\"moveX\": *, \"moveY\": *, \"shoot\": *, \"direction\": *}"
-      ]
-    }
-  },
-  {
-    "__docId__": 131,
-    "kind": "member",
-    "name": "body",
-    "memberof": "src/player/Player.js~Player",
-    "static": false,
-    "longname": "src/player/Player.js~Player#body",
-    "access": "public",
-    "description": null,
-    "lineNumber": 42,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 132,
-    "kind": "member",
-    "name": "cooldown",
-    "memberof": "src/player/Player.js~Player",
-    "static": false,
-    "longname": "src/player/Player.js~Player#cooldown",
-    "access": "public",
-    "description": null,
-    "lineNumber": 59,
-    "undocument": true,
-    "type": {
-      "types": [
-        "number"
-      ]
-    }
-  },
-  {
-    "__docId__": 133,
-    "kind": "member",
-    "name": "tmp",
-    "memberof": "src/player/Player.js~Player",
-    "static": false,
-    "longname": "src/player/Player.js~Player#tmp",
-    "access": "public",
-    "description": null,
-    "lineNumber": 60,
-    "undocument": true,
-    "type": {
-      "types": [
-        "number"
-      ]
-    }
-  },
-  {
-    "__docId__": 134,
-    "kind": "method",
-    "name": "setProp",
-    "memberof": "src/player/Player.js~Player",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/player/Player.js~Player#setProp",
-    "access": "public",
-    "description": null,
-    "lineNumber": 67,
-    "undocument": true,
-    "params": [
-      {
-        "name": "key",
-        "types": [
-          "*"
-        ]
-      },
-      {
-        "name": "value",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 135,
-    "kind": "method",
-    "name": "setInfo",
-    "memberof": "src/player/Player.js~Player",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/player/Player.js~Player#setInfo",
-    "access": "public",
-    "description": null,
-    "lineNumber": 79,
-    "undocument": true,
-    "params": [
-      {
-        "name": "key",
-        "types": [
-          "*"
-        ]
-      },
-      {
-        "name": "value",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 136,
-    "kind": "method",
-    "name": "setControl",
-    "memberof": "src/player/Player.js~Player",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/player/Player.js~Player#setControl",
-    "access": "public",
-    "description": null,
-    "lineNumber": 91,
-    "undocument": true,
-    "params": [
-      {
-        "name": "key",
-        "types": [
-          "*"
-        ]
-      },
-      {
-        "name": "value",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 137,
-    "kind": "method",
-    "name": "getProp",
-    "memberof": "src/player/Player.js~Player",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/player/Player.js~Player#getProp",
-    "access": "public",
-    "description": null,
-    "lineNumber": 103,
-    "undocument": true,
-    "params": [
-      {
-        "name": "key",
-        "types": [
-          "*"
-        ]
-      },
-      {
-        "name": "value",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 138,
-    "kind": "method",
-    "name": "getInfo",
-    "memberof": "src/player/Player.js~Player",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/player/Player.js~Player#getInfo",
-    "access": "public",
-    "description": null,
-    "lineNumber": 106,
-    "undocument": true,
-    "params": [
-      {
-        "name": "key",
-        "types": [
-          "*"
-        ]
-      },
-      {
-        "name": "value",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 139,
-    "kind": "method",
-    "name": "getControl",
-    "memberof": "src/player/Player.js~Player",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/player/Player.js~Player#getControl",
-    "access": "public",
-    "description": null,
-    "lineNumber": 109,
-    "undocument": true,
-    "params": [
-      {
-        "name": "key",
-        "types": [
-          "*"
-        ]
-      },
-      {
-        "name": "value",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 140,
-    "kind": "method",
-    "name": "setPosition",
-    "memberof": "src/player/Player.js~Player",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/player/Player.js~Player#setPosition",
-    "access": "public",
-    "description": null,
-    "lineNumber": 113,
-    "undocument": true,
-    "params": [
-      {
-        "name": "x",
-        "optional": true,
-        "types": [
-          "*"
-        ]
-      },
-      {
-        "name": "y",
-        "optional": true,
-        "types": [
-          "*"
-        ]
-      },
-      {
-        "name": "vx",
-        "optional": true,
-        "types": [
-          "number"
-        ],
-        "defaultRaw": 0,
-        "defaultValue": "0"
-      },
-      {
-        "name": "vy",
-        "optional": true,
-        "types": [
-          "number"
-        ],
-        "defaultRaw": 0,
-        "defaultValue": "0"
-      },
-      {
-        "name": "direction",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": null
-  },
-  {
-    "__docId__": 141,
-    "kind": "method",
-    "name": "update",
-    "memberof": "src/player/Player.js~Player",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/player/Player.js~Player#update",
-    "access": "public",
-    "description": null,
-    "lineNumber": 126,
-    "undocument": true,
-    "params": [
-      {
-        "name": "d",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": null
-  },
-  {
-    "__docId__": 144,
-    "kind": "method",
-    "name": "_updatePosition",
-    "memberof": "src/player/Player.js~Player",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/player/Player.js~Player#_updatePosition",
-    "access": "private",
-    "description": null,
-    "lineNumber": 159,
-    "undocument": true,
-    "params": [],
-    "return": null
-  },
-  {
-    "__docId__": 145,
-    "kind": "method",
-    "name": "toJSON",
-    "memberof": "src/player/Player.js~Player",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/player/Player.js~Player#toJSON",
-    "access": "public",
-    "description": null,
-    "lineNumber": 166,
-    "undocument": true,
-    "params": [],
-    "return": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 146,
-    "kind": "method",
-    "name": "fromJSON",
-    "memberof": "src/player/Player.js~Player",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/player/Player.js~Player#fromJSON",
-    "access": "public",
-    "description": null,
-    "lineNumber": 180,
-    "undocument": true,
-    "params": [
-      {
-        "name": "json",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 148,
-    "kind": "method",
-    "name": "emit",
-    "memberof": "src/player/Player.js~Player",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/player/Player.js~Player#emit",
-    "access": "public",
-    "description": null,
-    "lineNumber": 193,
-    "undocument": true,
-    "params": [
-      {
-        "name": "event",
-        "types": [
-          "*"
-        ]
-      },
-      {
-        "name": "args",
-        "types": [
-          "...*"
-        ],
-        "spread": true
-      }
-    ],
-    "return": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 149,
-    "kind": "get",
-    "name": "game",
-    "memberof": "src/player/Player.js~Player",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/player/Player.js~Player#game",
-    "access": "public",
-    "description": null,
-    "lineNumber": 200,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 150,
+    "__docId__": 75,
     "kind": "file",
     "name": "src/player/PlayerManager.js",
     "content": "import { Emitter } from \"regexp-events\";\nimport Player from \"./Player\";\n\nexport default class PlayerManager extends Emitter {\n\tconstructor(game) {\n\t\tsuper();\n\n\t\tthis.game = game;\n\t\tthis.players = [];\n\t}\n\n\tgetPlayer(id) {\n\t\tif (id instanceof Player) return this.players.includes(id) ? id : undefined;\n\t\telse return this.players.find(player => player.id === id);\n\t}\n\n\tcreatePlayer(info, props) {\n\t\tlet player = new Player(this, info, props);\n\n\t\t// add the player to the list of players\n\t\tthis.players.push(player);\n\t\t// add the player to the world\n\t\tthis.game.world.addBody(player.body);\n\n\t\tthis.emit(\"player-created\", player);\n\t\treturn player;\n\t}\n\n\tcreateFromJSON(json) {\n\t\tlet player = new Player(this, json.info, json.props);\n\t\tplayer.fromJSON(json);\n\n\t\t// add the player to the list of players\n\t\tthis.players.push(player);\n\t\t// add the player to the world\n\t\tthis.game.world.addBody(player.body);\n\n\t\tthis.emit(\"player-created\", player);\n\t\treturn player;\n\t}\n\n\tremovePlayer(id) {\n\t\tlet player = this.getPlayer(id);\n\t\tif (this.players.includes(player)) {\n\t\t\t// remove player from the list\n\t\t\tthis.players.splice(this.players.indexOf(player), 1);\n\t\t\t// remove the player from the world\n\t\t\tthis.game.world.removeBody(player.body);\n\n\t\t\tthis.emit(\"player-removed\", player);\n\t\t}\n\t\treturn this;\n\t}\n\n\tclearPlayers() {\n\t\tlet players = Array.from(this.players);\n\t\tthis.players.forEach(this.removePlayer.bind(this));\n\t\tthis.emit(\"players-cleared\", players);\n\t\treturn this;\n\t}\n\n\tupdate(d) {\n\t\tthis.players.forEach(player => player.update(d));\n\t}\n\n\ttoJSON() {\n\t\tlet json = this.players.map(player => player.toJSON());\n\t\tthis.emit(\"to-json\", json);\n\t\treturn json;\n\t}\n\n\tfromJSON(json) {\n\t\tthis.clearPlayers();\n\t\tjson.forEach(data => {\n\t\t\tlet player = this.createPlayer();\n\t\t\tplayer.fromJSON(data);\n\t\t});\n\t\tthis.emit(\"from-json\", json);\n\t\treturn this;\n\t}\n}\n",
@@ -2665,7 +1152,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 151,
+    "__docId__": 76,
     "kind": "class",
     "name": "PlayerManager",
     "memberof": "src/player/PlayerManager.js",
@@ -2684,7 +1171,7 @@
     ]
   },
   {
-    "__docId__": 152,
+    "__docId__": 77,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "src/player/PlayerManager.js~PlayerManager",
@@ -2698,7 +1185,7 @@
     "undocument": true
   },
   {
-    "__docId__": 153,
+    "__docId__": 78,
     "kind": "member",
     "name": "game",
     "memberof": "src/player/PlayerManager.js~PlayerManager",
@@ -2715,7 +1202,7 @@
     }
   },
   {
-    "__docId__": 154,
+    "__docId__": 79,
     "kind": "member",
     "name": "players",
     "memberof": "src/player/PlayerManager.js~PlayerManager",
@@ -2732,7 +1219,7 @@
     }
   },
   {
-    "__docId__": 155,
+    "__docId__": 80,
     "kind": "method",
     "name": "getPlayer",
     "memberof": "src/player/PlayerManager.js~PlayerManager",
@@ -2759,7 +1246,7 @@
     }
   },
   {
-    "__docId__": 156,
+    "__docId__": 81,
     "kind": "method",
     "name": "createPlayer",
     "memberof": "src/player/PlayerManager.js~PlayerManager",
@@ -2792,7 +1279,7 @@
     }
   },
   {
-    "__docId__": 157,
+    "__docId__": 82,
     "kind": "method",
     "name": "createFromJSON",
     "memberof": "src/player/PlayerManager.js~PlayerManager",
@@ -2819,7 +1306,7 @@
     }
   },
   {
-    "__docId__": 158,
+    "__docId__": 83,
     "kind": "method",
     "name": "removePlayer",
     "memberof": "src/player/PlayerManager.js~PlayerManager",
@@ -2846,7 +1333,7 @@
     }
   },
   {
-    "__docId__": 159,
+    "__docId__": 84,
     "kind": "method",
     "name": "clearPlayers",
     "memberof": "src/player/PlayerManager.js~PlayerManager",
@@ -2866,7 +1353,7 @@
     }
   },
   {
-    "__docId__": 160,
+    "__docId__": 85,
     "kind": "method",
     "name": "update",
     "memberof": "src/player/PlayerManager.js~PlayerManager",
@@ -2889,7 +1376,7 @@
     "return": null
   },
   {
-    "__docId__": 161,
+    "__docId__": 86,
     "kind": "method",
     "name": "toJSON",
     "memberof": "src/player/PlayerManager.js~PlayerManager",
@@ -2909,7 +1396,7 @@
     }
   },
   {
-    "__docId__": 162,
+    "__docId__": 87,
     "kind": "method",
     "name": "fromJSON",
     "memberof": "src/player/PlayerManager.js~PlayerManager",
@@ -2936,7 +1423,7 @@
     }
   },
   {
-    "__docId__": 163,
+    "__docId__": 88,
     "kind": "file",
     "name": "src/tilemap/Tilemap.js",
     "content": "import { Emitter } from \"regexp-events\";\nimport p2 from \"p2\";\nimport _isEqual from \"lodash/isEqual\";\n\nimport { lerp } from \"../utils\";\nimport { COLLISION_GROUPS } from \"../const\";\n\nconst TILE_SIZE = 50;\nexport default class Tilemap extends Emitter {\n\tconstructor(game) {\n\t\tsuper();\n\n\t\tthis.game = game;\n\t\tthis.size = { width: 0, height: 0 };\n\t\tthis.bodies = [];\n\t\tthis.spawnAreas = [];\n\t\tthis.loadedJSON = {};\n\t}\n\n\tclearBodies() {\n\t\tthis.bodies.forEach(body => this.game.world.removeBody(body));\n\t\tthis.bodies = [];\n\t\tthis.emit(\"collisions-cleared\");\n\t\treturn this;\n\t}\n\n\ttoJSON() {\n\t\treturn this.loadedJSON;\n\t}\n\n\tfromJSON(json) {\n\t\tthis.clearBodies();\n\n\t\tthis.loadedJSON = json;\n\n\t\tthis.size.width = json.size.width;\n\t\tthis.size.height = json.size.height;\n\n\t\t// build the collisions for the map\n\t\tthis.bodies = Tilemap.buildCollisions(json.collisions);\n\n\t\t// set all the collisions groups\n\t\tthis.bodies.forEach(body => {\n\t\t\tbody.shapes.forEach(shape => {\n\t\t\t\tshape.collisionGroup = COLLISION_GROUPS.WALLS;\n\t\t\t\tshape.collisionMask = COLLISION_GROUPS.ALL;\n\t\t\t});\n\t\t});\n\n\t\tthis.bodies.forEach(body => this.game.world.addBody(body));\n\t\tthis.emit(\"from-json\", json);\n\t\treturn this;\n\t}\n\n\tgetSpawnPoint() {\n\t\treturn {\n\t\t\tx: this.size.width / 2 * TILE_SIZE,\n\t\t\ty: this.size.height / 2 * TILE_SIZE,\n\t\t};\n\t}\n\n\tstatic buildCollisions(collisions) {\n\t\tlet bodies = [];\n\n\t\tfor (let i = 0; i < collisions.length; i++) {\n\t\t\tlet object = collisions[i];\n\n\t\t\tif (!object.visible) continue;\n\n\t\t\t// create the shape\n\t\t\tif (Array.isArray(object.polygon)) {\n\t\t\t\tlet body = new p2.Body({ mass: 0 });\n\t\t\t\tbody.position[0] = object.x;\n\t\t\t\tbody.position[1] = object.y;\n\t\t\t\tbody.fromPolygon(object.polygon.map(point => [point.x, point.y]));\n\t\t\t\tbodies.push(body);\n\t\t\t} else if (Array.isArray(object.polyline)) {\n\t\t\t\tlet body = new p2.Body({ mass: 0 });\n\t\t\t\tbody.position[0] = object.x;\n\t\t\t\tbody.position[1] = object.y;\n\n\t\t\t\t// start at the second point\n\t\t\t\tfor (let i = 1; i < object.polyline.length; i++) {\n\t\t\t\t\tlet prev = object.polyline[i - 1];\n\t\t\t\t\tlet curr = object.polyline[i];\n\t\t\t\t\tlet length = Math.sqrt(Math.pow(curr.x - prev.x, 2) + Math.pow(curr.y - prev.y, 2));\n\t\t\t\t\tlet angle = Math.atan2(curr.y - prev.y, curr.x - prev.x);\n\t\t\t\t\tbody.addShape(\n\t\t\t\t\t\tnew p2.Line({\n\t\t\t\t\t\t\tposition: [lerp(prev.x, curr.x, 0.5), lerp(prev.y, curr.y, 0.5)],\n\t\t\t\t\t\t\tlength: length,\n\t\t\t\t\t\t\tangle: angle,\n\t\t\t\t\t\t}),\n\t\t\t\t\t);\n\t\t\t\t}\n\n\t\t\t\tbodies.push(body);\n\t\t\t} else if (object.height > 0 && object.width > 0) {\n\t\t\t\tlet body = new p2.Body({ mass: 0 });\n\t\t\t\tbody.position[0] = object.x + object.width / 2;\n\t\t\t\tbody.position[1] = object.y + object.height / 2;\n\t\t\t\tbody.addShape(\n\t\t\t\t\tnew p2.Box({\n\t\t\t\t\t\twidth: object.width,\n\t\t\t\t\t\theight: object.height,\n\t\t\t\t\t}),\n\t\t\t\t);\n\t\t\t\tbodies.push(body);\n\t\t\t}\n\t\t}\n\n\t\treturn bodies;\n\t}\n\n\tstatic parseTiledJSON(json) {\n\t\tlet mapJSON = {\n\t\t\tsize: {\n\t\t\t\twidth: json.width,\n\t\t\t\theight: json.height,\n\t\t\t},\n\t\t\ttypes: [],\n\t\t\ttiles: [],\n\t\t};\n\n\t\t// get the collisions\n\t\tmapJSON.collisions = json.layers.find(layer => {\n\t\t\treturn layer.objects && layer.name == \"collision\" && layer.type == \"objectgroup\";\n\t\t}).objects;\n\n\t\t// get all the tile props\n\t\tlet tileProperties = {};\n\t\tjson.tilesets.forEach(tileset => {\n\t\t\tfor (let id in tileset.tileproperties) {\n\t\t\t\tlet tileID = parseInt(id) + tileset.firstgid;\n\t\t\t\tif (Reflect.ownKeys(tileset.tileproperties[id]).length > 0) {\n\t\t\t\t\tif (!tileProperties[tileID]) tileProperties[tileID] = {};\n\t\t\t\t\tObject.assign(tileProperties[tileID], tileset.tileproperties[id]);\n\t\t\t\t}\n\t\t\t}\n\t\t});\n\n\t\t// compile all the tile props\n\t\tjson.layers.filter(layer => layer.type === \"tilelayer\").forEach(layer => {\n\t\t\tfor (let i = 0; i < layer.data.length; i++) {\n\t\t\t\tlet y = Math.floor(i / json.width);\n\t\t\t\tlet x = i - y * json.width;\n\t\t\t\tif (!mapJSON.tiles[y]) mapJSON.tiles[y] = [];\n\t\t\t\tif (!mapJSON.tiles[y][x]) mapJSON.tiles[y][x] = [];\n\n\t\t\t\tlet props = tileProperties[layer.data[i]];\n\t\t\t\tif (props) mapJSON.tiles[y][x].push(props);\n\t\t\t}\n\t\t});\n\n\t\t// condense the tiles down to types\n\t\tmapJSON.tiles = mapJSON.tiles.map(row => {\n\t\t\treturn row.map(tile => {\n\t\t\t\t// find a type that has exactly the make models as the tile\n\t\t\t\tlet type = mapJSON.types.find(type => _isEqual(tile, type));\n\n\t\t\t\tif (!type && tile.length > 0) mapJSON.types.push((type = tile));\n\n\t\t\t\treturn mapJSON.types.indexOf(type);\n\t\t\t});\n\t\t});\n\n\t\treturn mapJSON;\n\t}\n}\n",
@@ -2947,7 +1434,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 164,
+    "__docId__": 89,
     "kind": "variable",
     "name": "TILE_SIZE",
     "memberof": "src/tilemap/Tilemap.js",
@@ -2968,7 +1455,7 @@
     "ignore": true
   },
   {
-    "__docId__": 165,
+    "__docId__": 90,
     "kind": "class",
     "name": "Tilemap",
     "memberof": "src/tilemap/Tilemap.js",
@@ -2987,7 +1474,7 @@
     ]
   },
   {
-    "__docId__": 166,
+    "__docId__": 91,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "src/tilemap/Tilemap.js~Tilemap",
@@ -3001,7 +1488,7 @@
     "undocument": true
   },
   {
-    "__docId__": 167,
+    "__docId__": 92,
     "kind": "member",
     "name": "game",
     "memberof": "src/tilemap/Tilemap.js~Tilemap",
@@ -3018,7 +1505,7 @@
     }
   },
   {
-    "__docId__": 168,
+    "__docId__": 93,
     "kind": "member",
     "name": "size",
     "memberof": "src/tilemap/Tilemap.js~Tilemap",
@@ -3035,7 +1522,7 @@
     }
   },
   {
-    "__docId__": 169,
+    "__docId__": 94,
     "kind": "member",
     "name": "bodies",
     "memberof": "src/tilemap/Tilemap.js~Tilemap",
@@ -3052,7 +1539,7 @@
     }
   },
   {
-    "__docId__": 170,
+    "__docId__": 95,
     "kind": "member",
     "name": "spawnAreas",
     "memberof": "src/tilemap/Tilemap.js~Tilemap",
@@ -3069,7 +1556,7 @@
     }
   },
   {
-    "__docId__": 171,
+    "__docId__": 96,
     "kind": "member",
     "name": "loadedJSON",
     "memberof": "src/tilemap/Tilemap.js~Tilemap",
@@ -3086,7 +1573,7 @@
     }
   },
   {
-    "__docId__": 172,
+    "__docId__": 97,
     "kind": "method",
     "name": "clearBodies",
     "memberof": "src/tilemap/Tilemap.js~Tilemap",
@@ -3106,7 +1593,7 @@
     }
   },
   {
-    "__docId__": 174,
+    "__docId__": 99,
     "kind": "method",
     "name": "toJSON",
     "memberof": "src/tilemap/Tilemap.js~Tilemap",
@@ -3126,7 +1613,7 @@
     }
   },
   {
-    "__docId__": 175,
+    "__docId__": 100,
     "kind": "method",
     "name": "fromJSON",
     "memberof": "src/tilemap/Tilemap.js~Tilemap",
@@ -3153,7 +1640,7 @@
     }
   },
   {
-    "__docId__": 178,
+    "__docId__": 103,
     "kind": "method",
     "name": "getSpawnPoint",
     "memberof": "src/tilemap/Tilemap.js~Tilemap",
@@ -3173,7 +1660,7 @@
     }
   },
   {
-    "__docId__": 179,
+    "__docId__": 104,
     "kind": "method",
     "name": "buildCollisions",
     "memberof": "src/tilemap/Tilemap.js~Tilemap",
@@ -3200,7 +1687,7 @@
     }
   },
   {
-    "__docId__": 180,
+    "__docId__": 105,
     "kind": "method",
     "name": "parseTiledJSON",
     "memberof": "src/tilemap/Tilemap.js~Tilemap",
@@ -3227,7 +1714,7 @@
     }
   },
   {
-    "__docId__": 181,
+    "__docId__": 106,
     "kind": "file",
     "name": "src/utils.js",
     "content": "import p2 from \"p2\";\n\nexport function lerp(v0, v1, t) {\n\treturn v0 * (1 - t) + v1 * t;\n}\n\nexport function buildCollisions(collisions) {\n\tlet bodies = [];\n\n\tfor (let i = 0; i < collisions.length; i++) {\n\t\tlet object = collisions[i];\n\n\t\tif (!object.visible) continue;\n\n\t\t// create the shape\n\t\tif (Array.isArray(object.polygon)) {\n\t\t\tlet body = new p2.Body({ mass: 0 });\n\t\t\tbody.position[0] = object.x;\n\t\t\tbody.position[1] = object.y;\n\t\t\tbody.fromPolygon(object.polygon.map(point => [point.x, point.y]));\n\t\t\tbodies.push(body);\n\t\t} else if (Array.isArray(object.polyline)) {\n\t\t\tlet body = new p2.Body({ mass: 0 });\n\t\t\tbody.position[0] = object.x;\n\t\t\tbody.position[1] = object.y;\n\n\t\t\t// start at the second point\n\t\t\tfor (let i = 1; i < object.polyline.length; i++) {\n\t\t\t\tlet prev = object.polyline[i - 1];\n\t\t\t\tlet curr = object.polyline[i];\n\t\t\t\tlet length = Math.sqrt(Math.pow(curr.x - prev.x, 2) + Math.pow(curr.y - prev.y, 2));\n\t\t\t\tlet angle = Math.atan2(curr.y - prev.y, curr.x - prev.x);\n\t\t\t\tbody.addShape(\n\t\t\t\t\tnew p2.Line({\n\t\t\t\t\t\tposition: [lerp(prev.x, curr.x, 0.5), lerp(prev.y, curr.y, 0.5)],\n\t\t\t\t\t\tlength: length,\n\t\t\t\t\t\tangle: angle,\n\t\t\t\t\t}),\n\t\t\t\t);\n\t\t\t}\n\n\t\t\tbodies.push(body);\n\t\t} else if (object.height > 0 && object.width > 0) {\n\t\t\tlet body = new p2.Body({ mass: 0 });\n\t\t\tbody.position[0] = object.x + object.width / 2;\n\t\t\tbody.position[1] = object.y + object.height / 2;\n\t\t\tbody.addShape(\n\t\t\t\tnew p2.Box({\n\t\t\t\t\twidth: object.width,\n\t\t\t\t\theight: object.height,\n\t\t\t\t}),\n\t\t\t);\n\t\t\tbodies.push(body);\n\t\t}\n\t}\n\n\treturn bodies;\n}\n\nexport function clipDecimals(v, n = 3) {\n\treturn Math.round(v * Math.pow(10, n)) / Math.pow(10, n);\n}\n",
@@ -3238,7 +1725,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 182,
+    "__docId__": 107,
     "kind": "function",
     "name": "lerp",
     "memberof": "src/utils.js",
@@ -3280,7 +1767,7 @@
     }
   },
   {
-    "__docId__": 183,
+    "__docId__": 108,
     "kind": "function",
     "name": "buildCollisions",
     "memberof": "src/utils.js",
@@ -3310,7 +1797,7 @@
     }
   },
   {
-    "__docId__": 184,
+    "__docId__": 109,
     "kind": "function",
     "name": "clipDecimals",
     "memberof": "src/utils.js",
@@ -3358,7 +1845,7 @@
   },
   {
     "kind": "packageJSON",
-    "content": "{\n  \"name\": \"lazer-game-core\",\n  \"version\": \"1.0.2\",\n  \"description\": \"The core logic for lazer-game\",\n  \"license\": \"MIT\",\n  \"repository\": \"https://github.com/rdfriedl/lazer-game-core.git\",\n  \"author\": \"Robert Friedl <rdfriedl@gmail.com>\",\n  \"main\": \"dist/lazer-game-core.js\",\n  \"browser\": \"dist/lazer-game-core.umd.js\",\n  \"module\": \"dist/lazer-game-core.module.js\",\n  \"scripts\": {\n    \"precommit\": \"pretty-quick --staged\",\n    \"commitmsg\": \"commitlint -e $GIT_PARAMS\",\n    \"commit\": \"commit\",\n    \"clean\": \"rimraf dist\",\n    \"prebuild\": \"npm run clean\",\n    \"build\": \"cross-env NODE_ENV=production rollup -c\",\n    \"dev\": \"cross-env NODE_ENV=development rollup -c -w\",\n    \"clean:test\": \"rimraf coverage\",\n    \"pretest\": \"npm run clean:test\",\n    \"test\": \"npm-run-all --parallel test:browser test:node\",\n    \"test:browser\": \"cross-env NODE_ENV=development karma start karma.config.js --single-run\",\n    \"test:node\": \"cross-env NODE_ENV=development mocha --compilers js:babel-register --R spec test/node.js\",\n    \"test:debug\": \"cross-env NODE_ENV=development karma start karma.config.js --browsers Chrome --no-single-run\",\n    \"format\": \"prettier --write ./**/*.{js,json,css,md}\",\n    \"predocs\": \"rimraf docs\",\n    \"docs\": \"esdoc\"\n  },\n  \"engines\": {\n    \"node\": \">=6.0.0\"\n  },\n  \"dependencies\": {\n    \"hashids\": \"^1.1.4\",\n    \"lodash\": \"^4.17.5\",\n    \"p2\": \"^0.7.1\",\n    \"regexp-events\": \"^1.0.3\",\n    \"shortid\": \"^2.2.8\"\n  },\n  \"devDependencies\": {\n    \"@commitlint/cli\": \"^6.1.3\",\n    \"@commitlint/config-conventional\": \"^6.1.3\",\n    \"@commitlint/prompt-cli\": \"^6.1.3\",\n    \"@semantic-release/changelog\": \"^2.0.1\",\n    \"@semantic-release/exec\": \"^2.2.3\",\n    \"@semantic-release/git\": \"^4.0.1\",\n    \"@semantic-release/github\": \"^4.2.8\",\n    \"@semantic-release/npm\": \"^3.2.2\",\n    \"babel-core\": \"^6.26.0\",\n    \"babel-plugin-external-helpers\": \"^6.22.0\",\n    \"babel-plugin-istanbul\": \"^4.1.5\",\n    \"babel-polyfill\": \"^6.26.0\",\n    \"babel-preset-env\": \"^1.6.1\",\n    \"babel-register\": \"^6.26.0\",\n    \"chai\": \"^4.1.2\",\n    \"core-js\": \"^2.5.3\",\n    \"cross-env\": \"^5.1.4\",\n    \"esdoc\": \"^1.0.4\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"husky\": \"^0.14.3\",\n    \"karma\": \"^2.0.0\",\n    \"karma-chrome-launcher\": \"^2.2.0\",\n    \"karma-coverage-istanbul-reporter\": \"^1.4.2\",\n    \"karma-firefox-launcher\": \"^1.1.0\",\n    \"karma-mocha\": \"^1.3.0\",\n    \"karma-mocha-reporter\": \"^2.2.5\",\n    \"karma-phantomjs-launcher\": \"^1.0.4\",\n    \"karma-rollup-preprocessor\": \"^5.1.1\",\n    \"karma-sinon-chai\": \"^1.3.3\",\n    \"karma-source-map-support\": \"^1.2.0\",\n    \"mocha\": \"^5.0.4\",\n    \"npm-run-all\": \"^4.1.2\",\n    \"prettier\": \"^1.11.1\",\n    \"pretty-quick\": \"^1.4.1\",\n    \"rimraf\": \"^2.6.2\",\n    \"rollup\": \"^0.57.1\",\n    \"rollup-plugin-babel\": \"^3.0.3\",\n    \"rollup-plugin-commonjs\": \"^9.1.0\",\n    \"rollup-plugin-json\": \"^2.3.0\",\n    \"rollup-plugin-node-resolve\": \"^3.3.0\",\n    \"rollup-plugin-replace\": \"^2.0.0\",\n    \"rollup-plugin-uglify\": \"^3.0.0\",\n    \"semantic-release\": \"^15.1.3\",\n    \"sinon\": \"^4.4.8\",\n    \"sinon-chai\": \"^3.0.0\"\n  },\n  \"prettier\": {\n    \"useTabs\": true,\n    \"semi\": true,\n    \"trailingComma\": \"all\",\n    \"printWidth\": 120\n  },\n  \"commitlint\": {\n    \"extends\": [\n      \"@commitlint/config-conventional\"\n    ]\n  },\n  \"release\": {\n    \"verifyConditions\": [\n      \"@semantic-release/changelog\",\n      \"@semantic-release/npm\",\n      \"@semantic-release/git\",\n      \"@semantic-release/github\"\n    ],\n    \"prepare\": [\n      \"@semantic-release/changelog\",\n      \"@semantic-release/npm\",\n      {\n        \"path\": \"@semantic-release/exec\",\n        \"cmd\": \"npm run build\"\n      },\n      {\n        \"path\": \"@semantic-release/git\",\n        \"assets\": [\n          \"package.json\",\n          \"package-lock.json\",\n          \"CHANGELOG.md\",\n          \"dist/*.js\"\n        ],\n        \"message\": \"chore(release): ${nextRelease.version} [skip ci]\\n\\n${nextRelease.notes}\"\n      }\n    ],\n    \"publish\": [\n      \"@semantic-release/npm\",\n      \"@semantic-release/github\"\n    ]\n  }\n}\n",
+    "content": "{\n  \"name\": \"lazer-game-core\",\n  \"version\": \"1.0.3\",\n  \"description\": \"The core logic for lazer-game\",\n  \"license\": \"MIT\",\n  \"repository\": \"https://github.com/rdfriedl/lazer-game-core.git\",\n  \"author\": \"Robert Friedl <rdfriedl@gmail.com>\",\n  \"main\": \"dist/lazer-game-core.js\",\n  \"browser\": \"dist/lazer-game-core.umd.js\",\n  \"module\": \"dist/lazer-game-core.module.js\",\n  \"scripts\": {\n    \"precommit\": \"pretty-quick --staged\",\n    \"commitmsg\": \"commitlint -e $GIT_PARAMS\",\n    \"commit\": \"commit\",\n    \"clean\": \"rimraf dist\",\n    \"prebuild\": \"npm run clean\",\n    \"build\": \"cross-env NODE_ENV=production rollup -c\",\n    \"dev\": \"cross-env NODE_ENV=development rollup -c -w\",\n    \"clean:test\": \"rimraf coverage\",\n    \"pretest\": \"npm run clean:test\",\n    \"test\": \"npm-run-all --parallel test:browser test:node\",\n    \"test:browser\": \"cross-env NODE_ENV=development karma start karma.config.js --single-run\",\n    \"test:node\": \"cross-env NODE_ENV=development mocha --compilers js:babel-register --R spec test/node.js\",\n    \"test:debug\": \"cross-env NODE_ENV=development karma start karma.config.js --browsers Chrome --no-single-run\",\n    \"format\": \"prettier --write ./**/*.{js,json,css,md}\",\n    \"predocs\": \"rimraf docs\",\n    \"docs\": \"esdoc\"\n  },\n  \"engines\": {\n    \"node\": \">=6.0.0\"\n  },\n  \"dependencies\": {\n    \"hashids\": \"^1.1.4\",\n    \"lodash\": \"^4.17.5\",\n    \"p2\": \"^0.7.1\",\n    \"regexp-events\": \"^1.0.3\",\n    \"shortid\": \"^2.2.8\"\n  },\n  \"devDependencies\": {\n    \"@commitlint/cli\": \"^6.1.3\",\n    \"@commitlint/config-conventional\": \"^6.1.3\",\n    \"@commitlint/prompt-cli\": \"^6.1.3\",\n    \"@semantic-release/changelog\": \"^2.0.1\",\n    \"@semantic-release/exec\": \"^2.2.3\",\n    \"@semantic-release/git\": \"^4.0.1\",\n    \"@semantic-release/github\": \"^4.2.8\",\n    \"@semantic-release/npm\": \"^3.2.2\",\n    \"babel-core\": \"^6.26.0\",\n    \"babel-plugin-external-helpers\": \"^6.22.0\",\n    \"babel-plugin-istanbul\": \"^4.1.5\",\n    \"babel-polyfill\": \"^6.26.0\",\n    \"babel-preset-env\": \"^1.6.1\",\n    \"babel-preset-stage-2\": \"^6.24.1\",\n    \"babel-register\": \"^6.26.0\",\n    \"chai\": \"^4.1.2\",\n    \"core-js\": \"^2.5.3\",\n    \"cross-env\": \"^5.1.4\",\n    \"esdoc\": \"^1.0.4\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"husky\": \"^0.14.3\",\n    \"karma\": \"^2.0.0\",\n    \"karma-chrome-launcher\": \"^2.2.0\",\n    \"karma-coverage-istanbul-reporter\": \"^1.4.2\",\n    \"karma-firefox-launcher\": \"^1.1.0\",\n    \"karma-mocha\": \"^1.3.0\",\n    \"karma-mocha-reporter\": \"^2.2.5\",\n    \"karma-phantomjs-launcher\": \"^1.0.4\",\n    \"karma-rollup-preprocessor\": \"^5.1.1\",\n    \"karma-sinon-chai\": \"^1.3.3\",\n    \"karma-source-map-support\": \"^1.2.0\",\n    \"mocha\": \"^5.0.4\",\n    \"npm-run-all\": \"^4.1.2\",\n    \"prettier\": \"^1.11.1\",\n    \"pretty-quick\": \"^1.4.1\",\n    \"rimraf\": \"^2.6.2\",\n    \"rollup\": \"^0.57.1\",\n    \"rollup-plugin-babel\": \"^3.0.3\",\n    \"rollup-plugin-commonjs\": \"^9.1.0\",\n    \"rollup-plugin-json\": \"^2.3.0\",\n    \"rollup-plugin-node-resolve\": \"^3.3.0\",\n    \"rollup-plugin-replace\": \"^2.0.0\",\n    \"rollup-plugin-uglify\": \"^3.0.0\",\n    \"semantic-release\": \"^15.1.3\",\n    \"sinon\": \"^4.4.8\",\n    \"sinon-chai\": \"^3.0.0\"\n  },\n  \"prettier\": {\n    \"useTabs\": true,\n    \"semi\": true,\n    \"trailingComma\": \"all\",\n    \"printWidth\": 120\n  },\n  \"commitlint\": {\n    \"extends\": [\n      \"@commitlint/config-conventional\"\n    ]\n  },\n  \"release\": {\n    \"verifyConditions\": [\n      \"@semantic-release/changelog\",\n      \"@semantic-release/npm\",\n      \"@semantic-release/git\",\n      \"@semantic-release/github\"\n    ],\n    \"prepare\": [\n      \"@semantic-release/changelog\",\n      \"@semantic-release/npm\",\n      {\n        \"path\": \"@semantic-release/exec\",\n        \"cmd\": \"npm run build\"\n      },\n      {\n        \"path\": \"@semantic-release/git\",\n        \"assets\": [\n          \"package.json\",\n          \"package-lock.json\",\n          \"CHANGELOG.md\",\n          \"dist/*.js\"\n        ],\n        \"message\": \"chore(release): ${nextRelease.version} [skip ci]\\n\\n${nextRelease.notes}\"\n      }\n    ],\n    \"publish\": [\n      \"@semantic-release/npm\",\n      \"@semantic-release/github\"\n    ]\n  }\n}\n",
     "longname": "/home/circleci/repo/package.json",
     "name": "package.json",
     "static": true,
