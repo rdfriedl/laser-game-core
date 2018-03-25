@@ -14273,8 +14273,6 @@
 	  return call && (typeof call === "object" || typeof call === "function") ? call : self;
 	};
 
-	var bulletIds = new Hashids("bullets");
-
 	var Bullet = function (_Emitter) {
 		inherits(Bullet, _Emitter);
 
@@ -14287,7 +14285,7 @@
 
 			_this.manager = manager;
 
-			_this.id = bulletIds.encode(Date.now());
+			_this.id = Bullet.ids.encode(Date.now());
 
 			// this is basic info about the bullet
 			// like: who shot it, how long its supposed to last
@@ -14403,6 +14401,8 @@
 		}]);
 		return Bullet;
 	}(Emitter);
+
+	Bullet.ids = new Hashids("bullets");
 
 	function lerp(v0, v1, t) {
 		return v0 * (1 - t) + v1 * t;
@@ -14708,8 +14708,6 @@
 		DEFAULT: "default"
 	};
 
-	var playerIds = new Hashids("players");
-
 	var Player = function (_Emitter) {
 		inherits(Player, _Emitter);
 
@@ -14719,7 +14717,7 @@
 			var _this = possibleConstructorReturn(this, (Player.__proto__ || Object.getPrototypeOf(Player)).call(this));
 
 			_this.manager = manager;
-			_this.id = playerIds.encode(Date.now());
+			_this.id = Player.ids.encode(Date.now());
 
 			// this is basic info about the player
 			// NOTE: this is set once when the bullet is created and then never changes
@@ -14937,6 +14935,8 @@
 		}]);
 		return Player;
 	}(Emitter);
+
+	Player.ids = new Hashids("players");
 
 	var PlayerManager = function (_Emitter) {
 		inherits(PlayerManager, _Emitter);
@@ -17429,12 +17429,12 @@
 	var Game = function (_Emitter) {
 		inherits(Game, _Emitter);
 
-		function Game(id) {
+		function Game() {
 			classCallCheck$1(this, Game);
 
 			var _this = possibleConstructorReturn(this, (Game.__proto__ || Object.getPrototypeOf(Game)).call(this));
 
-			_this.id = id;
+			_this.id = Game.ids.encode(Date.now());
 			_this.info = {};
 			_this.isMaster = false;
 			_this.config = JSON.parse(JSON.stringify(BASE_CONFIG));
@@ -17561,6 +17561,8 @@
 		}]);
 		return Game;
 	}(Emitter);
+
+	Game.ids = new Hashids("games");
 
 
 	Game.DEFAULT_FPS = 1 / 60;

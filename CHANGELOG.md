@@ -1,3 +1,11 @@
+<a name="1.0.4"></a>
+## [1.0.4](https://github.com/rdfriedl/lazer-game-core/compare/v1.0.3...v1.0.4) (2018-03-25)
+
+
+### Bug Fixes
+
+* removed id argument when creating a new game ([501848c](https://github.com/rdfriedl/lazer-game-core/commit/501848c))
+
 <a name="1.0.3"></a>
 ## [1.0.3](https://github.com/rdfriedl/lazer-game-core/compare/v1.0.2...v1.0.3) (2018-03-24)
 

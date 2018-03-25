@@ -8,14 +8,13 @@ var Hashids = _interopDefault(require('hashids'));
 var regexpEvents = require('regexp-events');
 var p2 = _interopDefault(require('p2'));
 
-const bulletIds = new Hashids("bullets");
-
 class Bullet extends regexpEvents.Emitter {
+
 	constructor(manager, info = {}, props = {}) {
 		super();
 		this.manager = manager;
 
-		this.id = bulletIds.encode(Date.now());
+		this.id = Bullet.ids.encode(Date.now());
 
 		// this is basic info about the bullet
 		// like: who shot it, how long its supposed to last
@@ -106,6 +105,7 @@ class Bullet extends regexpEvents.Emitter {
 		return this.manager.getBulletType(this);
 	}
 }
+Bullet.ids = new Hashids("bullets");
 
 function lerp(v0, v1, t) {
 	return v0 * (1 - t) + v1 * t;
@@ -345,14 +345,13 @@ BulletManager.BULLET_TYPE = {
 	DEFAULT: "default"
 };
 
-const playerIds = new Hashids("players");
-
 class Player extends regexpEvents.Emitter {
+
 	constructor(manager, info, props) {
 		super();
 
 		this.manager = manager;
-		this.id = playerIds.encode(Date.now());
+		this.id = Player.ids.encode(Date.now());
 
 		// this is basic info about the player
 		// NOTE: this is set once when the bullet is created and then never changes
@@ -530,6 +529,7 @@ class Player extends regexpEvents.Emitter {
 		return this.manager.game;
 	}
 }
+Player.ids = new Hashids("players");
 
 class PlayerManager extends regexpEvents.Emitter {
 	constructor(game) {
@@ -2973,10 +2973,11 @@ const BASE_CONFIG = {
 };
 
 class Game extends regexpEvents.Emitter {
-	constructor(id) {
+
+	constructor() {
 		super();
 
-		this.id = id;
+		this.id = Game.ids.encode(Date.now());
 		this.info = {};
 		this.isMaster = false;
 		this.config = JSON.parse(JSON.stringify(BASE_CONFIG));
@@ -3079,6 +3080,7 @@ class Game extends regexpEvents.Emitter {
 	}
 }
 
+Game.ids = new Hashids("games");
 Game.DEFAULT_FPS = 1 / 60;
 
 exports.Game = Game;
